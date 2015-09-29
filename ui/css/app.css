@@ -1,0 +1,120 @@
+/* line 1, ../scss/_main.scss */
+html {
+  overflow-y: scroll;
+}
+
+/* anchor tags should use pointer like buttons */
+/* line 6, ../scss/_main.scss */
+a {
+  cursor: pointer;
+}
+
+/** this allows us to display nothing until angular has applied changes to the dom
+    without this we see what the dom wants to display first, and then get an update
+    within milliseconds once angular is finished. -- it's the "funny flicker effect"
+ **/
+/* line 14, ../scss/_main.scss */
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
+
+/** **
+supports grid feature
+**/
+/******** Grid Global ********/
+/* line 24, ../scss/_main.scss */
+.ngPagerControl .ngPagerButton {
+  /** pagination buttons are pushed down 10px... fix that here... **/
+  margin-top: -10px;
+  /** and a little space in between  **/
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+/* line 33, ../scss/_main.scss */
+.nglabel {
+  display: block;
+  float: left;
+  font-weight: bold;
+  padding-right: 5px;
+}
+
+/* line 40, ../scss/_main.scss */
+.ngNoSelect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/** better position ngGrid cell contents **/
+/* line 50, ../scss/_main.scss */
+.ngCell div {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+/******** Grid ********/
+/* line 57, ../scss/_main.scss */
+.gridStyle {
+  border: 1px solid #d4d4d4;
+  /* width: none !important; */
+  height: 420px;
+}
+
+/* line 63, ../scss/_main.scss */
+.ngGrid {
+  background-color: #fdfdfd;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/******** Header ********/
+/* line 75, ../scss/_main.scss */
+.ngGroupPanel {
+  background-color: #eaeaea;
+  overflow: hidden;
+  border-bottom: 1px solid #d4d4d4;
+}
+
+/* line 81, ../scss/_main.scss */
+.ngGroupPanelDescription {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+/* line 86, ../scss/_main.scss */
+.ngGroupList {
+  list-style-type: none;
+}
+
+/***
+   modal / login / password
+**/
+/* line 94, ../scss/_main.scss */
+.modal-body {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+}
+
+/* line 100, ../scss/_main.scss */
+.modal-body * {
+  display: block;
+  margin: 10px 0 5px 0;
+  width: 95%;
+}
+
+/* line 106, ../scss/_main.scss */
+#password {
+  display: inline;
+  float: left;
+  max-width: 69%;
+  min-width: 63px;
+}

@@ -1,5 +1,16 @@
-# C-Laborem - Certronic app mobile.
 
-## Archivos web frontend para ser compilados con Apache Cordova / Phonegap para Android, iOS y Windows Phone
+#C-Laborem - Certronic app mobile.
+### Mobile UI - frontend. Certronic platform from Claborem: labor certification management for contractors and plants.
 
-App web móvil (cliente frontend, archivos para compilar con app en phonegap) de la plataforma Certronic de CLaborem: gestión de certificados laborales para empresas contratistas y plantas.
+### Web server
+  - Just start the server and navigate to ui/index.html
+
+### For components
+  - Node Package Manager (npm).  Run "sudo apt-get install npm"
+  - recess, jslint, and a host of other packages.  Run "npm install" from the bootstrap directory
+
+### SASS / bundler  - run on the ui directory
+  $ npm install -g bower grunt-cli
+  $ gem install compass
+  $ bundle
+  $ bundle exec compass watch
