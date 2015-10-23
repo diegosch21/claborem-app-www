@@ -1,0 +1,95 @@
+
+	{
+		"plantaactual" : "Planta 1 - Empresa",
+		"img" : "http://www.c-laborem.com.ar/certronic/images/logos/9.jpg",
+		"plantas": {
+			"lista": [
+				{
+					"id" : 0,
+					"nombre" : "Planta 1 - Empresa",
+					"img" : "http://www.c-laborem.com.ar/certronic/images/logos/9.jpg",
+					"cumplimiento" : 96,
+					"personal" : {
+						"permitidos" : 2,
+						"denegados" : 1,
+						"sinmovimientos" : 3
+					},
+					"contratos" : {
+						"Activos" : 1,
+						"EnFecha" : 0,
+						"Vencidos" : 1,
+						"proximosAVencer" : 0
+					},
+					"contratistas" : {
+						"permanentes" : {
+							"Contratistas" : 2,
+							"Permitido" : 29,
+							"Denegado" : 4
+						},
+						"esporadicos" : {
+							"Contratistas" : 0,
+							"Permitido" : 0,
+							"Denegado" : 0
+						},
+						"subcontrataciones" : {
+							"empresassubcontratistas" : 0
+						}
+					},
+					"ranking" : [
+						{
+							"nombre" : "SERVITEC COMUNICACIONES SRL",
+							"cumplimiento" : 98
+						},
+						{
+							"nombre" : "SISTEMAS INTEGRALES DE COMUNICACIONES SA",
+							"cumplimiento" : 90
+						}
+					]
+				},
+				{
+					"id" : 1,
+					"nombre" : "Planta 2 - Demo",
+					"img" : "http://www.c-laborem.com.ar/certronic/images/logos/1.jpg",
+					"cumplimiento" : 84,
+					"personal" : {
+						"permitidos" : 13,
+						"denegados" : 4,
+						"sinmovimientos" : 1
+					},
+					"contratos" : {
+						"Activos" : 5,
+						"EnFecha" : 2,
+						"Vencidos" : 1,
+						"proximosAVencer" : 0
+					},
+					"contratistas" : {
+						"permanentes" : {
+							"Contratistas" : 4,
+							"Permitido" : 5,
+							"Denegado" : 4
+						},
+						"esporadicos" : {
+							"Contratistas" : 4,
+							"Permitido" : 2,
+							"Denegado" : 1
+						},
+						"subcontrataciones" : {
+							"empresassubcontratistas" : 4
+						}
+					},
+					"ranking" : [
+						{
+							"nombre" : "Contratista 3",
+							"cumplimiento" : 100
+						},
+						{
+							"nombre" : "Contratista 2",
+							"cumplimiento" : 97
+						}
+					]
+				}
+			],
+			"default" : 0
+		}
+	}
+

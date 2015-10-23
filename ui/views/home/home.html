@@ -1,0 +1,147 @@
+<div class="container nopad" fade-in>
+
+    <div ng-include src="'views/partials/navbar-top.html'"></div>
+
+
+    <div class="mainpage-header">
+        {{plant.nombre}}
+        <img class="mainpage-header-plantimg" src="{{plant.img}}"/>  
+    </div>
+
+    <div class="mainpage-compon-cumpl">
+        <div class="mainpage-compon-cumpl-icon">
+            <div class="info-icon bg-primary-dark">
+                <i class="fa fa-signal white-icon"></i>
+            </div>
+        </div>
+        <div class="mainpage-compon-cumpl-bar">
+            <div class="mainpage-compon-cumpl-bar-title">Cumplimiento</div>
+            <div class="progress progress-striped">
+              <div class="progress-bar" role="progressbar" aria-valuenow="{{plant.cumplimiento}}" aria-valuemin="0" aria-valuemax="100" style="width: {{plant.cumplimiento}}%;">
+                {{plant.cumplimiento}}%
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mainpage-compon-staff">
+        <div class="mainpage-compon-title">
+            <i class="fa fa-group"></i><span class="compon-title">Personal</span>
+        </div>
+        <div class="mainpage-compon-container">
+            <ul class="list-group">
+                <li class="list-group-item">                 
+                    <span class="label label-success label-as-badge">{{plant.personal.permitidos}}</span>
+                    Permitidos
+                </li>
+                <li class="list-group-item">
+                    <span class="label label-danger label-as-badge">{{plant.personal.denegados}}</span>
+                    Denegados
+                </li>
+                <li class="list-group-item">
+                    <a class="label label-danger label-as-badge">{{plant.personal.sinmovimientos}}</a>
+                    Sin Movimiento <small class="text-muted">(2 meses)</small>
+                </li>
+            </ul>
+            <div class="row visitors-list-summary text-center text-primary">
+                <div class="col-md-6 col-sm-6 col-xs-6 visitor-item border">
+                    <div class="mainpage-title">Permitidos</div>
+                    <a class="label label-big label-success font-medium"> <i class="fa fa-thumbs-up text-white"></i> {{((plant.personal.permitidos + plant.personal.sinmovimientos)/(plant.personal.permitidos + plant.personal.sinmovimientos + plant.personal.denegados)*100).toFixed()}}%</a>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6 visitor-item">
+                    <div class="mainpage-title">Denegados</div>
+                    <a class="label label-big label-danger font-medium"> <i class="fa fa-thumbs-down text-white"></i> {{((plant.personal.denegados)/(plant.personal.permitidos + plant.personal.sinmovimientos + plant.personal.denegados)*100).toFixed()}}%</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mainpage-compon">
+        <div class="mainpage-compon-title">
+            <i class="fa fa-indent"></i><span class="compon-title">Contratos</span>
+        </div>
+        <div class="mainpage-compon-container">
+            <ul class="list-group">
+                <li class="list-group-item">                 
+                    <span class="label label-info label-as-badge">{{plant.contratos.Activos}}</span>
+                    Activos
+                </li>
+                <li class="list-group-item">
+                    <span class="label label-success label-as-badge">{{plant.contratos.EnFecha}}</span>
+                    En fecha
+                </li>
+                <li class="list-group-item">
+                    <span class="label label-danger label-as-badge">{{plant.contratos.Vencidos}}</span>
+                    Vencidos
+                </li>
+                <li class="list-group-item">
+                    <span class="label label-warning label-as-badge">{{plant.contratos.proximosAVencer}}</span>
+                    Próximos a vencer
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mainpage-compon">
+        <div class="mainpage-compon-title">
+            <i class="fa fa-briefcase"></i><span class="compon-title">Contratistas</span>
+        </div>
+        <div class="mainpage-compon-container">
+            <div class="list-group-title">Permanentes</div>
+            <ul class="list-group">
+                <li class="list-group-item">                 
+                    <span class="label label-info label-as-badge">{{plant.contratistas.permanentes.Contratistas}}</span>
+                    Contratistas
+                </li>
+                <li class="list-group-item">
+                    <span class="label label-success label-as-badge">{{plant.contratistas.permanentes.Permitido}}</span>
+                    Personal Permitido
+                </li>
+                <li class="list-group-item">
+                    <span class="label label-danger label-as-badge">{{plant.contratistas.permanentes.Denegado}}</span>
+                    Personal Denegado
+                </li>
+            </ul>
+            <div class="list-group-title">Esporádicos</div>
+            <ul class="list-group">
+                <li class="list-group-item">                 
+                    <span class="label label-info label-as-badge">{{plant.contratistas.esporadicos.Contratistas}}</span>
+                    Contratistas
+                </li>
+                <li class="list-group-item">
+                    <span class="label label-success label-as-badge">{{plant.contratistas.esporadicos.Permitido}}</span>
+                    Personal Permitido
+                </li>
+                <li class="list-group-item">
+                    <span class="label label-danger label-as-badge">{{plant.contratistas.esporadicos.Denegado}}</span>
+                    Personal Denegado
+                </li>
+            </ul>
+            <div class="list-group-title">Subcontrataciones</div>
+            <ul class="list-group">
+                <li class="list-group-item">                 
+                    <span class="label label-info label-as-badge">{{plant.contratistas.subcontrataciones.empresassubcontratistas}}</span>
+                    Empresas Subcontratistas
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mainpage-compon">
+        <div class="mainpage-compon-title">
+            <i class="fa fa-trophy"></i><span class="compon-title">Ranking</span>
+        </div>
+        <div class="mainpage-compon-container">
+            <ul class="list-group">
+                    <li ng-repeat="rank in plant.ranking" class="list-group-item list-group-item-progress">
+                        <div>{{rank.nombre}}</div> <span class="badge pull-right bg-transparent-success"> {{rank.cumplimiento}}% </span>
+                        <div class="progress progress-striped progress-mini">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{rank.cumplimiento}}" aria-valuemin="0" aria-valuemax="100" style="width: {{rank.cumplimiento}}%;"></div>
+                        </div>
+                    </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer"></div>
+</div>

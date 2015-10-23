@@ -1,0 +1,130 @@
+.main-backgroud{
+	background-color: $main-color;
+        position: absolute;
+    width: 100%;
+}
+
+.login-box{
+	background: #FFFFFF;
+    min-height: 300px;
+    height: 350px;
+    margin: 0px auto;
+    width: 350px;
+    margin-top: 100px;
+}
+
+@media screen and (max-width: 400px) {
+    .login-box {
+        width: 260px;
+        margin-top: 50px;
+    }
+}
+
+    
+.login-footer {
+	    min-height: 280px;
+	width: 260px;
+	margin: 0px auto;
+	margin-top: 10px;
+	text-align: center;
+}
+
+.login-box h1 {
+    color: #2f4051;
+    font-size: 25px;
+    padding-top: 10px;
+    font-family: 'Raleway';
+    font-weight: 600;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.login-box h5 {
+    text-align: center;
+    font-family: 'Raleway';
+    font-weight: 600;
+    color: #2f4051;
+    font-size: 13px;
+}
+
+.login-box hr {
+    border-width: 1px;
+    border-color: #0b1d30;
+    opacity: 0.3;
+}
+
+.login-box .input-box {
+    margin-top: 20px;
+}
+
+.login-box .input-box .input-group-addon {
+    background: #2f4051;
+    border: 0px;
+    color: #FFFFFF;
+    border-radius: 0px;
+}
+
+.login-box .input-box h6 {
+    font-family: 'Raleway';
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.col-xs-offset-1 {
+    margin-left: 8.33333333%;
+}
+
+.login-box .input-box input {
+    background: #4f5c6c;
+    border-radius: 0px;
+    border: none;
+    color: #FFFFFF !important;
+}
+
+.login-box .input-box .form-group h6 {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+}
+.btn-primary-blue {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #357ebd;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    height: 34px;
+    line-height: 0px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 8px 12px;
+    font-size: 13px;
+    line-height: 1.428571429;
+    color: #333;
+    vertical-align: middle;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}

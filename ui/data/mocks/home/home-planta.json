@@ -1,0 +1,55 @@
+{
+	"plantaactual" : "Planta 1",
+	"plantas": {
+		"lista": [
+			{
+				"nombre" : "Planta 1",
+				"img" : "http://www.c-laborem.com.ar/certronic/images/logos/9.jpg"
+			},
+			{
+				"nombre" : "Planta 2",
+				"img" : "http://www.c-laborem.com.ar/certronic/images/logos/9.jpg"
+			}
+		],
+		"default" : 0
+	},
+	"cumplimiento" : 0.96,
+	"personal" : {
+		"permitidos" : 2,
+		"denegados" : 1,
+		"sinmovimientos" : 3
+	},
+	"contratos" : {
+		"Activos" : 1,
+		"En Fecha" : 0,
+		"Vencidos" : 1,
+		"proximosavencer" : 0
+	},
+	"calendario" : [
+		{
+			"titulo" : "Vencimiento contrato 1",
+			"fecha" : "2015-11-8"
+		},
+		{
+			"titulo" : "Vencimiento contrato 3",
+			"fecha" : "2015-11-2"
+		}
+	],
+	"documentos" : [
+		{
+			"titulo" : "Vencimiento contrato 1",
+			"cumple": "NO",
+			"vencimiento" : "2015-11-8"
+		},
+		{
+			"titulo" : "Vencimiento contrato 2",
+			"cumple": "SI",
+			"vencimiento" : "Sin vencimiento"
+		},
+		{
+			"titulo" : "Vencimiento contrato 3",
+			"cumple": "NO",
+			"vencimiento" : "2015-11-2"
+		}
+	]
+}

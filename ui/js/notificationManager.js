@@ -1,15 +1,3 @@
-// TODO should scope this to Angular instead of polluting global namespace
-
-/*
-
- This class maintains a list of notifications on the scope, and cleans up notifications
- as they are processed by the directive.  It is important to note the "notifications"
- model added to scope here... this is called out by name in HTML and from the accompanying
- directive.  Changing the name will break notification functionality.
-
- R.Christian
-
- */
 var NotificationManager = function(scope) {
 
     // notification queue
