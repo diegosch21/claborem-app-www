@@ -226,3 +226,132 @@
 .footer{
     height: 20px;
 }
+.form-control{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    float: right;
+    width: 50%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.btn{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+.input-append{
+    height:60px;
+}
+.input-group{
+        float: right;
+    margin: 10px;
+}
+.btn-default, .btn-default:hover, .btn-default:focus {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+    background-image: none;
+    background-repeat: no-repeat;
+    border: 1px solid #ccc;
+}
+.add-on{
+    padding-left: 10px;
+}
+.tile-contract{
+    padding: 6px;
+    width: 100%;
+    height: 60px;
+    background-color: #E9E9EA;
+    border-bottom: 1px solid transparent;
+    border-color: #ddd;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 11px;
+}
+.tile-contract-num{
+    width: 50%;
+    height: 50px;
+    float: left;
+}
+.tile-contract-fiscal{
+    padding-top: 4px;
+}
+    
+.tile-contract-fechas{
+    width: 50%;
+        height: 54px;
+    float: right;
+}
+    
+.tile-contract-fecha{
+    width: 100%;
+    height: 16px;
+}
+.pagination ul>li:first-child>a, .pagination ul>li:first-child>span {
+    border-left-width: 1px;
+    -webkit-border-radius: 3px 0 0 3px;
+    -moz-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+}
+.pagination ul>.disabled>span, .pagination ul>.disabled>a, .pagination ul>.disabled>a:hover {
+    color: #999999;
+    background-color: transparent;
+    cursor: default;
+}
+.pagination ul>li>a, .pagination ul>li>span {
+    float: left;
+    padding: 0px 11px;
+    line-height: 24px;
+    text-decoration: none;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-left-width: 0;
+}
+.pagination ul>li {
+    display: inline;
+}
+
+
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 8px 3px 0px 0px;
+    border-radius: 4px;
+}
+.pagination .active>a, .pagination .active>a:hover {
+        color: #999999;
+    background-color: transparent;
+    cursor: default;
+}
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}

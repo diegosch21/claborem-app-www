@@ -16,6 +16,7 @@
     <link REL="SHORTCUT ICON" HREF="favicon.png">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
 
     <link rel="stylesheet" href="css/vendor/bootstrap/bootstrap.min.css">
 
@@ -46,7 +47,7 @@
 <![endif]-->
 
 <!-- ng routes hook -->
-<div ng-view></div>
+<div ng-view ng-controller="mainCtrl"></div>
 
 <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
 <script>window.jQuery || document.write('<script src="//code.jquery.com/jquery-1.10.2.min.js"><\/script>')</script>
@@ -99,11 +100,14 @@
 
 <script type="text/javascript" src="js/vendor/noty-2.1.0/js/noty/themes/nucleus.js"></script>
 
+<script src="js/controllers/main.js"></script>
 <script src="js/controllers/home/home.js"></script>
 <script src="js/controllers/login/login.js"></script>
+<script src="js/controllers/contracts/contracts.js"></script>
 
 <script src="js/services/config.js"></script>
 <script src="js/services/apihttp.js"></script>
+<script src="js/services/redirect.js"></script>
 <script src="js/services/authentication.js"></script>
 
 </body>

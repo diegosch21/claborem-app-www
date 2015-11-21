@@ -6,6 +6,8 @@ var myApp = angular.module('myApp',
         'myApp.filters',
         'myApp.directives', // custom directives
         'myApp.home',
+        'myApp.contracts',
+        'myApp.main',
         'myApp.login',
         'myApp.services',
         'ngGrid', // angular grid
@@ -36,6 +38,14 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
         controller: 'loginCtrl'
     });
 
+    $routeProvider.when('/contracts', {
+        templateUrl:'views/contracts/contracts.html'
+    });
+
+    $routeProvider.when('/workforce', {
+        templateUrl:'views/workforce/workforce.html'
+    });
+
     // by default, redirect to site root
     $routeProvider.otherwise({
         redirectTo:'/'
@@ -44,7 +54,7 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
 }]);
 
 // this is run after angular is instantiated and bootstrapped
-myApp.run(function ($rootScope, $location, $http, $timeout, AuthSrv) {
+myApp.run(function ($rootScope, $location, $http, $timeout, AuthSrv, RedirectSrv) {
 
     // *****
     // Initialize authentication
@@ -56,18 +66,18 @@ myApp.run(function ($rootScope, $location, $http, $timeout, AuthSrv) {
         // if never logged in, do nothing (otherwise bookmarks fail)
         if (AuthSrv.initialState()) {
             // we are public browsing
-            $location.path('/login');
+            RedirectSrv.redirect('/login');
             return;
         }
 
         // when user logs in, redirect to home
         if (AuthSrv.authorized()) {
-            $location.path("/");
+            //$location.path("/");
         }
 
         // when user logs out, redirect to login
         if (!AuthSrv.authorized()) {
-            $location.path('/login');
+            RedirectSrv.redirect('/login');
         }
     }, true);
 

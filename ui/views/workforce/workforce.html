@@ -1,0 +1,64 @@
+<div class="container nopad" fade-in>
+
+    <div ng-include src="'views/partials/navbar-top.html'"></div>
+
+
+    <div class="mainpage-header">
+        {{plant.nombre}}
+        <img class="mainpage-header-plantimg" src="{{plant.img}}"/>  
+    </div>
+
+    <div ng-controller="contractsCtrl">
+        <div class="input-append">
+            <a class="input-group">
+                <input type="text" ng-model="query" ng-change="search()" class="form-control" placeholder="Search">
+                <span class="input-group-btn">
+                    <span class="add-on"><i class="icon-search"></i></span>
+                </span>
+                
+            </a>
+        </div>                    
+        <div ng-click="open(item.Link)" ng-repeat="item in pagedItems[currentPage]" class="tile-contract" >
+
+            <div class="tile-contract-num" >
+                Nª: {{item.Num}}
+                <div class="tile-contract-fiscal">
+                    <div>Fiscal: </div>{{item.Fiscal}}
+                </div>
+            </div>
+            <div class="tile-contract-fechas">
+                <div class="tile-contract-fecha">
+                    <span>Inicio: {{item.Inicio}}</span>
+                </div>
+                <div class="tile-contract-fecha">
+                    <span>Fin: {{item.Fin}}</span>
+                </div>
+                <div class="tile-contract-fecha">
+                    <span>Extensión: {{item.Extension}}</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="pagination pull-right">
+            <ul>
+                <li ng-class="{disabled: currentPage == 0}">
+                    <a href ng-click="prevPage()">« Prev</a>
+                </li>
+                <li ng-repeat="n in range(pagedItems.length)"
+                    ng-class="{active: n == currentPage}"
+                ng-click="setPage()">
+                    <a href ng-bind="n + 1">1</a>
+                </li>
+                <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
+                    <a href ng-click="nextPage()">Next »</a>
+                </li>
+            </ul>
+        </div>
+        </div>
+
+    </div>
+
+    <div class="footer"></div>
+</div>
+

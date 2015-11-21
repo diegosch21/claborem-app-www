@@ -5,13 +5,14 @@ angular.module('myApp.login', []).controller('loginCtrl', ['$scope', 'ApiHttpSrv
     if (AuthSrv.authorized() && !AuthSrv.initialState()) {
        $location.path("/home");
     }
+    $scope.loginfail = false;
 
 	$scope.login = function (user) {
         var data = {
         	'User': $scope.user.name,
         	'Password': $scope.user.password
         };
-        AuthSrv.login(data);        
+        $scope.loginfail = !AuthSrv.login(data);        
     }
 
 }]);

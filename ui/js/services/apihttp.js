@@ -48,3 +48,4 @@ angular.module('myApp.services').service('ApiHttpSrv', function ($http) {
         isSuccessResponse: isSuccessResponse
     };
 });
+
