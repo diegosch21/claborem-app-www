@@ -13,7 +13,8 @@
             "methods":{
                 "login": "data/mocks/login/login-contratista.json",
                 "logout": "data/mocks/logout/logout.json",
-                "home": "data/mocks/home/home-contratista.json"
+                "home": "data/mocks/home/home-contratista.json",
+                "worker": "data/mocks/workforce/worker.json"
             }
         }
     }

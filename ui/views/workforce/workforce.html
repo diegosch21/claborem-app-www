@@ -2,13 +2,12 @@
 
     <div ng-include src="'views/partials/navbar-top.html'"></div>
 
-
     <div class="mainpage-header">
         {{plant.nombre}}
         <img class="mainpage-header-plantimg" src="{{plant.img}}"/>  
     </div>
 
-    <div ng-controller="contractsCtrl">
+    <div ng-controller="workforceCtrl">
         <div class="input-append">
             <a class="input-group">
                 <input type="text" ng-model="query" ng-change="search()" class="form-control" placeholder="Search">
@@ -18,23 +17,23 @@
                 
             </a>
         </div>                    
-        <div ng-click="open(item.Link)" ng-repeat="item in pagedItems[currentPage]" class="tile-contract" >
+        <div ng-click="goToWorkerPage(item.id)" ng-repeat="item in pagedItems[currentPage]" class="tile-contract" >
 
             <div class="tile-contract-num" >
-                Nª: {{item.Num}}
                 <div class="tile-contract-fiscal">
-                    <div>Fiscal: </div>{{item.Fiscal}}
+                    <span class="bold-primaty-color">{{item.Apellido}} {{item.Nombre}}</span>
+                </div>
+                <div class="workforce-access">
+                    <span class="label label-as-badge medium-font" ng-class="{'label-danger':item.Acceso=='Denegado','label-success':item.Acceso=='Permitido'}">{{item.Acceso}}</span>
                 </div>
             </div>
             <div class="tile-contract-fechas">
+
                 <div class="tile-contract-fecha">
-                    <span>Inicio: {{item.Inicio}}</span>
+                    <span>Cuil: <span class="bold-primaty-color">{{item.Cuil}}</span></span>
                 </div>
                 <div class="tile-contract-fecha">
-                    <span>Fin: {{item.Fin}}</span>
-                </div>
-                <div class="tile-contract-fecha">
-                    <span>Extensión: {{item.Extension}}</span>
+                    <span>Próximo vencimiento: <div><span class="bold-primaty-color">{{item.ProxVenc}}</span></div></span>
                 </div>
             </div>
 

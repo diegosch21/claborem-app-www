@@ -540,39 +540,45 @@ supports grid feature
   padding: 6px;
   width: 100%;
   height: 60px;
-  background-color: #E9E9EA;
+  background-color: #FAFAFA;
   border-bottom: 1px solid transparent;
-  border-color: #ddd;
+  border-color: #C9C9E9;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 11px;
 }
 
 /* line 300, ../scss/home/_home.scss */
+.bold-primaty-color {
+  color: #292b59;
+  font-weight: bold;
+}
+
+/* line 304, ../scss/home/_home.scss */
 .tile-contract-num {
   width: 50%;
   height: 50px;
   float: left;
 }
 
-/* line 305, ../scss/home/_home.scss */
+/* line 309, ../scss/home/_home.scss */
 .tile-contract-fiscal {
   padding-top: 4px;
 }
 
-/* line 309, ../scss/home/_home.scss */
+/* line 313, ../scss/home/_home.scss */
 .tile-contract-fechas {
   width: 50%;
   height: 54px;
   float: right;
 }
 
-/* line 315, ../scss/home/_home.scss */
+/* line 319, ../scss/home/_home.scss */
 .tile-contract-fecha {
   width: 100%;
   height: 16px;
 }
 
-/* line 319, ../scss/home/_home.scss */
+/* line 323, ../scss/home/_home.scss */
 .pagination ul > li:first-child > a, .pagination ul > li:first-child > span {
   border-left-width: 1px;
   -webkit-border-radius: 3px 0 0 3px;
@@ -580,14 +586,14 @@ supports grid feature
   border-radius: 3px 0 0 3px;
 }
 
-/* line 325, ../scss/home/_home.scss */
+/* line 329, ../scss/home/_home.scss */
 .pagination ul > .disabled > span, .pagination ul > .disabled > a, .pagination ul > .disabled > a:hover {
   color: #999999;
   background-color: transparent;
   cursor: default;
 }
 
-/* line 330, ../scss/home/_home.scss */
+/* line 334, ../scss/home/_home.scss */
 .pagination ul > li > a, .pagination ul > li > span {
   float: left;
   padding: 0px 11px;
@@ -598,12 +604,12 @@ supports grid feature
   border-left-width: 0;
 }
 
-/* line 339, ../scss/home/_home.scss */
+/* line 343, ../scss/home/_home.scss */
 .pagination ul > li {
   display: inline;
 }
 
-/* line 344, ../scss/home/_home.scss */
+/* line 348, ../scss/home/_home.scss */
 .pagination {
   display: inline-block;
   padding-left: 0;
@@ -611,16 +617,61 @@ supports grid feature
   border-radius: 4px;
 }
 
-/* line 350, ../scss/home/_home.scss */
+/* line 354, ../scss/home/_home.scss */
 .pagination .active > a, .pagination .active > a:hover {
   color: #999999;
   background-color: transparent;
   cursor: default;
 }
 
-/* line 355, ../scss/home/_home.scss */
+/* line 359, ../scss/home/_home.scss */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
+}
+
+/* line 362, ../scss/home/_home.scss */
+.list-data-contract {
+  padding: 1px 5px;
+  margin-left: 5%;
+  margin-top: 0px;
+  line-height: 22px;
+  width: 90%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-bottom: 8px;
+}
+
+/* line 372, ../scss/home/_home.scss */
+.float-right {
+  float: right !important;
+}
+
+/* line 375, ../scss/home/_home.scss */
+.workforce-access {
+  float: left;
+  margin-top: 8px;
+}
+
+/* line 379, ../scss/home/_home.scss */
+.medium-font {
+  font-size: 11px;
+}
+
+/* line 382, ../scss/home/_home.scss */
+.large-font {
+  font-size: 12px;
+}
+
+/* line 385, ../scss/home/_home.scss */
+.bold {
+  font-weight: bold;
+}
+
+/* line 389, ../scss/home/_home.scss */
+.accessicon {
+  font-size: 8px;
+  margin: 0;
+  margin-right: 14px;
 }
 
 /* line 1, ../scss/login/_login.scss */
@@ -628,34 +679,35 @@ supports grid feature
   background-color: #2F4051;
   position: absolute;
   width: 100%;
+  min-height: 100%;
 }
 
-/* line 7, ../scss/login/_login.scss */
+/* line 8, ../scss/login/_login.scss */
 .login-box {
   background: #FFFFFF;
   min-height: 300px;
   margin: 0px auto;
-  width: 350px;
-  margin-top: 100px;
+  width: 260px;
+  margin-top: 25%;
 }
 
-@media screen and (max-width: 400px) {
-  /* line 16, ../scss/login/_login.scss */
+@media screen and (max-height: 400px) {
+  /* line 17, ../scss/login/_login.scss */
   .login-box {
     width: 260px;
-    margin-top: 50px;
+    margin-top: 0;
   }
 }
-/* line 23, ../scss/login/_login.scss */
+/* line 25, ../scss/login/_login.scss */
 .login-footer {
-  min-height: 280px;
   width: 260px;
   margin: 0px auto;
   margin-top: 10px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
-/* line 31, ../scss/login/_login.scss */
+/* line 33, ../scss/login/_login.scss */
 .login-box h1 {
   color: #2f4051;
   font-size: 25px;
@@ -666,25 +718,21 @@ supports grid feature
   padding-top: 20px;
 }
 
-/* line 41, ../scss/login/_login.scss */
+/* line 43, ../scss/login/_login.scss */
 .login-box h5 {
   text-align: center;
   font-family: 'Raleway';
   font-weight: 600;
   color: #2f4051;
   font-size: 13px;
+  margin-bottom: 0;
 }
 
-/* line 49, ../scss/login/_login.scss */
+/* line 52, ../scss/login/_login.scss */
 .login-box hr {
   border-width: 1px;
   border-color: #0b1d30;
   opacity: 0.3;
-}
-
-/* line 55, ../scss/login/_login.scss */
-.login-box .input-box {
-  margin-top: 20px;
 }
 
 /* line 59, ../scss/login/_login.scss */
@@ -750,9 +798,10 @@ supports grid feature
   font-size: 14px;
   height: 34px;
   line-height: 0px;
+  margin-bottom: 20px;
 }
 
-/* line 113, ../scss/login/_login.scss */
+/* line 115, ../scss/login/_login.scss */
 .form-control {
   display: block;
   width: 100%;
@@ -771,14 +820,14 @@ supports grid feature
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
-/* line 130, ../scss/login/_login.scss */
+/* line 132, ../scss/login/_login.scss */
 .alert-danger, .alert-error {
   color: #a94442;
   background-color: #f2dede;
   border-color: #ebccd1;
 }
 
-/* line 135, ../scss/login/_login.scss */
+/* line 137, ../scss/login/_login.scss */
 .alert {
   border-radius: 0;
 }
