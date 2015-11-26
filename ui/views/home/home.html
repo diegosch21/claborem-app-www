@@ -143,9 +143,9 @@
         </div>
     </div>
 
-    <div class="mainpage-compon">
+    <div class="mainpage-compon" ng-show="plant.calendario">
         <div class="mainpage-compon-title">
-            <i class="fa fa-calendar"></i><span class="compon-title">Calendario</span>
+            <i class="fa fa-calendar"></i><span class="compon-title">Calendario - Vencimientos</span>
         </div>
         <div class="mainpage-compon-container">
             <div ng-repeat="item in plant.calendario"  ng-switch="item.titulo">

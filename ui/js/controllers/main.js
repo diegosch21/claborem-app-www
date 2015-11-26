@@ -22,8 +22,6 @@ angular.module('myApp.main', []).controller('mainCtrl', ['$scope', '$rootScope',
 
 	if (AuthSrv.initialState() || !AuthSrv.authorized()) {
         $location.path("/login");
-    }else{
-        getdata();
     }
     
     $rootScope.logout = function () {
@@ -51,5 +49,5 @@ angular.module('myApp.main', []).controller('mainCtrl', ['$scope', '$rootScope',
         RedirectSrv.redirect('/workforce');
     }
 
-
+    getdata();
 }]);
