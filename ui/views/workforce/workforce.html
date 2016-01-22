@@ -2,6 +2,7 @@
 
     <div ng-include src="'views/partials/navbar-top.html'"></div>
 
+
     <div class="mainpage-header">
         {{plant.nombre}}
         <img class="mainpage-header-plantimg" src="{{plant.img}}"/>  
@@ -17,23 +18,23 @@
                 
             </a>
         </div>                    
-        <div ng-click="goToWorkerPage(item.id)" ng-repeat="item in pagedItems[currentPage]" class="tile-contract" >
+        <div ng-click="open(item.Link)" ng-repeat="item in pagedItems[currentPage]" class="tile-contract" >
 
             <div class="tile-contract-num" >
+                id: {{item.id}}
                 <div class="tile-contract-fiscal">
-                    <span class="bold-primaty-color">{{item.Apellido}} {{item.Nombre}}</span>
+                    {{item.Nombre}} {{item.Apellido}}
                 </div>
-                <div class="workforce-access">
-                    <span class="label label-as-badge medium-font" ng-class="{'label-danger':item.Acceso=='Denegado','label-success':item.Acceso=='Permitido'}">{{item.Acceso}}</span>
+                <div class="tile-contract-fiscal">
+                    CUIL: {{item.Cuil}}
                 </div>
             </div>
             <div class="tile-contract-fechas">
-
                 <div class="tile-contract-fecha">
-                    <span>Cuil: <span class="bold-primaty-color">{{item.Cuil}}</span></span>
+                    <span>Prox. Venc.: {{item.ProxVenc}}</span>
                 </div>
                 <div class="tile-contract-fecha">
-                    <span>Próximo vencimiento: <div><span class="bold-primaty-color">{{item.ProxVenc}}</span></div></span>
+                    <span>Acceso: {{item.Acceso}}</span>
                 </div>
             </div>
 

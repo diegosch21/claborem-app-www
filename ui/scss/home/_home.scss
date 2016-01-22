@@ -71,6 +71,7 @@
     width: 120px;
     margin-top: 2px;
     float: right;
+        margin-right: 5px;
 }
 .mainpage-compon-cumpl{
     margin-top: 12px;
@@ -291,15 +292,11 @@
     padding: 6px;
     width: 100%;
     height: 60px;
-        background-color: #FAFAFA;
+    background-color: #edf1ff;
     border-bottom: 1px solid transparent;
-    border-color: #C9C9E9;
+    border-color: #ddd;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 11px;
-}
-.bold-primaty-color{
-    color: #292b59;
-    font-weight: bold;
 }
 .tile-contract-num{
     width: 50%;
@@ -358,36 +355,4 @@
 }
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
-}
-.list-data-contract{
-    padding: 1px 5px;
-    margin-left: 5%;
-    margin-top: 0px;
-    line-height: 22px;
-    width: 90%;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    margin-bottom: 8px;
-}
-.float-right{
-    float:right!important;
-}
-.workforce-access{
-    float: left;
-    margin-top: 8px;
-}
-.medium-font{
-    font-size: 11px;
-}
-.large-font{
-    font-size: 12px;
-}
-.bold{
-    font-weight: bold;
-}
-
-.accessicon{
-    font-size: 8px;
-    margin: 0;
-    margin-right: 14px;
 }

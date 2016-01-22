@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.contracts', []).controller('contractsCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv) {
+angular.module('myApp.workforce', []).controller('contractsCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, ApiHttpSrv, ConfigSrv) {
 
     if (AuthSrv.initialState() || !AuthSrv.authorized()) {
         RedirectSrv.redirect('/login');
@@ -12,13 +12,31 @@ angular.module('myApp.contracts', []).controller('contractsCtrl', ['$scope', '$r
     $scope.itemsPerPage = 5;
     $scope.pagedItems = [];
     $scope.currentPage = 0;
-    if($rootScope.plant.data)
-        $scope.items = $rootScope.plant.data.contratos;
+    if($rootScope.plant.id){
+        console.log($rootScope.plant);
+        var data = {
+            token : AuthSrv.currentUser().token,
+            idPlanta : $rootScope.plant.id
+        }
+        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('contratos'), data, data).success(function(d){
+            console.log(d);
+            $scope.items = d;
+        })
+    }
+        
 
     $rootScope.$watch('plant', function () {
-        if($rootScope.plant.data){
-            $scope.items = $rootScope.plant.data.contratos;
-            $scope.search();
+        if($rootScope.plant.id){
+            var data = {
+                token : AuthSrv.currentUser().token,
+                idPlanta : $rootScope.plant.id
+            }
+            ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('contratos'), data, data).success(function(d){
+                console.log(d);
+                $scope.items = d;
+                $scope.search();
+            })
+            
         };
     }, true);
 
@@ -26,7 +44,9 @@ angular.module('myApp.contracts', []).controller('contractsCtrl', ['$scope', '$r
         if (!needle) {
             return true;
         }
-        return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+        if(haystack){
+            return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+        }
     };
 
     $scope.open = function(link){

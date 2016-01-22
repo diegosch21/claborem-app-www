@@ -24,65 +24,65 @@
         </div>
     </div>
 
-    <div class="mainpage-compon-staff">
+    <div class="mainpage-compon-staff" ng-show='plant.Personal'>
         <div class="mainpage-compon-title">
             <i class="fa fa-group"></i><span class="compon-title">Personal</span>
         </div>
         <div class="mainpage-compon-container">
             <ul class="list-group">
                 <li class="list-group-item">                 
-                    <span class="label label-success label-as-badge">{{plant.personal.permitidos}}</span>
+                    <span class="label label-success label-as-badge">{{plant.Personal[0].permitidos}}</span>
                     Permitidos
                 </li>
                 <li class="list-group-item">
-                    <span class="label label-danger label-as-badge">{{plant.personal.denegados}}</span>
+                    <span class="label label-danger label-as-badge">{{plant.Personal[0].denegados}}</span>
                     Denegados
                 </li>
                 <li class="list-group-item">
-                    <a class="label label-danger label-as-badge">{{plant.personal.sinmovimientos}}</a>
+                    <a class="label label-danger label-as-badge">{{plant.Personal[0].sinmovimientos}}</a>
                     Sin Movimiento <small class="text-muted">(2 meses)</small>
                 </li>
             </ul>
             <div class="row visitors-list-summary text-center text-primary">
                 <div class="col-md-6 col-sm-6 col-xs-6 visitor-item border">
                     <div class="mainpage-title">Permitidos</div>
-                    <a class="label label-big label-success font-medium"> <i class="fa fa-thumbs-up text-white"></i> {{((plant.personal.permitidos + plant.personal.sinmovimientos)/(plant.personal.permitidos + plant.personal.sinmovimientos + plant.personal.denegados)*100).toFixed()}}%</a>
+                    <a class="label label-big label-success font-medium"> <i class="fa fa-thumbs-up text-white"></i> {{((plant.Personal[0].permitidos + plant.Personal[0].sinmovimientos)/(plant.Personal[0].permitidos + plant.Personal[0].sinmovimientos + plant.Personal[0].denegados)*100).toFixed()}}%</a>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6 visitor-item">
                     <div class="mainpage-title">Denegados</div>
-                    <a class="label label-big label-danger font-medium"> <i class="fa fa-thumbs-down text-white"></i> {{((plant.personal.denegados)/(plant.personal.permitidos + plant.personal.sinmovimientos + plant.personal.denegados)*100).toFixed()}}%</a>
+                    <a class="label label-big label-danger font-medium"> <i class="fa fa-thumbs-down text-white"></i> {{((plant.Personal[0].denegados)/(plant.Personal[0].permitidos + plant.Personal[0].sinmovimientos + plant.Personal[0].denegados)*100).toFixed()}}%</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="mainpage-compon">
+    <div ng-show='plant.Contratos' class="mainpage-compon">
         <div class="mainpage-compon-title">
             <i class="fa fa-indent"></i><span class="compon-title">Contratos</span>
         </div>
         <div class="mainpage-compon-container">
             <ul class="list-group">
                 <li class="list-group-item">                 
-                    <span class="label label-info label-as-badge">{{plant.contratos.Activos}}</span>
+                    <span class="label label-info label-as-badge">{{plant.Contratos[0].Activos}}</span>
                     Activos
                 </li>
                 <li class="list-group-item">
-                    <span class="label label-success label-as-badge">{{plant.contratos.EnFecha}}</span>
+                    <span class="label label-success label-as-badge">{{plant.Contratos[0].EnFecha}}</span>
                     En fecha
                 </li>
                 <li class="list-group-item">
-                    <span class="label label-danger label-as-badge">{{plant.contratos.Vencidos}}</span>
+                    <span class="label label-danger label-as-badge">{{plant.Contratos[0].Vencidos}}</span>
                     Vencidos
                 </li>
                 <li class="list-group-item">
-                    <span class="label label-warning label-as-badge">{{plant.contratos.proximosAVencer}}</span>
+                    <span class="label label-warning label-as-badge">{{plant.Contratos[0].proximosAVencer}}</span>
                     Próximos a vencer
                 </li>
             </ul>
         </div>
     </div>
 
-    <div class="mainpage-compon">
+    <div ng-show='plant.Contratistas' class="mainpage-compon">
         <div class="mainpage-compon-title">
             <i class="fa fa-briefcase"></i><span class="compon-title">Contratistas</span>
         </div>
@@ -90,44 +90,44 @@
             <div class="list-group-title">Permanentes</div>
             <ul class="list-group">
                 <li class="list-group-item">                 
-                    <span class="label label-info label-as-badge">{{plant.contratistas.permanentes.Contratistas}}</span>
+                    <span class="label label-info label-as-badge">{{plant.Contratistas[0].permanentes.Contratistas}}</span>
                     Contratistas
                 </li>
                 <li class="list-group-item">
-                    <span class="label label-success label-as-badge">{{plant.contratistas.permanentes.Permitido}}</span>
+                    <span class="label label-success label-as-badge">{{plant.Contratistas[0].permanentes.Permitido}}</span>
                     Personal Permitido
                 </li>
                 <li class="list-group-item">
-                    <span class="label label-danger label-as-badge">{{plant.contratistas.permanentes.Denegado}}</span>
+                    <span class="label label-danger label-as-badge">{{plant.Contratistas[0].permanentes.Denegado}}</span>
                     Personal Denegado
                 </li>
             </ul>
             <div class="list-group-title">Esporádicos</div>
             <ul class="list-group">
                 <li class="list-group-item">                 
-                    <span class="label label-info label-as-badge">{{plant.contratistas.esporadicos.Contratistas}}</span>
+                    <span class="label label-info label-as-badge">{{plant.Contratistas[0].esporadicos.Contratistas}}</span>
                     Contratistas
                 </li>
                 <li class="list-group-item">
-                    <span class="label label-success label-as-badge">{{plant.contratistas.esporadicos.Permitido}}</span>
+                    <span class="label label-success label-as-badge">{{plant.Contratistas[0].esporadicos.Permitido}}</span>
                     Personal Permitido
                 </li>
                 <li class="list-group-item">
-                    <span class="label label-danger label-as-badge">{{plant.contratistas.esporadicos.Denegado}}</span>
+                    <span class="label label-danger label-as-badge">{{plant.Contratistas[0].esporadicos.Denegado}}</span>
                     Personal Denegado
                 </li>
             </ul>
             <div class="list-group-title">Subcontrataciones</div>
             <ul class="list-group">
                 <li class="list-group-item">                 
-                    <span class="label label-info label-as-badge">{{plant.contratistas.subcontrataciones.empresassubcontratistas}}</span>
+                    <span class="label label-info label-as-badge">{{plant.Contratistas[0].subcontrataciones.empresassubcontratistas}}</span>
                     Empresas Subcontratistas
                 </li>
             </ul>
         </div>
     </div>
 
-    <div class="mainpage-compon">
+    <div ng-show='rank' class="mainpage-compon">
         <div class="mainpage-compon-title">
             <i class="fa fa-trophy"></i><span class="compon-title">Ranking</span>
         </div>
@@ -143,43 +143,5 @@
         </div>
     </div>
 
-    <div class="mainpage-compon" ng-show="plant.calendario">
-        <div class="mainpage-compon-title">
-            <i class="fa fa-calendar"></i><span class="compon-title">Calendario - Vencimientos</span>
-        </div>
-        <div class="mainpage-compon-container">
-            <div ng-repeat="item in plant.calendario"  ng-switch="item.titulo">
-                <div ng-switch-when="Documentos">
-                    <div class="list-group-title">{{item.fechaVencimiento}} - {{item.titulo}}</div>
-                    <ul class="list-group">
-                        <li class="list-group-item" ng-repeat="data in item.data">                 
-                            <span ng-show="data.cantidad > 1" class="label label-danger label-as-badge">{{data.cantidad}}</span>
-                            {{data.titulo}}
-                        </li>
-                    </ul>
-                </div>
-                <div ng-switch-when="Contrato">
-                    <div class="list-group-title">{{item.fechaVencimiento}} - {{item.titulo}}</div>
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <div class="left">Número: </div><span class="bold-primaty-color float-right">{{item.data.Numero}}</span>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="left">Inicio: </div><span class="bold-primaty-color float-right">{{item.data.Inicio}}</span>
-                        </li>
-                        <li class="list-group-item">
-                            <div><div class="left">Fin: </div><span class="bold-primaty-color float-right">{{item.data.Fin}}</span>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="left">Fiscal: </div><span class="bold-primaty-color float-right">{{item.data.Fiscal}}</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="footer"></div>
 </div>
-
-

@@ -1,33 +1,33 @@
 .main-backgroud{
-	background-color: $main-color;
         position: absolute;
     width: 100%;
-        min-height: 100%;
 }
 
 .login-box{
 	background: #FFFFFF;
     min-height: 300px;
     margin: 0px auto;
-    width: 260px;
-    margin-top: 25%;
+    width: 350px;
+    margin-top: 100px;
+    padding-bottom: 0;
+    border: 1px solid #ccc;
 }
 
-@media screen and (max-height: 400px) {
+@media screen and (max-width: 400px) {
     .login-box {
         width: 260px;
-        margin-top: 0;
+        margin-top: 50px;
+        padding-bottom: 0;
     }
 }
 
-
     
 .login-footer {
+	    min-height: 280px;
 	width: 260px;
 	margin: 0px auto;
 	margin-top: 10px;
 	text-align: center;
-    margin-bottom:20px;
 }
 
 .login-box h1 {
@@ -46,7 +46,6 @@
     font-weight: 600;
     color: #2f4051;
     font-size: 13px;
-    margin-bottom:0;
 }
 
 .login-box hr {
@@ -55,6 +54,9 @@
     opacity: 0.3;
 }
 
+.login-box .input-box {
+    margin-top: 20px;
+}
 
 .login-box .input-box .input-group-addon {
     background: #2f4051;
@@ -108,8 +110,6 @@
     font-size: 14px;
     height: 34px;
     line-height: 0px;
-    margin-bottom: 20px;
-
 }
 
 .form-control {

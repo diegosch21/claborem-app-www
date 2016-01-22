@@ -45,54 +45,6 @@
 							"cumplimiento" : 90
 						}
 					],
-					"calendario":[
-						{
-							"titulo": "Documentos",
-							"fechaVencimiento" : "18-05-2015",
-							"data":[
-								{
-									"titulo":"Comprobante Pago Seguro de Vida",
-									"cantidad":1
-								},
-								{
-									"titulo":"DDJJ Autenticidad Documentación",
-									"cantidad":1
-								}
-							]
-						},
-						{
-							"titulo": "Contrato",
-							"fechaVencimiento" : "30-05-2015",
-							"data":{
-								"Numero": "23456633223",
-								"Inicio": "23-04-2015",
-								"Fin": "29-05-2015",
-								"Fiscal": "Gabriela Leonardis"
-							}
-						},
-						{
-							"titulo": "Documentos",
-							"fechaVencimiento" : "18-05-2015",
-							"data":[
-								{
-									"titulo":"Seguro de Vida Obligatorio",
-									"cantidad":3
-								},
-								{
-									"titulo":"Seguro ART",
-									"cantidad":2
-								},
-								{
-									"titulo":"Recibo Sueldo",
-									"cantidad":3
-								},
-								{
-									"titulo":"Formulario 931",
-									"cantidad":3
-								}
-							]
-						}
-					],
 					"data":{
 						"contratos" : [
 					        {"Num":"23456633223","Inicio":"23-04-2015","Fin":"29-05-2015","Extension":"29-05-2015","Fiscal":"Gabriela Leonardis","Link":"http://www.c-laborem.com.ar/certronic/pages/contratista-reports-estadoGeneral.php"}, 
@@ -153,24 +105,24 @@
 					],
 					"data":{
 						"contratos" : [
-					        {"Num":"23456633-01","Inicio":"23-04-2015","Fin":"29-05-2015","Extension":"29-05-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}, 
-					        {"Num":"23456633-02","Inicio":"20-04-2015","Fin":"14-06-2015","Extension":"29-07-2015","Fiscal":"Gabriela Leonardis","Link":"Link"},
-					        {"Num":"23456633-03","Inicio":"23-04-2015","Fin":"29-05-2015","Extension":"29-05-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}, 
-					        {"Num":"23456633-04","Inicio":"20-04-2015","Fin":"14-06-2015","Extension":"29-07-2015","Fiscal":"Gabriela Leonardis","Link":"Link"},
-					        {"Num":"23456633-05","Inicio":"23-04-2015","Fin":"29-05-2015","Extension":"29-05-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}, 
-					        {"Num":"23456633-06","Inicio":"20-04-2015","Fin":"14-06-2015","Extension":"29-07-2015","Fiscal":"Gabriela Leonardis","Link":"Link"},
-					        {"Num":"23456633-07","Inicio":"23-04-2015","Fin":"29-05-2015","Extension":"29-05-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}, 
-					        {"Num":"23456633-08","Inicio":"20-04-2015","Fin":"14-06-2015","Extension":"29-07-2015","Fiscal":"Gabriela Leonardis","Link":"Link"},
-					        {"Num":"23456633-09","Inicio":"23-04-2015","Fin":"29-05-2015","Extension":"29-05-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}, 
-					        {"Num":"23456633-10","Inicio":"20-04-2015","Fin":"14-06-2015","Extension":"29-07-2015","Fiscal":"Gabriela Leonardis","Link":"Link"},
-					        {"Num":"23456633-11","Inicio":"23-04-2015","Fin":"29-05-2015","Extension":"29-05-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}, 
-					        {"Num":"23456633-12","Inicio":"20-04-2015","Fin":"14-06-2015","Extension":"29-07-2015","Fiscal":"Gabriela Leonardis","Link":"Link"},
-					        {"Num":"23456633-13","Inicio":"23-04-2015","Fin":"29-05-2015","Extension":"29-05-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}, 
-					        {"Num":"23456633-15","Inicio":"20-04-2015","Fin":"14-06-2015","Extension":"29-07-2015","Fiscal":"Gabriela Leonardis","Link":"Link"},
-					        {"Num":"23456633-16","Inicio":"23-04-2015","Fin":"29-05-2015","Extension":"29-05-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}, 
-					        {"Num":"23456633-17","Inicio":"20-04-2015","Fin":"14-06-2015","Extension":"29-07-2015","Fiscal":"Gabriela Leonardis","Link":"Link"},
-					        {"Num":"23456633-18","Inicio":"23-04-2015","Fin":"29-05-2015","Extension":"29-05-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}, 
-					        {"Num":"23456633-19","Inicio":"20-04-2015","Fin":"14-06-2015","Extension":"29-07-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}
+					        {"Num":"23456633223","Inicio":"23-04-2015","Fin":"29-05-2015","Extension":"29-05-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}, 
+					        {"Num":"23456633223","Inicio":"20-04-2015","Fin":"14-06-2015","Extension":"29-07-2015","Fiscal":"Gabriela Leonardis","Link":"Link"},
+					        {"Num":"23456633223","Inicio":"23-04-2015","Fin":"29-05-2015","Extension":"29-05-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}, 
+					        {"Num":"23456633223","Inicio":"20-04-2015","Fin":"14-06-2015","Extension":"29-07-2015","Fiscal":"Gabriela Leonardis","Link":"Link"},
+					        {"Num":"23456633223","Inicio":"23-04-2015","Fin":"29-05-2015","Extension":"29-05-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}, 
+					        {"Num":"23456633223","Inicio":"20-04-2015","Fin":"14-06-2015","Extension":"29-07-2015","Fiscal":"Gabriela Leonardis","Link":"Link"},
+					        {"Num":"23456633223","Inicio":"23-04-2015","Fin":"29-05-2015","Extension":"29-05-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}, 
+					        {"Num":"23456633223","Inicio":"20-04-2015","Fin":"14-06-2015","Extension":"29-07-2015","Fiscal":"Gabriela Leonardis","Link":"Link"},
+					        {"Num":"23456633223","Inicio":"23-04-2015","Fin":"29-05-2015","Extension":"29-05-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}, 
+					        {"Num":"23456633223","Inicio":"20-04-2015","Fin":"14-06-2015","Extension":"29-07-2015","Fiscal":"Gabriela Leonardis","Link":"Link"},
+					        {"Num":"23456633223","Inicio":"23-04-2015","Fin":"29-05-2015","Extension":"29-05-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}, 
+					        {"Num":"23456633223","Inicio":"20-04-2015","Fin":"14-06-2015","Extension":"29-07-2015","Fiscal":"Gabriela Leonardis","Link":"Link"},
+					        {"Num":"23456633223","Inicio":"23-04-2015","Fin":"29-05-2015","Extension":"29-05-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}, 
+					        {"Num":"23456633223","Inicio":"20-04-2015","Fin":"14-06-2015","Extension":"29-07-2015","Fiscal":"Gabriela Leonardis","Link":"Link"},
+					        {"Num":"23456633223","Inicio":"23-04-2015","Fin":"29-05-2015","Extension":"29-05-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}, 
+					        {"Num":"23456633223","Inicio":"20-04-2015","Fin":"14-06-2015","Extension":"29-07-2015","Fiscal":"Gabriela Leonardis","Link":"Link"},
+					        {"Num":"23456633223","Inicio":"23-04-2015","Fin":"29-05-2015","Extension":"29-05-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}, 
+					        {"Num":"23456633223","Inicio":"20-04-2015","Fin":"14-06-2015","Extension":"29-07-2015","Fiscal":"Gabriela Leonardis","Link":"Link"}
 					    ]
 					}
 				}

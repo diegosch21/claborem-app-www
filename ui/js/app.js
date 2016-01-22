@@ -8,7 +8,6 @@ var myApp = angular.module('myApp',
         'myApp.home',
         'myApp.contracts',
         'myApp.workforce',
-        'myApp.worker',
         'myApp.main',
         'myApp.login',
         'myApp.services',
@@ -46,11 +45,6 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
 
     $routeProvider.when('/workforce', {
         templateUrl:'views/workforce/workforce.html'
-    });
-
-    $routeProvider.when('/worker/:id', {
-        templateUrl:'views/workforce/worker.html',
-        controller: 'workerCtrl'
     });
 
     // by default, redirect to site root

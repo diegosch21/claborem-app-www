@@ -8,51 +8,30 @@ angular.module('myApp.services').service('AuthSrv', function ($http, ConfigSrv, 
         return !angular.isDefined(localStorage.getItem('user')) && initialState;
     };
     var login = function (data) {
-        /*var loginSuccess = function(data){
-            if(data[0].Estado === 'ok'){
+        var loginSuccess = function(d){
+            
+            if(d[0].status === 'ok'){
                 currentUser = {
-                    type : data[0].tipo,
-                    token : data[0].token
+                    type : d[0].user_type,
+                    token : d[0].token
                 };
                 auth = true;
+                localStorage.setItem("user", data.user);
+                localStorage.setItem("type", currentUser.type);
+                localStorage.setItem("token", currentUser.token);
                 initialState = false;
+                RedirectSrv.redirect('/');
+                
+            }else{
+                auth = false;        
             }
+            return auth;
         };
         var loginFail = function(data){
             console.log(data);
         };
-        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('login'), data).success(loginSuccess).error(loginFail);
-        */
-
-        //mock login API
-        if(data.User == 'contratista_demo' && data.Password == '123'){
-            currentUser = {
-                    user : data.User,
-                    type : 'contratista',
-                    token : 'th77gh053bh34ibn'
-                };
-            auth = true;
-            localStorage.setItem("user", data.User);
-            localStorage.setItem("type", "contratista");
-            localStorage.setItem("token", "th77gh053bh34ibn");
-            initialState = false;
-            RedirectSrv.redirect('/');
-        }else if(data.User == 'planta_demo' && data.Password == '123'){
-            currentUser = {
-                    user : data.User,
-                    type : 'planta',
-                    token : 'ghmyj8i5b3b35rd'
-                };
-            auth = true;
-            localStorage.setItem("user", data.User);
-            localStorage.setItem("type", "planta");
-            localStorage.setItem("token", "th77gh053bh34ibn");
-            initialState = false;
-            RedirectSrv.redirect('/');
-        }else{
-            auth = false;
-        }
-        return auth;
+        ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('login'), data, data).success(loginSuccess).error(loginFail);
+        
     };
 
     var logout = function () {

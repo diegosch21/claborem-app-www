@@ -11,10 +11,12 @@
         },
         "api":{
             "methods":{
-                "login": "data/mocks/login/login-contratista.json",
+                "login": "http://www.c-laborem.com.ar/certronic/appMovil/login.php",
                 "logout": "data/mocks/logout/logout.json",
-                "home": "data/mocks/home/home-contratista.json",
-                "worker": "data/mocks/workforce/worker.json"
+                "home": "http://www.c-laborem.com.ar/certronic/appMovil/contratista/home.php",
+                "personal": "http://www.c-laborem.com.ar/certronic/appMovil/contratista/tablaEmpleados.php",
+                "contratos": "http://www.c-laborem.com.ar/certronic/appMovil/contratista/tablaContratos.php"
+
             }
         }
     }

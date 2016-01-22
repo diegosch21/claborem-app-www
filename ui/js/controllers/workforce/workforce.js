@@ -1,24 +1,42 @@
 'use strict';
 
-angular.module('myApp.workforce', []).controller('workforceCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv) {
+angular.module('myApp.contracts', []).controller('workforceCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, ApiHttpSrv, ConfigSrv) {
 
     if (AuthSrv.initialState() || !AuthSrv.authorized()) {
         RedirectSrv.redirect('/login');
     };
-	$scope.sortingOrder = 'Apellido';
+    $scope.sortingOrder = 'Ape';
     $scope.reverse = false;
     $scope.filteredItems = [];
     $scope.groupedItems = [];
     $scope.itemsPerPage = 5;
     $scope.pagedItems = [];
     $scope.currentPage = 0;
-    if($rootScope.plant.data)
-        $scope.items = $rootScope.plant.data.personal;
+    if($rootScope.plant.id){
+        console.log($rootScope.plant);
+        var data = {
+            token : AuthSrv.currentUser().token,
+            idPlanta : $rootScope.plant.id
+        }
+        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('personal'), data, data).success(function(d){
+            console.log(d);
+            $scope.items = d;
+        })
+    }
+        
 
     $rootScope.$watch('plant', function () {
-        if($rootScope.plant.data){
-            $scope.items = $rootScope.plant.data.personal;
-            $scope.search();
+        if($rootScope.plant.id){
+            var data = {
+                token : AuthSrv.currentUser().token,
+                idPlanta : $rootScope.plant.id
+            }
+            ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('personal'), data, data).success(function(d){
+                console.log(d);
+                $scope.items = d;
+                $scope.search();
+            })
+            
         };
     }, true);
 
@@ -26,11 +44,14 @@ angular.module('myApp.workforce', []).controller('workforceCtrl', ['$scope', '$r
         if (!needle) {
             return true;
         }
-        return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+        if(haystack){
+            return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+        }
+        
     };
 
     $scope.open = function(link){
-    	$window.open(link, '_blank');
+        $window.open(link, '_blank');
     }
 
     // init the filtered items
@@ -107,9 +128,5 @@ angular.module('myApp.workforce', []).controller('workforceCtrl', ['$scope', '$r
 
        
     };
-
-    $scope.goToWorkerPage = function(id){
-        RedirectSrv.redirect('/worker/' + id);
-    }
 
 }]);
