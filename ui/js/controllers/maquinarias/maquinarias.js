@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('myApp.contracts', []).controller('workforceCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, ApiHttpSrv, ConfigSrv) {
+angular.module('myApp.maquinarias', []).controller('maquinariasCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, ApiHttpSrv, ConfigSrv) {
 
     if (AuthSrv.initialState() || !AuthSrv.authorized()) {
         RedirectSrv.redirect('/login');
     };
-    $scope.sortingOrder = 'Ape';
+    $scope.sortingOrder = 'Num';
     $scope.reverse = false;
     $scope.filteredItems = [];
     $scope.groupedItems = [];
@@ -18,7 +18,7 @@ angular.module('myApp.contracts', []).controller('workforceCtrl', ['$scope', '$r
             token : AuthSrv.currentUser().token,
             idPlanta : $rootScope.plant.id
         }
-        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('personal'), data, data).success(function(d){
+        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('maquinarias'), data, data).success(function(d){
             console.log(d);
             $scope.items = d;
         })
@@ -31,7 +31,7 @@ angular.module('myApp.contracts', []).controller('workforceCtrl', ['$scope', '$r
                 token : AuthSrv.currentUser().token,
                 idPlanta : $rootScope.plant.id
             }
-            ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('personal'), data, data).success(function(d){
+            ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('maquinarias'), data, data).success(function(d){
                 console.log(d);
                 $scope.items = d;
                 $scope.search();
@@ -47,15 +47,10 @@ angular.module('myApp.contracts', []).controller('workforceCtrl', ['$scope', '$r
         if(haystack){
             return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
         }
-        
     };
 
     $scope.open = function(link){
         $window.open(link, '_blank');
-    }
-
-    $scope.goToWorkerPage = function(id){
-        RedirectSrv.redirect('worker/' + $rootScope.plant.id + '/' + id);
     }
 
     // init the filtered items
@@ -122,6 +117,9 @@ angular.module('myApp.contracts', []).controller('workforceCtrl', ['$scope', '$r
         $scope.search();
     }
     
+    $scope.goToContractPage = function(id){
+        RedirectSrv.redirect('contract/' + id);
+    }
 
     // change sorting order
     $scope.sort_by = function(newSortingOrder) {

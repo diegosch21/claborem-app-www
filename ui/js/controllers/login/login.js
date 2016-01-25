@@ -7,12 +7,14 @@ angular.module('myApp.login', []).controller('loginCtrl', ['$scope', 'ApiHttpSrv
     }
     $scope.loginfail = false;
 
-	$scope.login = function (user) {
+    $scope.login = function (user) {
         var data = {
-        	'User': $scope.user.name,
-        	'Password': $scope.user.password
+            "user": $scope.user.name,
+            "pass": $scope.user.password
         };
-        $scope.loginfail = !AuthSrv.login(data);        
+        AuthSrv.login(data);
+        console.log(!AuthSrv.isLoggedIn());
+        $scope.loginfail = !AuthSrv.isLoggedIn();     
     }
 
 }]);

@@ -6,22 +6,26 @@ angular.module('myApp.main', []).controller('mainCtrl', ['$scope', '$rootScope',
     $rootScope.plant = {};
     var getdata = function () {
         var data = {
-            'User': '',
-            'Token': ''
+            'token': AuthSrv.currentUser().token
         };
         var getDataSuccess = function(data){
-            $rootScope.data = data;
-            $rootScope.currentId = data.plantas.default;
-            $rootScope.plant = data.plantas.lista[$rootScope.currentId];
+            console.log(data[0]);
+            $rootScope.data = data[0];
+            $rootScope.plantas = $rootScope.data.plantas;
+
+            $rootScope.currentId = 0
+            $rootScope.plant = $rootScope.data.plantas[$rootScope.currentId];
         };
         var getDataFail = function(data){
             console.log(data);
         };
-        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('home'), data).success(getDataSuccess).error(getDataFail);
+        ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('home'), data, data).success(getDataSuccess).error(getDataFail);
     }
 
-	if (AuthSrv.initialState() || !AuthSrv.authorized()) {
+    if (AuthSrv.initialState() || !AuthSrv.authorized()) {
         $location.path("/login");
+    }else{
+        getdata();
     }
     
     $rootScope.logout = function () {
@@ -29,12 +33,26 @@ angular.module('myApp.main', []).controller('mainCtrl', ['$scope', '$rootScope',
     }
     $rootScope.changePlant = function(id){
         $rootScope.currentId = id;
-        $rootScope.plant = $scope.data.plantas.lista[id];
+        $rootScope.plant = $rootScope.plantas[id];
     }
 
     $scope.goToContracts = function(){
         RedirectSrv.redirect('/contracts');
     }
+
+    $scope.goToMaquinarias = function(){
+        RedirectSrv.redirect('/maquinarias');
+    }
+
+
+    $scope.goToVehiculos = function(){
+        RedirectSrv.redirect('/vehiculos');
+    }
+
+    $scope.goToContratistas = function(){
+        RedirectSrv.redirect('/contratistas');
+    }
+
 
     $scope.goToHome = function(){
         RedirectSrv.redirect('/');
@@ -49,5 +67,5 @@ angular.module('myApp.main', []).controller('mainCtrl', ['$scope', '$rootScope',
         RedirectSrv.redirect('/workforce');
     }
 
-    getdata();
+
 }]);
