@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.workforce', []).controller('contractsCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, ApiHttpSrv, ConfigSrv) {
+angular.module('myApp.contracts', []).controller('contractsCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, ApiHttpSrv, ConfigSrv) {
 
     if (AuthSrv.initialState() || !AuthSrv.authorized()) {
         RedirectSrv.redirect('/login');

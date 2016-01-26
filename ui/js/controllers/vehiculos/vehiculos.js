@@ -117,8 +117,8 @@ angular.module('myApp.vehiculos', []).controller('vehiculosCtrl', ['$scope', '$r
         $scope.search();
     }
     
-    $scope.goToContractPage = function(id){
-        RedirectSrv.redirect('contract/' + id);
+    $scope.goToVehiculoPage = function(id){
+        RedirectSrv.redirect('vehiculo/' + $rootScope.plant.id + '/' + id);
     }
 
     // change sorting order

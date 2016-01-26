@@ -5,10 +5,11 @@ angular.module('myApp.vehiculo', []).controller('vehiculoCtrl', ['$scope', '$roo
     var getdata = function () {
         var data = {
             'token': AuthSrv.currentUser().token,
-            'id': $routeParams.id
+            'idPlanta': $routeParams.idP,
+            'id': $routeParams.idV
         };
         var getDataSuccess = function(d){
-            $scope.contractData = d;
+            $scope.vehiculoData = d;
             console.log(d);
         };
         var getDataFail = function(d){

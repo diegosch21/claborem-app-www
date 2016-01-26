@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.services').service('AuthSrv', function ($http, ConfigSrv, ApiHttpSrv, RedirectSrv) {
+angular.module('myApp.services').service('AuthSrv', function ($http, $rootScope, ConfigSrv, ApiHttpSrv, RedirectSrv) {
     var currentUser = null, auth = false, initialState = true;
 
 
@@ -23,7 +23,8 @@ angular.module('myApp.services').service('AuthSrv', function ($http, ConfigSrv, 
                 RedirectSrv.redirect('/');
                 
             }else{
-                auth = false;        
+                auth = false;       
+                $rootScope.loginfail = true;   
             }
             return auth;
         };

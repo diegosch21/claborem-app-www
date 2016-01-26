@@ -4,7 +4,7 @@
 
 
     <div class="mainpage-header bold">
-        {{contractData.General[0].Numero}} 
+        <!--{{vehiculoData[0].General[0].Marca}} | {{vehiculoData[0].General[0].Dominio}}-->
         <img class="mainpage-header-plantimg" src="{{plant.img}}"/>  
     </div>
 
@@ -12,119 +12,85 @@
 
   <ul class="nav nav-tabs" style="    margin-top: 15px;">
   <li class="active"><a data-toggle="tab" href="#general">General</a></li>
-  <li><a data-toggle="tab" href="#empleados">Empleados</a></li>
-  <li><a data-toggle="tab" href="#maquinarias">Maquinarias</a></li>
-  <li><a data-toggle="tab" href="#subcontratistas">Subcontratistas</a></li>
-  <li><a data-toggle="tab" href="#vehiculos">Vehículos</a></li>
+  <li><a data-toggle="tab" href="#documentos">Documentos</a></li>
 </ul>
 
 <div class="tab-content">
   <div id="general" class="tab-pane fade in active">
-    <div ng-show="!contractData[0].General" class="mainpage-compon large-font" ng-cloak>
+    <div ng-show="!vehiculoData[0].General" class="mainpage-compon large-font" ng-cloak>
         <div class="mainpage-compon-title">
             <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
         </div>
     </div>
-    <div ng-show="contractData[0].General" class="mainpage-compon large-font">
+    <div ng-show="vehiculoData[0].General" class="mainpage-compon large-font">
         <div class="mainpage-compon-title">
             <i class="fa fa-info"></i><span class="compon-title">Información General</span>
         </div>
         <div class="mainpage-compon-container">
             <ul class="list-group">
-                <li ng-show="contractData[0].General[0].Numero" class="list-group-item">                 
-                    <span>Número: <span class="bold-primaty-color">{{contractData[0].General[0].Numero}}</span></span>
+                <li ng-show="vehiculoData[0].General[0].Marca" class="list-group-item auto-height">                 
+                    <span>Marca: <span class="bold-primaty-color">{{vehiculoData[0].General[0].Marca}}</span></span>
                 </li>
-                <li ng-show="contractData[0].General[0].Inicio" class="list-group-item">                 
-                    <span>Inicio: <span class="bold-primaty-color">{{contractData[0].General[0].Inicio}}</span></span>
+                <li ng-show="vehiculoData[0].General[0].Modelo" class="list-group-item auto-height">                 
+                    <span>Modelo: <span class="bold-primaty-color">{{vehiculoData[0].General[0].Modelo}}</span></span>
                 </li>
-                <li ng-show="contractData[0].General[0].Fin" class="list-group-item">                 
-                    <span>Fin: <span class="bold-primaty-color">{{contractData[0].General[0].Fin}}</span></span>
+                <li ng-show="vehiculoData[0].General[0].Dominio" class="list-group-item auto-height">                 
+                    <span>Dominio: <span class="bold-primaty-color">{{vehiculoData[0].General[0].Dominio}}</span></span>
                 </li>
-                <li ng-show="contractData[0].General[0].Extension" class="list-group-item">                 
-                    <span>Extensión: <span class="bold-primaty-color">{{contractData[0].General[0].Extension}}</span></span>
+                <li ng-show="vehiculoData[0].General[0].NumeroMotor" class="list-group-item auto-height">                 
+                    <span>Nº de Motor: <span class="bold-primaty-color">{{vehiculoData[0].General[0].NumeroMotor}}</span></span>
+                </li>
+                <li ng-show="vehiculoData[0].General[0].TipoVehiculo" class="list-group-item auto-height">                 
+                    <span>Tipo: <span class="bold-primaty-color">{{vehiculoData[0].General[0].TipoVehiculo}}</span></span>
+                </li>
+                <li ng-show="vehiculoData[0].General[0].Categoria" class="list-group-item auto-height">                 
+                    <span>Categoria: <span class="bold-primaty-color">{{vehiculoData[0].General[0].Categoria}}</span></span>
+                </li>
+                <li ng-show="vehiculoData[0].General[0].CompaniaSeguro" class="list-group-item auto-height">                 
+                    <span>Aseguradora: <span class="bold-primaty-color">{{vehiculoData[0].General[0].CompaniaSeguro}}</span></span>
                 </li>
             </ul>
         </div>
     </div>
   </div>
-  <div id="empleados" class="tab-pane fade">
-    <div ng-show="!contractData[0].Empleados" class="mainpage-compon large-font" ng-cloak>
+  <div id="documentos" class="tab-pane fade">
+    <div ng-show="!vehiculoData[0].Documentos" class="mainpage-compon large-font" ng-cloak>
         <div class="mainpage-compon-title">
             <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
         </div>
     </div>
-    <div ng-show="contractData[0].Empleados" class="mainpage-compon large-font" >
+    <div ng-show="vehiculoData[0].Documentos" class="mainpage-compon large-font">
         <div class="mainpage-compon-title">
-            <i class="fa fa-info"></i><span class="compon-title">Empleados</span>
+            <i class="fa fa-indent"></i><span class="compon-title">Documentos</span>
         </div>
-        <div ng-click='goToWorkerPage(item.id)' ng-repeat="item in contractData[0].Empleados" class="tile-contract" >
-
-            <div class="tile-contract-num" >
-                id: {{item.id}}
-                <div class="tile-contract-fiscal">
-                    {{item.Nombre}} {{item.Apellido}}
-                </div>
-                <div class="tile-contract-fiscal">
-                    CUIL: {{item.Cuil}}
-                </div>
-            </div>
-            <div class="tile-contract-fechas">
-                <div class="tile-contract-fecha">
-                    <span>Prox. Venc.: {{item.ProxVenc}}</span>
-                </div>
-                <div class="tile-contract-fecha">
-                    <span>Acceso: {{item.Acceso}}</span>
-                </div>
-            </div>
-
+        <div class="mainpage-compon-container medium-font">
+            <table class="table users-table table-condensed table-hover" style="margin-bottom: 0;">
+                <thead>
+                    <tr>
+                        <th>Documento</th>
+                        <th>Cumple</th>
+                        <th>Vencimento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in vehiculoData[0].Documentos">
+                        <td>{{item.Titulo}}</td>
+                        <td>
+                            <span style="margin-right: 15px;" class="label label-as-badge accessicon" ng-class="{'label-danger':item.Cumple=='No','label-success':item.Cumple=='Si'}"><i ng-class="{'fa fa-times':item.Cumple=='No','fa fa-check':item.Cumple=='Si'}"></i></span>
+                        </td>
+                        <td>{{item.Vencimiento}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
   </div>
-
-  <div id="maquinarias" class="tab-pane fade">
-    <div ng-show="!contractData[0].Maquinarias" class="mainpage-compon large-font" ng-cloak>
-        <div class="mainpage-compon-title">
-            <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
-        </div>
-    </div>
-    <div ng-show="contractData[0].Maquinarias" class="mainpage-compon large-font" >
-        <div class="mainpage-compon-title">
-            <i class="fa fa-info"></i><span class="compon-title">Maquinarias</span>
-        </div>
-        <!--TO DO-->
-    </div>
-  </div>
-
-  <div id="subcontratistas" class="tab-pane fade">
-    <div ng-show="!contractData[0].Subcontratistas" class="mainpage-compon large-font" ng-cloak>
-        <div class="mainpage-compon-title">
-            <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
-        </div>
-    </div>
-    <div ng-show="contractData[0].Subcontratistas" class="mainpage-compon large-font" >
-        <div class="mainpage-compon-title">
-            <i class="fa fa-info"></i><span class="compon-title">Subcontratistas</span>
-        </div>
-        <!--TO DO-->
-    </div>
-  </div>
-
-  <div id="vehiculos" class="tab-pane fade">
-    <div ng-show="!contractData[0].Vehiculos" class="mainpage-compon large-font" ng-cloak>
-        <div class="mainpage-compon-title">
-            <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
-        </div>
-    </div>
-    <div ng-show="contractData[0].Vehiculos" class="mainpage-compon large-font" >
-        <div class="mainpage-compon-title">
-            <i class="fa fa-info"></i><span class="compon-title">Vehículos</span>
-        </div>
-        <!--TO DO-->
-    </div>
-  </div>
-  
-
-
 </div>
+
+    
+    
+
+    
+
     <div class="footer"></div>
 </div>

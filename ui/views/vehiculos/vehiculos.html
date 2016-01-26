@@ -8,7 +8,7 @@
         <img class="mainpage-header-plantimg" src="{{plant.img}}"/>  
     </div>
 
-    <div ng-controller="contractsCtrl">
+    <div ng-controller="vehiculosCtrl">
         <div class="input-append">
             <a class="input-group">
                 <input type="text" ng-model="query" ng-change="search()" class="form-control" placeholder="Search">
@@ -17,49 +17,44 @@
                 </span>
                 
             </a>
-            
-            
-        <!--<span class="add-on"><i class="icon-search"></i></span>-->
+        </div>                    
+        <div ng-click='goToVehiculoPage(item.id)' ng-repeat="item in pagedItems[currentPage]" class="tile-contract" >
+
+            <div class="tile-contract-num" >
+                Dominio: {{item.Dominio}}
+                <div class="tile-contract-fiscal">
+                    {{item.Marca}} 
+                </div>
+                <div class="tile-contract-fiscal">
+                    Modelo: {{item.Modelo}}
+                </div>
+            </div>
+            <div class="tile-contract-fechas">
+                <div class="tile-contract-fecha">
+                    <span>Prox. Venc.: {{item.ProxVenc}}</span>
+                </div>
+                <div class="tile-contract-fecha">
+                    <span>Acceso: {{item.Acceso}}</span>
+                </div>
+            </div>
+
         </div>
 
-                    
-                    <div ng-click='goToContractPage(item.id)' ng-repeat="item in pagedItems[currentPage]" class="tile-contract" >
-
-                        <div class="tile-contract-num" >
-                            Nª: {{item.Numero}}
-                            <div class="tile-contract-fiscal">
-                                <div>Fiscal: </div>{{item.Fiscal}}
-                            </div>
-                        </div>
-                        <div class="tile-contract-fechas">
-                            <div class="tile-contract-fecha">
-                                <span>Inicio: {{item.Inicio}}</span>
-                            </div>
-                            <div class="tile-contract-fecha">
-                                <span>Fin: {{item.Fin}}</span>
-                            </div>
-                            <div class="tile-contract-fecha">
-                                <span ng-show='item.Extension'>Extensión: {{item.Extension}}</span>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="pagination pull-right">
-                        <ul>
-                            <li ng-class="{disabled: currentPage == 0}">
-                                <a href ng-click="prevPage()">« Prev</a>
-                            </li>
-                            <li ng-repeat="n in range(pagedItems.length)"
-                                ng-class="{active: n == currentPage}"
-                            ng-click="setPage()">
-                                <a href ng-bind="n + 1">1</a>
-                            </li>
-                            <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
-                                <a href ng-click="nextPage()">Next »</a>
-                            </li>
-                        </ul>
-                    </div>
+        <div class="pagination pull-right">
+            <ul>
+                <li ng-class="{disabled: currentPage == 0}">
+                    <a href ng-click="prevPage()">« Prev</a>
+                </li>
+                <li ng-repeat="n in range(pagedItems.length)"
+                    ng-class="{active: n == currentPage}"
+                ng-click="setPage()">
+                    <a href ng-bind="n + 1">1</a>
+                </li>
+                <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
+                    <a href ng-click="nextPage()">Next »</a>
+                </li>
+            </ul>
+        </div>
         </div>
 
     </div>

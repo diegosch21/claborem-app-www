@@ -5,10 +5,11 @@ angular.module('myApp.maquinaria', []).controller('maquinariaCtrl', ['$scope', '
     var getdata = function () {
         var data = {
             'token': AuthSrv.currentUser().token,
-            'id': $routeParams.id
+            'idPlanta': $routeParams.idP,
+            'id': $routeParams.idM
         };
         var getDataSuccess = function(d){
-            $scope.contractData = d;
+            $scope.maquinariaData = d;
             console.log(d);
         };
         var getDataFail = function(d){

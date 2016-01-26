@@ -31,5 +31,14 @@ angular.module('myApp.contract', []).controller('contractCtrl', ['$scope', '$roo
     $scope.goToWorkerPage = function(id){
         RedirectSrv.redirect('worker/' + $rootScope.plant.id + '/' + id);
     }
+    $scope.goToMaquinariaPage = function(id){
+        RedirectSrv.redirect('maquinaria/' + $rootScope.plant.id + '/' + id);
+    }
+    $scope.goToContratistaPage = function(id){
+        RedirectSrv.redirect('contratista/' + $rootScope.plant.id + '/' + id);
+    }
+    $scope.goToVehiculoPage = function(id){
+        RedirectSrv.redirect('vehiculo/' + $rootScope.plant.id + '/' + id);
+    }
 
 }]);

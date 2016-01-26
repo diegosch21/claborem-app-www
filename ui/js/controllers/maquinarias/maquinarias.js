@@ -117,8 +117,8 @@ angular.module('myApp.maquinarias', []).controller('maquinariasCtrl', ['$scope',
         $scope.search();
     }
     
-    $scope.goToContractPage = function(id){
-        RedirectSrv.redirect('contract/' + id);
+    $scope.goToMaquinariaPage = function(id){
+        RedirectSrv.redirect('maquinaria/' + $rootScope.plant.id + '/' + id);
     }
 
     // change sorting order

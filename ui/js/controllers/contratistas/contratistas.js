@@ -117,8 +117,8 @@ angular.module('myApp.contratistas', []).controller('contratistasCtrl', ['$scope
         $scope.search();
     }
     
-    $scope.goToContractPage = function(id){
-        RedirectSrv.redirect('contract/' + id);
+    $scope.goToContratistaPage = function(id){
+        RedirectSrv.redirect('contratista/' + $rootScope.plant.id + '/' + id);
     }
 
     // change sorting order

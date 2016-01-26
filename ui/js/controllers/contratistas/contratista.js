@@ -5,10 +5,11 @@ angular.module('myApp.contratista', []).controller('contratistaCtrl', ['$scope',
     var getdata = function () {
         var data = {
             'token': AuthSrv.currentUser().token,
-            'id': $routeParams.id
+            'idPlanta': $routeParams.idP,
+            'id': $routeParams.idC
         };
         var getDataSuccess = function(d){
-            $scope.contractData = d;
+            $scope.contratistaData = d;
             console.log(d);
         };
         var getDataFail = function(d){
