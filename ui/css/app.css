@@ -548,32 +548,35 @@ supports grid feature
   font-size: 11px;
 }
 
-/* line 301, ../scss/home/_home.scss */
+/* line 302, ../scss/home/_home.scss */
 .tile-contract-num {
   width: 50%;
   height: 50px;
   float: left;
 }
 
-/* line 306, ../scss/home/_home.scss */
+/* line 307, ../scss/home/_home.scss */
 .tile-contract-fiscal {
   padding-top: 4px;
+  height: 18px;
+  overflow: hidden;
 }
 
-/* line 310, ../scss/home/_home.scss */
+/* line 313, ../scss/home/_home.scss */
 .tile-contract-fechas {
   width: 50%;
   height: 54px;
   float: right;
 }
 
-/* line 316, ../scss/home/_home.scss */
+/* line 319, ../scss/home/_home.scss */
 .tile-contract-fecha {
   width: 100%;
   height: 16px;
+  padding-left: 10px;
 }
 
-/* line 320, ../scss/home/_home.scss */
+/* line 324, ../scss/home/_home.scss */
 .pagination ul > li:first-child > a, .pagination ul > li:first-child > span {
   border-left-width: 1px;
   -webkit-border-radius: 3px 0 0 3px;
@@ -581,14 +584,14 @@ supports grid feature
   border-radius: 3px 0 0 3px;
 }
 
-/* line 326, ../scss/home/_home.scss */
+/* line 330, ../scss/home/_home.scss */
 .pagination ul > .disabled > span, .pagination ul > .disabled > a, .pagination ul > .disabled > a:hover {
   color: #999999;
   background-color: transparent;
   cursor: default;
 }
 
-/* line 331, ../scss/home/_home.scss */
+/* line 335, ../scss/home/_home.scss */
 .pagination ul > li > a, .pagination ul > li > span {
   float: left;
   padding: 0px 11px;
@@ -599,12 +602,12 @@ supports grid feature
   border-left-width: 0;
 }
 
-/* line 340, ../scss/home/_home.scss */
+/* line 344, ../scss/home/_home.scss */
 .pagination ul > li {
   display: inline;
 }
 
-/* line 345, ../scss/home/_home.scss */
+/* line 349, ../scss/home/_home.scss */
 .pagination {
   display: inline-block;
   padding-left: 0;
@@ -612,16 +615,21 @@ supports grid feature
   border-radius: 4px;
 }
 
-/* line 351, ../scss/home/_home.scss */
+/* line 355, ../scss/home/_home.scss */
 .pagination .active > a, .pagination .active > a:hover {
   color: #999999;
   background-color: transparent;
   cursor: default;
 }
 
-/* line 356, ../scss/home/_home.scss */
+/* line 360, ../scss/home/_home.scss */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
+}
+
+/* line 363, ../scss/home/_home.scss */
+.auto-height {
+  height: auto;
 }
 
 /* line 1, ../scss/login/_login.scss */

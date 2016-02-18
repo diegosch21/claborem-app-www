@@ -4,17 +4,18 @@ angular.module('myApp.worker', []).controller('workerCtrl', ['$scope', '$rootSco
 
     var getdata = function () {
         var data = {
-            'Token': '',
-            'Id': $routeParams.id
+            'token': AuthSrv.currentUser().token,
+            'idPlanta': $routeParams.idP,
+            'id': $routeParams.idE
         };
-        var getDataSuccess = function(data){
-            $scope.workerData = data;
-            console.log(data);
+        var getDataSuccess = function(d){
+            $scope.workerData = d;
+            console.log(d);
         };
-        var getDataFail = function(data){
-            console.log(data);
+        var getDataFail = function(d){
+            console.log(d);
         };
-        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('worker'), data).success(getDataSuccess).error(getDataFail);
+        ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('worker'), data, data).success(getDataSuccess).error(getDataFail);
     }
 
     if (AuthSrv.initialState() || !AuthSrv.authorized()) {
@@ -22,5 +23,10 @@ angular.module('myApp.worker', []).controller('workerCtrl', ['$scope', '$rootSco
     }else{
         getdata();
     }
+    $('#info').tab('show');
+    $('#info a').click(function (e) {
+      e.preventDefault()
+      $(this).tab('show')
+    });
 
 }]);

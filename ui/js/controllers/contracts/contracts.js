@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('myApp.workforce', []).controller('contractsCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, ApiHttpSrv, ConfigSrv) {
+angular.module('myApp.contracts', []).controller('contractsCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, ApiHttpSrv, ConfigSrv) {
 
     if (AuthSrv.initialState() || !AuthSrv.authorized()) {
         RedirectSrv.redirect('/login');
     };
-	$scope.sortingOrder = 'Num';
+    $scope.sortingOrder = 'Num';
     $scope.reverse = false;
     $scope.filteredItems = [];
     $scope.groupedItems = [];
@@ -50,7 +50,7 @@ angular.module('myApp.workforce', []).controller('contractsCtrl', ['$scope', '$r
     };
 
     $scope.open = function(link){
-    	$window.open(link, '_blank');
+        $window.open(link, '_blank');
     }
 
     // init the filtered items
@@ -117,6 +117,9 @@ angular.module('myApp.workforce', []).controller('contractsCtrl', ['$scope', '$r
         $scope.search();
     }
     
+    $scope.goToContractPage = function(id){
+        RedirectSrv.redirect('contract/' + id);
+    }
 
     // change sorting order
     $scope.sort_by = function(newSortingOrder) {

@@ -7,7 +7,15 @@ var myApp = angular.module('myApp',
         'myApp.directives', // custom directives
         'myApp.home',
         'myApp.contracts',
+        'myApp.contract',
         'myApp.workforce',
+        'myApp.worker',
+        'myApp.contratistas',
+        'myApp.contratista',
+        'myApp.maquinarias',
+        'myApp.maquinaria',
+        'myApp.vehiculos',
+        'myApp.vehiculo',
         'myApp.main',
         'myApp.login',
         'myApp.services',
@@ -45,6 +53,46 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
 
     $routeProvider.when('/workforce', {
         templateUrl:'views/workforce/workforce.html'
+    });
+
+    $routeProvider.when('/worker/:idP/:idE', {
+        templateUrl:'views/workforce/worker.html',
+        controller: 'workerCtrl'
+    });
+
+    $routeProvider.when('/contract/:id', {
+        templateUrl:'views/contracts/contract.html',
+        controller: 'contractCtrl'
+    });
+
+    $routeProvider.when('/contratistas', {
+        templateUrl:'views/contratistas/contratistas.html',
+        controller: 'contratistasCtrl'
+    });
+
+    $routeProvider.when('/maquinarias', {
+        templateUrl:'views/maquinarias/maquinarias.html',
+        controller: 'maquinariasCtrl'
+    });
+
+    $routeProvider.when('/vehiculos', {
+        templateUrl:'views/vehiculos/vehiculos.html',
+        controller: 'vehiculosCtrl'
+    });
+
+    $routeProvider.when('/contratista/:idP/:idC', {
+        templateUrl:'views/contratistas/contratista.html',
+        controller: 'contratistaCtrl'
+    });
+
+    $routeProvider.when('/maquinaria/:idP/:idM', {
+        templateUrl:'views/maquinarias/maquinaria.html',
+        controller: 'maquinariaCtrl'
+    });
+
+    $routeProvider.when('/vehiculo/:idP/:idV', {
+        templateUrl:'views/vehiculos/vehiculo.html',
+        controller: 'vehiculoCtrl'
     });
 
     // by default, redirect to site root

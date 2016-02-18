@@ -6,6 +6,8 @@ angular.module('myApp.services').service('RedirectSrv', function ($location){
 		$location.url(hash);
 	};
 
+	
+
 	return{
 		redirect: redirectTo
 	};

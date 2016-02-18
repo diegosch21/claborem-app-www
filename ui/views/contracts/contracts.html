@@ -23,12 +23,12 @@
         </div>
 
                     
-                    <div ng-click="open(item.Link)" ng-repeat="item in pagedItems[currentPage]" class="tile-contract" >
+                    <div ng-click='goToContractPage(item.id)' ng-repeat="item in pagedItems[currentPage]" class="tile-contract" >
 
                         <div class="tile-contract-num" >
                             Nª: {{item.Numero}}
                             <div class="tile-contract-fiscal">
-                                <div>Fiscal: </div>{{item.Fiscal}}
+                                <div>Fiscal: {{item.Fiscal}}</div>
                             </div>
                         </div>
                         <div class="tile-contract-fechas">

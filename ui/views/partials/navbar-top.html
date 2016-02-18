@@ -1,6 +1,6 @@
 <nav class="navbar navbar-inverse navbar-fixed-top navbar-color">
     <div class="navbar-header">
-        <div type="button" class="navbar-toggle left" data-toggle="collapse" data-target="#top-nav">
+        <div type="button" class="navbar-toggle left" data-toggle="collapse" data-target="#top-nav" ng-click='collapse("top-nav-plants");'>
             <span class="glyphicon glyphicon-list navbar-toggle-color"></span>
         </div>
         <a class="navbar-brand">
@@ -9,25 +9,25 @@
         <div type="button" class="navbar-toggle navbar-toggle-right" ng-click="logout()">
             <span class="glyphicon glyphicon-log-out navbar-toggle-color"></span>
         </div>
-        <div type="button" class="navbar-toggle navbar-toggle-right" data-toggle="collapse" data-target="#top-nav-plants">
+        <div type="button" class="navbar-toggle navbar-toggle-right" data-toggle="collapse" data-target="#top-nav-plants"  ng-click='collapse("top-nav");'>
             <span class="fa fa-building navbar-toggle-color"></span>
         </div>
         <div type="button" class="navbar-toggle navbar-toggle-right">
             <span class="glyphicon glyphicon-user navbar-toggle-color"></span>
         </div>
     </div>
-    <div id="top-nav" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
+    <div id="top-nav" class="navbar-collapse collapse" >
+        <ul class="nav navbar-nav" >
             <li ng-click='goToHome(); collapse("top-nav");'><span class="fa fa-home main-menu-icons"></span><a>Inicio</a></li>
-            <li ng-click='goToContracts(); collapse("top-nav");' ng-show="plant.Contratos" ><span class="fa fa-indent main-menu-icons"></span><a>Contratos</a></li>
-            <li ng-show="plant.Subcontratistas"><span class="fa fa-briefcase main-menu-icons"></span><a>Contratistas</a></li>
-            <li ng-click='goToWorkForce(); collapse("top-nav");' ng-show="plant.Personal"><span class="fa fa-group main-menu-icons"></span><a>Personal</a></li>
-            <li ng-show="plant.vehiculo"><span class="fa fa-truck main-menu-icons"></span><a href="#">Vehículos</a></li>
-            <li ng-show="plant.maquinarias"><span class="fa fa-cogs main-menu-icons"></span><a href="#">Maquinarias</a></li>
-            <li ng-show="plant.fiscales"><span class="fa fa-legal main-menu-icons"></span><a href="#">Fiscales</a></li>
-            <li ng-show="plant.reportes"><span class="fa fa-bar-chart-o main-menu-icons"></span><a href="#">Reportes</a></li>
-            <li ng-show="plant.mensajes"><span class="fa fa-envelope main-menu-icons"></span><a href="#">Mensajes</a></li>
-            <li ng-show="plant.descargas"><span class="fa fa-cloud-download main-menu-icons"></span><a href="#">Descargas</a></li>
+            <li ng-click='goToContracts(); collapse("top-nav");' ng-show="plant.Menu[0].contratos" ><span class="fa fa-indent main-menu-icons"></span><a>Contratos</a></li>
+            <li ng-click='goToContratistas(); collapse("top-nav");' ng-show="plant.Menu[0].subcontratistas"><span class="fa fa-briefcase main-menu-icons"></span><a>Contratistas</a></li>
+            <li ng-click='goToWorkForce(); collapse("top-nav");' ng-show="plant.Menu[0].personal"><span class="fa fa-group main-menu-icons"></span><a>Personal</a></li>
+            <li ng-click='goToVehiculos(); collapse("top-nav");' ng-show="plant.Menu[0].vehiculo"><span class="fa fa-truck main-menu-icons"></span><a>Vehículos</a></li>
+            <li ng-click='goToMaquinarias(); collapse("top-nav");' ng-show="plant.Menu[0].maquinarias == true"><span class="fa fa-cogs main-menu-icons"></span><a>Maquinarias</a></li>
+            <li ng-show="plant.Menu[0].fiscales"><span class="fa fa-legal main-menu-icons"></span><a>Fiscales</a></li>
+            <li ng-show="plant.Menu[0].reportes"><span class="fa fa-bar-chart-o main-menu-icons"></span><a>Reportes</a></li>
+            <li ng-show="plant.Menu[0].mensajes"><span class="fa fa-envelope main-menu-icons"></span><a>Mensajes</a></li>
+            <li ng-show="plant.Menu[0].descargas == true"><span class="fa fa-cloud-download main-menu-icons"></span><a>Descargas</a></li>
         </ul>
     </div>
     <div id="top-nav-plants" class="navbar-collapse collapse">

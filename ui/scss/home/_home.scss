@@ -1,9 +1,9 @@
 .left{
-	float:left;
+    float:left;
 }
 .navbar-color{
-	background-color: $secondary-color;
-	
+    background-color: $secondary-color;
+    
 }
 
 .navbar-brand {
@@ -20,24 +20,24 @@
     border-color: $secondary-color;
 }
 .navbar-toggle-color{
-	color: white;
-	font-size: 20px;
+    color: white;
+    font-size: 20px;
 }
 .navbar-toggle-right{
-	   padding: 12px 10px 7px 9px;
+       padding: 12px 10px 7px 9px;
     margin: 0px !important;
 }
 .navbar-inverse .navbar-toggle{
-	margin-top: 0;
-	margin-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
     margin-right: 10px;
 }
 .navbar-inverse{
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .nav>li{
-	border-color: #495b79;
+    border-color: #495b79;
     border-bottom: 1px solid transparent;
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
 }
@@ -45,7 +45,7 @@
     margin: 0 -15px;
 }
 .main-menu-icons{
-	color: white;
+    color: white;
     position: relative;
     width: 40px;
     height: 40px;
@@ -297,6 +297,7 @@
     border-color: #ddd;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 11px;
+
 }
 .tile-contract-num{
     width: 50%;
@@ -305,6 +306,8 @@
 }
 .tile-contract-fiscal{
     padding-top: 4px;
+        height: 18px;
+        overflow: hidden;
 }
     
 .tile-contract-fechas{
@@ -316,6 +319,7 @@
 .tile-contract-fecha{
     width: 100%;
     height: 16px;
+        padding-left: 10px;
 }
 .pagination ul>li:first-child>a, .pagination ul>li:first-child>span {
     border-left-width: 1px;
@@ -355,4 +359,7 @@
 }
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
+}
+.auto-height{
+    height:auto;
 }

@@ -22,7 +22,7 @@ angular.module('myApp.main', []).controller('mainCtrl', ['$scope', '$rootScope',
         ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('home'), data, data).success(getDataSuccess).error(getDataFail);
     }
 
-	if (AuthSrv.initialState() || !AuthSrv.authorized()) {
+    if (AuthSrv.initialState() || !AuthSrv.authorized()) {
         $location.path("/login");
     }else{
         getdata();
@@ -39,6 +39,20 @@ angular.module('myApp.main', []).controller('mainCtrl', ['$scope', '$rootScope',
     $scope.goToContracts = function(){
         RedirectSrv.redirect('/contracts');
     }
+
+    $scope.goToMaquinarias = function(){
+        RedirectSrv.redirect('/maquinarias');
+    }
+
+
+    $scope.goToVehiculos = function(){
+        RedirectSrv.redirect('/vehiculos');
+    }
+
+    $scope.goToContratistas = function(){
+        RedirectSrv.redirect('/contratistas');
+    }
+
 
     $scope.goToHome = function(){
         RedirectSrv.redirect('/');

@@ -3,12 +3,12 @@
     <div ng-include src="'views/partials/navbar-top.html'"></div>
 
 
-    <div class="mainpage-header">
+    <div ng-show='plant.img' class="mainpage-header">
         {{plant.nombre}}
         <img class="mainpage-header-plantimg" src="{{plant.img}}"/>  
     </div>
 
-    <div class="mainpage-compon-cumpl">
+    <div ng-show='plant.cumplimiento' class="mainpage-compon-cumpl">
         <div class="mainpage-compon-cumpl-icon">
             <div class="info-icon bg-primary-dark">
                 <i class="fa fa-signal white-icon"></i>
@@ -140,6 +140,42 @@
                         </div>
                     </li>
             </ul>
+        </div>
+    </div>
+
+    <div ng-show='plant.Calendario' class="mainpage-compon">
+        <div class="mainpage-compon-title">
+            <i class="fa fa-calendar"></i><span class="compon-title">Calendario</span>
+        </div>
+        <div class="mainpage-compon-container">
+            <div ng-repeat="item in plant.Calendario"  ng-switch="item.titulo">
+                <div ng-switch-when="Documentos">
+                    <div class="list-group-title">{{item.fechaVencimiento}} - {{item.titulo}}</div>
+                    <ul class="list-group">
+                        <li class="list-group-item auto-height" ng-repeat="data in item.data">                 
+                            <span ng-show="data.cantidad > 1" class="label label-danger label-as-badge">{{data.cantidad}}</span>
+                            {{data.titulo}}
+                        </li>
+                    </ul>
+                </div>
+                <div ng-switch-when="Contrato">
+                    <div class="list-group-title">{{item.fechaVencimiento}} - {{item.titulo}}</div>
+                    <ul class="list-group">
+                        <li class="list-group-item auto-height">
+                            <div class="left">Número: </div><span class="bold-primaty-color float-right">{{item.data.Numero}}</span>
+                        </li>
+                        <li class="list-group-item auto-height">
+                            <div class="left">Inicio: </div><span class="bold-primaty-color float-right">{{item.data.Inicio}}</span>
+                        </li>
+                        <li class="list-group-item auto-height">
+                            <div><div class="left">Fin: </div><span class="bold-primaty-color float-right">{{item.data.Fin}}</span>
+                        </li>
+                        <li class="list-group-item auto-height">
+                            <div class="left">Fiscal: </div><span class="bold-primaty-color float-right">{{item.data.Fiscal}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 
