@@ -11,10 +11,13 @@ angular.module('myApp.contratista', []).controller('contratistaCtrl', ['$scope',
         var getDataSuccess = function(d){
             $scope.contratistaData = d;
             console.log(d);
+            $scope.loading = false;
         };
         var getDataFail = function(d){
             console.log(d);
+            $scope.loading = false;
         };
+        $scope.loading = true;
         ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('contratista'), data, data).success(getDataSuccess).error(getDataFail);
     }
 

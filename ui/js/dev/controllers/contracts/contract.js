@@ -10,10 +10,13 @@ angular.module('myApp.contract', []).controller('contractCtrl', ['$scope', '$roo
         var getDataSuccess = function(d){
             $scope.contractData = d;
             console.log(d);
+            $scope.loading = false;
         };
         var getDataFail = function(d){
             console.log(d);
+            $scope.loading = false;
         };
+        $scope.loading = true;
         ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('contract'), data, data).success(getDataSuccess).error(getDataFail);
     }
 

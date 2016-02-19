@@ -11,10 +11,13 @@ angular.module('myApp.maquinaria', []).controller('maquinariaCtrl', ['$scope', '
         var getDataSuccess = function(d){
             $scope.maquinariaData = d;
             console.log(d);
+            $scope.loading = false;
         };
         var getDataFail = function(d){
             console.log(d);
+            $scope.loading = false;
         };
+        $scope.loading = true;
         ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('maquinaria'), data, data).success(getDataSuccess).error(getDataFail);
     }
 

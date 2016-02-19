@@ -1,14 +1,20 @@
-<div class="container nopad" fade-in>
+<div class="container nopad">
 
     <div ng-include src="'views/partials/navbar-top.html'"></div>
+    <div ng-include src="'views/partials/page-header.html'"></div>
 
+    <div ng-controller="maquinariasCtrl" fade-in>
 
-    <div class="mainpage-header">
-        {{plant.nombre}}
-        <img class="mainpage-header-plantimg" src="{{plant.img}}"/>
-    </div>
+        <div class="section-header">
+            <span class="back" ng-click='goToHome()'>
+                <i class="fa fa-chevron-left"></i></span>
+            </span>
+            <span class="title">
+                <i class="fa fa-cogs"></i>
+                Maquinarias
+            </span>
+        </div>
 
-    <div ng-controller="maquinariasCtrl">
         <div class="input-append">
             <a class="input-group">
                 <input type="text" ng-model="query" ng-change="search()" class="form-control" placeholder="Buscar...">
@@ -18,6 +24,11 @@
 
             </a>
         </div>
+
+        <div ng-show='loading' class="spinner">
+            <i class="fa fa-circle-o-notch fa-spin"></i>
+        </div>
+
         <div ng-click='goToMaquinariaPage(item.id)' ng-repeat="item in pagedItems[currentPage]" class="tile-contract" >
 
             <div class="tile-contract-num" >
@@ -40,7 +51,7 @@
 
         </div>
 
-        <div class="pagination pull-right">
+        <div class="pagination pull-right" ng-show='pagedItems.length'>
             <ul>
                 <li ng-class="{disabled: currentPage == 0}">
                     <a href ng-click="prevPage()">« Prev</a>
@@ -54,7 +65,6 @@
                     <a href ng-click="nextPage()">Next »</a>
                 </li>
             </ul>
-        </div>
         </div>
 
     </div>

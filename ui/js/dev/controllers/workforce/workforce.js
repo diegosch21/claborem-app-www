@@ -18,27 +18,18 @@ angular.module('myApp.workforce', []).controller('workforceCtrl', ['$scope', '$r
             token : AuthSrv.currentUser().token,
             idPlanta : $rootScope.plant.id
         }
-        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('personal'), data, data).success(function(d){
+        $scope.loading = true;
+        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('personal'), data, data)
+        .success(function(d){
             console.log(d);
             $scope.items = d;
-        })
+            $scope.search();
+            $scope.loading = false;
+        }).error(function(d){
+            console.log(d);
+            $scope.loading = false;
+        });
     }
-
-
-    $rootScope.$watch('plant', function () {
-        if($rootScope.plant.id){
-            var data = {
-                token : AuthSrv.currentUser().token,
-                idPlanta : $rootScope.plant.id
-            }
-            ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('personal'), data, data).success(function(d){
-                console.log(d);
-                $scope.items = d;
-                $scope.search();
-            })
-
-        };
-    }, true);
 
     var searchMatch = function (haystack, needle) {
         if (!needle) {

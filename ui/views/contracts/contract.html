@@ -1,184 +1,191 @@
-<div class="container nopad" fade-in>
+<div class="container nopad">
 
     <div ng-include src="'views/partials/navbar-top.html'"></div>
+    <div ng-include src="'views/partials/page-header.html'"></div>
 
-
-    <div class="mainpage-header bold">
-        {{contractData.General[0].Numero}} 
-        <img class="mainpage-header-plantimg" src="{{plant.img}}"/>  
+    <div ng-show='loading' class="spinner">
+        <i class="fa fa-circle-o-notch fa-spin"></i>
     </div>
 
-    
+    <div fade-in ng-show='!loading' >
+        <div class="section-header">
+            <span class="back" ng-click='goToContracts()'>
+                <i class="fa fa-chevron-left"></i></span>
+            </span>
+            <span class="title">
+                <i class="fa fa-indent"></i>
+                <span class="entidad">Contrato nº {{contractData[0].General[0].Numero}}</span>
+            </span>
+        </div>
 
-  <ul class="nav nav-tabs" style="    margin-top: 15px;">
-  <li class="active"><a data-toggle="tab" href="#general">General</a></li>
-  <li><a data-toggle="tab" href="#empleados">Empleados</a></li>
-  <li><a data-toggle="tab" href="#maquinarias">Maquinarias</a></li>
-  <li><a data-toggle="tab" href="#subcontratistas">Subcontratistas</a></li>
-  <li><a data-toggle="tab" href="#vehiculos">Vehículos</a></li>
-</ul>
+        <ul class="nav nav-tabs" style="    margin-top: 15px;">
+            <li class="active"><a data-toggle="tab" href="#general">General</a></li>
+            <li><a data-toggle="tab" href="#empleados">Empleados</a></li>
+            <li><a data-toggle="tab" href="#maquinarias">Maquinarias</a></li>
+            <li><a data-toggle="tab" href="#subcontratistas">Subcontratistas</a></li>
+            <li><a data-toggle="tab" href="#vehiculos">Vehículos</a></li>
+        </ul>
 
-<div class="tab-content">
-  <div id="general" class="tab-pane fade in active">
-    <div ng-show="!contractData[0].General" class="mainpage-compon large-font" ng-cloak>
-        <div class="mainpage-compon-title">
-            <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
-        </div>
-    </div>
-    <div ng-show="contractData[0].General" class="mainpage-compon large-font">
-        <div class="mainpage-compon-title">
-            <i class="fa fa-info"></i><span class="compon-title">Información General</span>
-        </div>
-        <div class="mainpage-compon-container">
-            <ul class="list-group">
-                <li ng-show="contractData[0].General[0].Numero" class="list-group-item">                 
-                    <span>Número: <span class="bold-primaty-color">{{contractData[0].General[0].Numero}}</span></span>
-                </li>
-                <li ng-show="contractData[0].General[0].Inicio" class="list-group-item">                 
-                    <span>Inicio: <span class="bold-primaty-color">{{contractData[0].General[0].Inicio}}</span></span>
-                </li>
-                <li ng-show="contractData[0].General[0].Fin" class="list-group-item">                 
-                    <span>Fin: <span class="bold-primaty-color">{{contractData[0].General[0].Fin}}</span></span>
-                </li>
-                <li ng-show="contractData[0].General[0].Extension" class="list-group-item">                 
-                    <span>Extensión: <span class="bold-primaty-color">{{contractData[0].General[0].Extension}}</span></span>
-                </li>
-            </ul>
-        </div>
-    </div>
-  </div>
-  <div id="empleados" class="tab-pane fade">
-    <div ng-show="!contractData[0].Empleados" class="mainpage-compon large-font" ng-cloak>
-        <div class="mainpage-compon-title">
-            <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
-        </div>
-    </div>
-    <div ng-show="contractData[0].Empleados" class="mainpage-compon large-font" >
-        <div class="mainpage-compon-title">
-            <i class="fa fa-info"></i><span class="compon-title">Empleados</span>
-        </div>
-        <div ng-click='goToWorkerPage(item.id)' ng-repeat="item in contractData[0].Empleados" class="tile-contract" >
-
-            <div class="tile-contract-num" >
-                id: {{item.id}}
-                <div class="tile-contract-fiscal">
-                    {{item.Nombre}} {{item.Apellido}}
+        <div class="tab-content">
+            <div id="general" class="tab-pane fade in active">
+                <div ng-show="!contractData[0].General" class="mainpage-compon large-font" ng-cloak>
+                    <div class="mainpage-compon-title">
+                        <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
+                    </div>
                 </div>
-                <div class="tile-contract-fiscal">
-                    CUIL: {{item.Cuil}}
+                <div ng-show="contractData[0].General" class="mainpage-compon large-font">
+                    <div class="mainpage-compon-title">
+                        <i class="fa fa-info"></i><span class="compon-title">Información General</span>
+                    </div>
+                    <div class="mainpage-compon-container">
+                        <ul class="list-group">
+                            <li ng-show="contractData[0].General[0].Numero" class="list-group-item">
+                                <span>Número: <span class="bold-primaty-color">{{contractData[0].General[0].Numero}}</span></span>
+                            </li>
+                            <li ng-show="contractData[0].General[0].Inicio" class="list-group-item">
+                                <span>Inicio: <span class="bold-primaty-color">{{contractData[0].General[0].Inicio}}</span></span>
+                            </li>
+                            <li ng-show="contractData[0].General[0].Fin" class="list-group-item">
+                                <span>Fin: <span class="bold-primaty-color">{{contractData[0].General[0].Fin}}</span></span>
+                            </li>
+                            <li ng-show="contractData[0].General[0].Extension" class="list-group-item">
+                                <span>Extensión: <span class="bold-primaty-color">{{contractData[0].General[0].Extension}}</span></span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            <div class="tile-contract-fechas">
-                <div class="tile-contract-fecha">
-                    <span>Prox. Venc.: {{item.ProxVenc}}</span>
+            <div id="empleados" class="tab-pane fade">
+                <div ng-show="!contractData[0].Empleados" class="mainpage-compon large-font" ng-cloak>
+                    <div class="mainpage-compon-title">
+                        <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
+                    </div>
                 </div>
-                <div class="tile-contract-fecha">
-                    <span>Acceso: {{item.Acceso}}</span>
-                </div>
-            </div>
+                <div ng-show="contractData[0].Empleados" class="mainpage-compon large-font" >
+                    <div class="mainpage-compon-title">
+                        <i class="fa fa-info"></i><span class="compon-title">Empleados</span>
+                    </div>
+                    <div ng-click='goToWorkerPage(item.id)' ng-repeat="item in contractData[0].Empleados" class="tile-contract" >
 
-        </div>
-    </div>
-  </div>
+                        <div class="tile-contract-num" >
+                            id: {{item.id}}
+                            <div class="tile-contract-fiscal">
+                                {{item.Nombre}} {{item.Apellido}}
+                            </div>
+                            <div class="tile-contract-fiscal">
+                                CUIL: {{item.Cuil}}
+                            </div>
+                        </div>
+                        <div class="tile-contract-fechas">
+                            <div class="tile-contract-fecha">
+                                <span>Prox. Venc.: {{item.ProxVenc}}</span>
+                            </div>
+                            <div class="tile-contract-fecha">
+                                <span>Acceso: {{item.Acceso}}</span>
+                            </div>
+                        </div>
 
-  <div id="maquinarias" class="tab-pane fade">
-    <div ng-show="!contractData[0].Maquinarias" class="mainpage-compon large-font" ng-cloak>
-        <div class="mainpage-compon-title">
-            <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
-        </div>
-    </div>
-    <div ng-show="contractData[0].Maquinarias" class="mainpage-compon large-font" >
-        <div class="mainpage-compon-title">
-            <i class="fa fa-info"></i><span class="compon-title">Maquinarias</span>
-        </div>
-        <div ng-click='goToMaquinariaPage(item.id)' ng-repeat="item in contractData[0].Maquinarias" class="tile-contract" >
-
-            <div class="tile-contract-num" >
-                Nº de Serie: {{item.NumeroSerie}}
-                <div class="tile-contract-fiscal">
-                    {{item.Marca}} 
-                </div>
-                <div class="tile-contract-fiscal">
-                    {{item.Descripcion}}
-                </div>
-            </div>
-            <div class="tile-contract-fechas">
-                <div class="tile-contract-fecha">
-                    <span>Prox. Venc.: {{item.ProxVenc}}</span>
-                </div>
-                <div class="tile-contract-fecha">
-                    <span>Acceso: {{item.Acceso}}</span>
+                    </div>
                 </div>
             </div>
 
-        </div>
-    </div>
-  </div>
-
-  <div id="subcontratistas" class="tab-pane fade">
-    <div ng-show="!contractData[0].SubContratistas" class="mainpage-compon large-font" ng-cloak>
-        <div class="mainpage-compon-title">
-            <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
-        </div>
-    </div>
-    <div ng-show="contractData[0].SubContratistas" class="mainpage-compon large-font" >
-        <div class="mainpage-compon-title">
-            <i class="fa fa-info"></i><span class="compon-title">Subcontratistas</span>
-        </div>
-        <div ng-click='goToContratistaPage(item.id)' ng-repeat="item in contractData[0].SubContratistas" class="tile-contract" >
-
-            <div class="tile-contract-num" >
-                CUIT: {{item.Cuit}}
-                <div class="tile-contract-fiscal">
-                Razón Social:    {{item.RazonSocial}}
+            <div id="maquinarias" class="tab-pane fade">
+                <div ng-show="!contractData[0].Maquinarias" class="mainpage-compon large-font" ng-cloak>
+                    <div class="mainpage-compon-title">
+                        <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
+                    </div>
                 </div>
-            </div>
-            <div class="tile-contract-fechas">
-                <div class="tile-contract-fecha">
-                    <span>Teléfono: {{item.Telefono}}</span>
-                </div>
-            </div>
+                <div ng-show="contractData[0].Maquinarias" class="mainpage-compon large-font" >
+                    <div class="mainpage-compon-title">
+                        <i class="fa fa-info"></i><span class="compon-title">Maquinarias</span>
+                    </div>
+                    <div ng-click='goToMaquinariaPage(item.id)' ng-repeat="item in contractData[0].Maquinarias" class="tile-contract" >
 
-        </div>
-    </div>
-  </div>
+                        <div class="tile-contract-num" >
+                            Nº de Serie: {{item.NumeroSerie}}
+                            <div class="tile-contract-fiscal">
+                                {{item.Marca}}
+                            </div>
+                            <div class="tile-contract-fiscal">
+                                {{item.Descripcion}}
+                            </div>
+                        </div>
+                        <div class="tile-contract-fechas">
+                            <div class="tile-contract-fecha">
+                                <span>Prox. Venc.: {{item.ProxVenc}}</span>
+                            </div>
+                            <div class="tile-contract-fecha">
+                                <span>Acceso: {{item.Acceso}}</span>
+                            </div>
+                        </div>
 
-  <div id="vehiculos" class="tab-pane fade">
-    <div ng-show="!contractData[0].Vehiculos" class="mainpage-compon large-font" ng-cloak>
-        <div class="mainpage-compon-title">
-            <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
-        </div>
-    </div>
-    <div ng-show="contractData[0].Vehiculos" class="mainpage-compon large-font" >
-        <div class="mainpage-compon-title">
-            <i class="fa fa-info"></i><span class="compon-title">Vehículos</span>
-        </div>
-        <div ng-click='goToVehiculoPage(item.id)' ng-repeat="item in contractData[0].Vehiculos" class="tile-contract" >
-
-            <div class="tile-contract-num" >
-                Dominio: {{item.Dominio}}
-                <div class="tile-contract-fiscal">
-                    {{item.Marca}} 
-                </div>
-                <div class="tile-contract-fiscal">
-                    Modelo: {{item.Modelo}}
-                </div>
-            </div>
-            <div class="tile-contract-fechas">
-                <div class="tile-contract-fecha">
-                    <span>Prox. Venc.: {{item.ProxVenc}}</span>
-                </div>
-                <div class="tile-contract-fecha">
-                    <span>Acceso: {{item.Acceso}}</span>
+                    </div>
                 </div>
             </div>
 
+            <div id="subcontratistas" class="tab-pane fade">
+                <div ng-show="!contractData[0].SubContratistas" class="mainpage-compon large-font" ng-cloak>
+                    <div class="mainpage-compon-title">
+                        <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
+                    </div>
+                </div>
+                <div ng-show="contractData[0].SubContratistas" class="mainpage-compon large-font" >
+                    <div class="mainpage-compon-title">
+                        <i class="fa fa-info"></i><span class="compon-title">Subcontratistas</span>
+                    </div>
+                    <div ng-click='goToContratistaPage(item.id)' ng-repeat="item in contractData[0].SubContratistas" class="tile-contract" >
+
+                        <div class="tile-contract-num" >
+                            CUIT: {{item.Cuit}}
+                            <div class="tile-contract-fiscal">
+                            Razón Social:    {{item.RazonSocial}}
+                            </div>
+                        </div>
+                        <div class="tile-contract-fechas">
+                            <div class="tile-contract-fecha">
+                                <span>Teléfono: {{item.Telefono}}</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="vehiculos" class="tab-pane fade">
+                <div ng-show="!contractData[0].Vehiculos" class="mainpage-compon large-font" ng-cloak>
+                    <div class="mainpage-compon-title">
+                        <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
+                    </div>
+                </div>
+                <div ng-show="contractData[0].Vehiculos" class="mainpage-compon large-font" >
+                    <div class="mainpage-compon-title">
+                        <i class="fa fa-info"></i><span class="compon-title">Vehículos</span>
+                    </div>
+                    <div ng-click='goToVehiculoPage(item.id)' ng-repeat="item in contractData[0].Vehiculos" class="tile-contract" >
+
+                        <div class="tile-contract-num" >
+                            Dominio: {{item.Dominio}}
+                            <div class="tile-contract-fiscal">
+                                {{item.Marca}}
+                            </div>
+                            <div class="tile-contract-fiscal">
+                                Modelo: {{item.Modelo}}
+                            </div>
+                        </div>
+                        <div class="tile-contract-fechas">
+                            <div class="tile-contract-fecha">
+                                <span>Prox. Venc.: {{item.ProxVenc}}</span>
+                            </div>
+                            <div class="tile-contract-fecha">
+                                <span>Acceso: {{item.Acceso}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
-  </div>
-  
 
-
-</div>
     <div class="footer"></div>
 </div>

@@ -4,28 +4,12 @@ angular.module('myApp.main', []).controller('mainCtrl', ['$scope', '$rootScope',
 
 
     $rootScope.plant = {};
-    var getdata = function () {
-        var data = {
-            'token': AuthSrv.currentUser().token
-        };
-        var getDataSuccess = function(data){
-            console.log(data[0]);
-            $rootScope.data = data[0];
-            $rootScope.plantas = $rootScope.data.plantas;
 
-            $rootScope.currentId = 0
-            $rootScope.plant = $rootScope.data.plantas[$rootScope.currentId];
-        };
-        var getDataFail = function(data){
-            console.log(data);
-        };
-        ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('home'), data, data).success(getDataSuccess).error(getDataFail);
-    }
 
     if (AuthSrv.initialState() || !AuthSrv.authorized()) {
         $location.path("/login");
     }else{
-        getdata();
+        RedirectSrv.redirect('/');
     }
 
     $rootScope.logout = function () {
@@ -34,6 +18,7 @@ angular.module('myApp.main', []).controller('mainCtrl', ['$scope', '$rootScope',
     $rootScope.changePlant = function(id){
         $rootScope.currentId = id;
         $rootScope.plant = $rootScope.plantas[id];
+        RedirectSrv.redirect('/');
     }
 
     $scope.goToContracts = function(){
