@@ -37,6 +37,7 @@ html {
 /* anchor tags should use pointer like buttons */
 a {
     cursor: pointer;
+    color: #428bca;
 }
 
 /** this allows us to display nothing until angular has applied changes to the dom

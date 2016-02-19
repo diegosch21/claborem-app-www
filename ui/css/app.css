@@ -37,13 +37,14 @@ html {
 /* line 38, ../scss/_main.scss */
 a {
   cursor: pointer;
+  color: #428bca;
 }
 
 /** this allows us to display nothing until angular has applied changes to the dom
     without this we see what the dom wants to display first, and then get an update
     within milliseconds once angular is finished. -- it's the "funny flicker effect"
  **/
-/* line 46, ../scss/_main.scss */
+/* line 47, ../scss/_main.scss */
 [ng\:cloak], [ng-cloak], .ng-cloak {
   display: none !important;
 }
@@ -52,7 +53,7 @@ a {
 supports grid feature
 **/
 /******** Grid Global ********/
-/* line 56, ../scss/_main.scss */
+/* line 57, ../scss/_main.scss */
 .ngPagerControl .ngPagerButton {
   /** pagination buttons are pushed down 10px... fix that here... **/
   margin-top: -10px;
@@ -61,7 +62,7 @@ supports grid feature
   margin-right: 2px;
 }
 
-/* line 65, ../scss/_main.scss */
+/* line 66, ../scss/_main.scss */
 .nglabel {
   display: block;
   float: left;
@@ -69,7 +70,7 @@ supports grid feature
   padding-right: 5px;
 }
 
-/* line 72, ../scss/_main.scss */
+/* line 73, ../scss/_main.scss */
 .ngNoSelect {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -80,21 +81,21 @@ supports grid feature
 }
 
 /** better position ngGrid cell contents **/
-/* line 82, ../scss/_main.scss */
+/* line 83, ../scss/_main.scss */
 .ngCell div {
   margin-top: 5px;
   margin-left: 5px;
 }
 
 /******** Grid ********/
-/* line 89, ../scss/_main.scss */
+/* line 90, ../scss/_main.scss */
 .gridStyle {
   border: 1px solid #d4d4d4;
   /* width: none !important; */
   height: 420px;
 }
 
-/* line 95, ../scss/_main.scss */
+/* line 96, ../scss/_main.scss */
 .ngGrid {
   background-color: #fdfdfd;
   -webkit-touch-callout: none;
@@ -106,20 +107,20 @@ supports grid feature
 }
 
 /******** Header ********/
-/* line 107, ../scss/_main.scss */
+/* line 108, ../scss/_main.scss */
 .ngGroupPanel {
   background-color: #eaeaea;
   overflow: hidden;
   border-bottom: 1px solid #d4d4d4;
 }
 
-/* line 113, ../scss/_main.scss */
+/* line 114, ../scss/_main.scss */
 .ngGroupPanelDescription {
   margin-top: 5px;
   margin-left: 5px;
 }
 
-/* line 118, ../scss/_main.scss */
+/* line 119, ../scss/_main.scss */
 .ngGroupList {
   list-style-type: none;
 }
@@ -127,21 +128,21 @@ supports grid feature
 /***
    modal / login / password
 **/
-/* line 126, ../scss/_main.scss */
+/* line 127, ../scss/_main.scss */
 .modal-body {
   display: block;
   margin: 0 auto;
   width: 80%;
 }
 
-/* line 132, ../scss/_main.scss */
+/* line 133, ../scss/_main.scss */
 .modal-body * {
   display: block;
   margin: 10px 0 5px 0;
   width: 95%;
 }
 
-/* line 138, ../scss/_main.scss */
+/* line 139, ../scss/_main.scss */
 #password {
   display: inline;
   float: left;
@@ -149,70 +150,99 @@ supports grid feature
   min-width: 63px;
 }
 
-/* line 1, ../scss/home/_home.scss */
+@media (min-width: 768px) {
+  /* line 3, ../scss/home/_home.scss */
+  .navbar-header {
+    float: none;
+  }
+
+  /* line 6, ../scss/home/_home.scss */
+  .navbar-toggle {
+    display: block;
+  }
+
+  /* line 10, ../scss/home/_home.scss */
+  .navbar-collapse.in {
+    overflow-y: auto;
+  }
+  /* line 13, ../scss/home/_home.scss */
+  .navbar-collapse.collapse {
+    display: none !important;
+  }
+}
+/* line 20, ../scss/home/_home.scss */
 .left {
   float: left;
 }
 
-/* line 4, ../scss/home/_home.scss */
+/* line 23, ../scss/home/_home.scss */
 .navbar-color {
   background-color: #495b79;
 }
 
-/* line 9, ../scss/home/_home.scss */
+/* line 28, ../scss/home/_home.scss */
 .navbar-brand {
   padding: 10px 0px;
 }
 
-/* line 13, ../scss/home/_home.scss */
+/* line 32, ../scss/home/_home.scss */
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form, .navbar-inverse .navbar-toggle {
   border-color: #495b79;
 }
 
-/* line 17, ../scss/home/_home.scss */
+/* line 36, ../scss/home/_home.scss */
 .navbar-inverse .navbar-toggle:hover,
 .navbar-inverse .navbar-toggle:focus {
   background-color: #495b79;
   border-color: #495b79;
 }
 
-/* line 22, ../scss/home/_home.scss */
+/* line 41, ../scss/home/_home.scss */
 .navbar-toggle-color {
   color: white;
   font-size: 20px;
 }
+/* line 44, ../scss/home/_home.scss */
+.navbar-toggle-color.fa-list {
+  font-size: 2em;
+}
 
-/* line 26, ../scss/home/_home.scss */
+/* line 48, ../scss/home/_home.scss */
 .navbar-toggle-right {
   padding: 12px 10px 7px 9px;
   margin: 0px !important;
 }
 
-/* line 30, ../scss/home/_home.scss */
+/* line 52, ../scss/home/_home.scss */
 .navbar-inverse .navbar-toggle {
   margin-top: 0;
   margin-bottom: 0;
   margin-right: 10px;
 }
 
-/* line 35, ../scss/home/_home.scss */
+/* line 57, ../scss/home/_home.scss */
 .navbar-inverse {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* line 39, ../scss/home/_home.scss */
+/* line 61, ../scss/home/_home.scss */
 .nav > li {
   border-color: #495b79;
   border-bottom: 1px solid transparent;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+@media (max-width: 768px) {
+  /* line 61, ../scss/home/_home.scss */
+  .nav > li {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
 }
 
-/* line 44, ../scss/home/_home.scss */
+/* line 68, ../scss/home/_home.scss */
 .navbar-nav {
   margin: 0 -15px;
 }
 
-/* line 47, ../scss/home/_home.scss */
+/* line 71, ../scss/home/_home.scss */
 .main-menu-icons {
   color: white;
   position: relative;
@@ -223,24 +253,24 @@ supports grid feature
   font-size: 16px;
 }
 
-/* line 56, ../scss/home/_home.scss */
+/* line 80, ../scss/home/_home.scss */
 .mainpage-header {
   color: #999999;
   margin-top: 47px;
   height: 32px;
   line-height: 32px;
   padding-left: 8px;
-  color: #495b79;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 
-/* line 65, ../scss/home/_home.scss */
+/* line 91, ../scss/home/_home.scss */
 .nopad {
   padding-right: 0;
   padding-left: 0;
 }
 
-/* line 70, ../scss/home/_home.scss */
+/* line 96, ../scss/home/_home.scss */
 .mainpage-header-plantimg {
   width: 120px;
   margin-top: 2px;
@@ -248,7 +278,7 @@ supports grid feature
   margin-right: 5px;
 }
 
-/* line 76, ../scss/home/_home.scss */
+/* line 102, ../scss/home/_home.scss */
 .mainpage-compon-cumpl {
   margin-top: 12px;
   width: 90%;
@@ -259,12 +289,12 @@ supports grid feature
   border-radius: 5px;
 }
 
-/* line 85, ../scss/home/_home.scss */
+/* line 111, ../scss/home/_home.scss */
 .progress-bar {
   background-color: #337ab7;
 }
 
-/* line 88, ../scss/home/_home.scss */
+/* line 114, ../scss/home/_home.scss */
 .mainpage-compon-cumpl-icon {
   width: 20%;
   height: 50px;
@@ -273,14 +303,14 @@ supports grid feature
   float: left;
 }
 
-/* line 95, ../scss/home/_home.scss */
+/* line 121, ../scss/home/_home.scss */
 .mainpage-compon-cumpl-bar {
   width: 80%;
   height: 50px;
   float: right;
 }
 
-/* line 100, ../scss/home/_home.scss */
+/* line 126, ../scss/home/_home.scss */
 .white-icon {
   color: white;
   font-size: 36px;
@@ -288,13 +318,13 @@ supports grid feature
   line-height: 50px;
 }
 
-/* line 106, ../scss/home/_home.scss */
+/* line 132, ../scss/home/_home.scss */
 .progress {
   margin: 12px;
   margin-top: 5px;
 }
 
-/* line 110, ../scss/home/_home.scss */
+/* line 136, ../scss/home/_home.scss */
 .mainpage-compon-cumpl-bar-title {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   width: 100%;
@@ -304,40 +334,40 @@ supports grid feature
   line-height: 26px;
 }
 
-/* line 118, ../scss/home/_home.scss */
+/* line 144, ../scss/home/_home.scss */
 .mainpage-compon-staff {
   width: 100%;
   padding: 16px;
   padding-bottom: 0;
 }
 
-/* line 123, ../scss/home/_home.scss */
+/* line 149, ../scss/home/_home.scss */
 .mainpage-compon-title {
   color: #495b79;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   height: 20px;
 }
 
-/* line 128, ../scss/home/_home.scss */
+/* line 154, ../scss/home/_home.scss */
 .mainpage-compon-container {
   border: 1px solid #b9c4d5;
   border-radius: 4px;
   padding-top: 8px;
 }
 
-/* line 133, ../scss/home/_home.scss */
+/* line 159, ../scss/home/_home.scss */
 .compon-title {
   padding-left: 5px;
 }
 
-/* line 136, ../scss/home/_home.scss */
+/* line 162, ../scss/home/_home.scss */
 .list-group-item:first-child {
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
   margin-top: 2px;
 }
 
-/* line 141, ../scss/home/_home.scss */
+/* line 167, ../scss/home/_home.scss */
 .list-group-item {
   position: relative;
   display: block;
@@ -354,13 +384,13 @@ supports grid feature
   color: #333;
 }
 
-/* line 156, ../scss/home/_home.scss */
+/* line 182, ../scss/home/_home.scss */
 .list-group {
   padding-left: 0;
   margin-bottom: 10px;
 }
 
-/* line 160, ../scss/home/_home.scss */
+/* line 186, ../scss/home/_home.scss */
 .label-as-badge {
   border-radius: 1em;
   float: right;
@@ -373,45 +403,45 @@ supports grid feature
   margin-top: 2px;
 }
 
-/* line 172, ../scss/home/_home.scss */
+/* line 198, ../scss/home/_home.scss */
 .label-danger {
   background-color: #d9534f;
 }
 
-/* line 175, ../scss/home/_home.scss */
+/* line 201, ../scss/home/_home.scss */
 .label-success {
   background-color: #90c657;
 }
 
-/* line 178, ../scss/home/_home.scss */
+/* line 204, ../scss/home/_home.scss */
 .mainpage-compon-staff-resume {
   background-color: red;
 }
 
-/* line 181, ../scss/home/_home.scss */
+/* line 207, ../scss/home/_home.scss */
 .mainpage-title {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #555;
   margin-bottom: 2px;
 }
 
-/* line 186, ../scss/home/_home.scss */
+/* line 212, ../scss/home/_home.scss */
 .font-medium {
   font-size: 14px;
 }
 
-/* line 189, ../scss/home/_home.scss */
+/* line 215, ../scss/home/_home.scss */
 .visitors-list-summary .border {
   border-right: 1px solid #b9c4d5;
 }
 
-/* line 192, ../scss/home/_home.scss */
+/* line 218, ../scss/home/_home.scss */
 .visitor-item {
   height: 45px;
   margin-bottom: 5px;
 }
 
-/* line 196, ../scss/home/_home.scss */
+/* line 222, ../scss/home/_home.scss */
 .mainpage-compon {
   width: 100%;
   padding: 16px;
@@ -419,49 +449,49 @@ supports grid feature
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* line 202, ../scss/home/_home.scss */
+/* line 228, ../scss/home/_home.scss */
 .label-warning {
   background: #f9a94a;
 }
 
-/* line 205, ../scss/home/_home.scss */
+/* line 231, ../scss/home/_home.scss */
 .list-group-title {
   font-weight: bold;
   padding: 2px 0 0 14px;
   color: #495b79;
 }
 
-/* line 210, ../scss/home/_home.scss */
+/* line 236, ../scss/home/_home.scss */
 .progress-bar-success {
   background-color: #90c657;
 }
 
-/* line 213, ../scss/home/_home.scss */
+/* line 239, ../scss/home/_home.scss */
 .progress-mini {
   height: 10px;
   margin: 0;
   margin-top: 5px;
 }
 
-/* line 218, ../scss/home/_home.scss */
+/* line 244, ../scss/home/_home.scss */
 .bg-transparent-success {
   background-color: transparent;
   color: #90c657;
   font-weight: 800;
 }
 
-/* line 223, ../scss/home/_home.scss */
+/* line 249, ../scss/home/_home.scss */
 .list-group-item-progress {
   height: auto;
   padding-bottom: 10px;
 }
 
-/* line 227, ../scss/home/_home.scss */
+/* line 253, ../scss/home/_home.scss */
 .footer {
   height: 20px;
 }
 
-/* line 230, ../scss/home/_home.scss */
+/* line 256, ../scss/home/_home.scss */
 .form-control {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   float: right;
@@ -481,7 +511,7 @@ supports grid feature
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
-/* line 248, ../scss/home/_home.scss */
+/* line 274, ../scss/home/_home.scss */
 .btn {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: inline-block;
@@ -503,25 +533,25 @@ supports grid feature
   border-radius: 4px;
 }
 
-/* line 268, ../scss/home/_home.scss */
+/* line 294, ../scss/home/_home.scss */
 .btn-success {
   color: #fff;
   background-color: #5cb85c;
   border-color: #4cae4c;
 }
 
-/* line 273, ../scss/home/_home.scss */
+/* line 299, ../scss/home/_home.scss */
 .input-append {
   height: 60px;
 }
 
-/* line 276, ../scss/home/_home.scss */
+/* line 302, ../scss/home/_home.scss */
 .input-group {
   float: right;
   margin: 10px;
 }
 
-/* line 280, ../scss/home/_home.scss */
+/* line 306, ../scss/home/_home.scss */
 .btn-default, .btn-default:hover, .btn-default:focus {
   color: #333;
   background-color: #fff;
@@ -531,14 +561,14 @@ supports grid feature
   border: 1px solid #ccc;
 }
 
-/* line 288, ../scss/home/_home.scss */
+/* line 314, ../scss/home/_home.scss */
 .add-on {
   padding-left: 10px;
 }
 
-/* line 291, ../scss/home/_home.scss */
+/* line 317, ../scss/home/_home.scss */
 .tile-contract {
-  padding: 6px;
+  padding: 6px 15px;
   width: 100%;
   height: 60px;
   background-color: #edf1ff;
@@ -548,35 +578,35 @@ supports grid feature
   font-size: 11px;
 }
 
-/* line 302, ../scss/home/_home.scss */
+/* line 328, ../scss/home/_home.scss */
 .tile-contract-num {
   width: 50%;
   height: 50px;
   float: left;
 }
 
-/* line 307, ../scss/home/_home.scss */
+/* line 333, ../scss/home/_home.scss */
 .tile-contract-fiscal {
   padding-top: 4px;
   height: 18px;
   overflow: hidden;
 }
 
-/* line 313, ../scss/home/_home.scss */
+/* line 339, ../scss/home/_home.scss */
 .tile-contract-fechas {
   width: 50%;
   height: 54px;
   float: right;
 }
 
-/* line 319, ../scss/home/_home.scss */
+/* line 345, ../scss/home/_home.scss */
 .tile-contract-fecha {
   width: 100%;
   height: 16px;
   padding-left: 10px;
 }
 
-/* line 324, ../scss/home/_home.scss */
+/* line 350, ../scss/home/_home.scss */
 .pagination ul > li:first-child > a, .pagination ul > li:first-child > span {
   border-left-width: 1px;
   -webkit-border-radius: 3px 0 0 3px;
@@ -584,14 +614,14 @@ supports grid feature
   border-radius: 3px 0 0 3px;
 }
 
-/* line 330, ../scss/home/_home.scss */
+/* line 356, ../scss/home/_home.scss */
 .pagination ul > .disabled > span, .pagination ul > .disabled > a, .pagination ul > .disabled > a:hover {
   color: #999999;
   background-color: transparent;
   cursor: default;
 }
 
-/* line 335, ../scss/home/_home.scss */
+/* line 361, ../scss/home/_home.scss */
 .pagination ul > li > a, .pagination ul > li > span {
   float: left;
   padding: 0px 11px;
@@ -602,12 +632,12 @@ supports grid feature
   border-left-width: 0;
 }
 
-/* line 344, ../scss/home/_home.scss */
+/* line 370, ../scss/home/_home.scss */
 .pagination ul > li {
   display: inline;
 }
 
-/* line 349, ../scss/home/_home.scss */
+/* line 375, ../scss/home/_home.scss */
 .pagination {
   display: inline-block;
   padding-left: 0;
@@ -615,19 +645,19 @@ supports grid feature
   border-radius: 4px;
 }
 
-/* line 355, ../scss/home/_home.scss */
+/* line 381, ../scss/home/_home.scss */
 .pagination .active > a, .pagination .active > a:hover {
   color: #999999;
   background-color: transparent;
   cursor: default;
 }
 
-/* line 360, ../scss/home/_home.scss */
+/* line 386, ../scss/home/_home.scss */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
 
-/* line 363, ../scss/home/_home.scss */
+/* line 389, ../scss/home/_home.scss */
 .auto-height {
   height: auto;
 }
@@ -643,21 +673,49 @@ supports grid feature
   background: #FFFFFF;
   min-height: 300px;
   margin: 0px auto;
-  width: 350px;
+  width: 90%;
+  max-width: 500px;
   margin-top: 100px;
-  padding-bottom: 0;
   border: 1px solid #ccc;
 }
-
 @media screen and (max-width: 400px) {
-  /* line 17, ../scss/login/_login.scss */
+  /* line 6, ../scss/login/_login.scss */
   .login-box {
-    width: 260px;
     margin-top: 50px;
-    padding-bottom: 0;
   }
 }
-/* line 25, ../scss/login/_login.scss */
+/* line 17, ../scss/login/_login.scss */
+.login-box input {
+  font-size: 20px;
+  height: 50px;
+  padding-left: 20px;
+}
+@media screen and (min-width: 400px) {
+  /* line 17, ../scss/login/_login.scss */
+  .login-box input {
+    font-size: 24px;
+    padding-left: 50px;
+  }
+}
+/* line 26, ../scss/login/_login.scss */
+.login-box button {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 50px;
+  height: 50px;
+  text-transform: uppercase;
+  padding: 0;
+}
+@media screen and (min-width: 400px) {
+  /* line 26, ../scss/login/_login.scss */
+  .login-box button {
+    font-size: 24px;
+    line-height: 60px;
+    height: 60px;
+  }
+}
+
+/* line 41, ../scss/login/_login.scss */
 .login-footer {
   min-height: 280px;
   width: 260px;
@@ -666,7 +724,7 @@ supports grid feature
   text-align: center;
 }
 
-/* line 33, ../scss/login/_login.scss */
+/* line 49, ../scss/login/_login.scss */
 .login-box h1 {
   color: #2f4051;
   font-size: 25px;
@@ -676,8 +734,12 @@ supports grid feature
   text-align: center;
   padding-top: 20px;
 }
+/* line 57, ../scss/login/_login.scss */
+.login-box h1 img {
+  width: 250px;
+}
 
-/* line 43, ../scss/login/_login.scss */
+/* line 62, ../scss/login/_login.scss */
 .login-box h5 {
   text-align: center;
   font-family: 'Raleway';
@@ -686,39 +748,51 @@ supports grid feature
   font-size: 13px;
 }
 
-/* line 51, ../scss/login/_login.scss */
+/* line 70, ../scss/login/_login.scss */
 .login-box hr {
   border-width: 1px;
   border-color: #0b1d30;
   opacity: 0.3;
 }
 
-/* line 57, ../scss/login/_login.scss */
+/* line 76, ../scss/login/_login.scss */
 .login-box .input-box {
   margin-top: 20px;
 }
 
-/* line 61, ../scss/login/_login.scss */
+/* line 80, ../scss/login/_login.scss */
 .login-box .input-box .input-group-addon {
   background: #2f4051;
   border: 0px;
   color: #FFFFFF;
   border-radius: 0px;
 }
+/* line 85, ../scss/login/_login.scss */
+.login-box .input-box .input-group-addon i {
+  width: 30px;
+}
+@media screen and (min-width: 400px) {
+  /* line 85, ../scss/login/_login.scss */
+  .login-box .input-box .input-group-addon i {
+    width: 50px;
+  }
+}
 
-/* line 68, ../scss/login/_login.scss */
+/* line 93, ../scss/login/_login.scss */
 .login-box .input-box h6 {
   font-family: 'Raleway';
   font-weight: 600;
   font-size: 13px;
 }
 
-/* line 74, ../scss/login/_login.scss */
-.col-xs-offset-1 {
-  margin-left: 8.33333333%;
+@media screen and (max-width: 768px) {
+  /* line 99, ../scss/login/_login.scss */
+  .col-xs-offset-1 {
+    margin-left: 8.33333333%;
+  }
 }
 
-/* line 78, ../scss/login/_login.scss */
+/* line 105, ../scss/login/_login.scss */
 .login-box .input-box input {
   background: #4f5c6c;
   border-radius: 0px;
@@ -726,25 +800,25 @@ supports grid feature
   color: #FFFFFF !important;
 }
 
-/* line 85, ../scss/login/_login.scss */
+/* line 112, ../scss/login/_login.scss */
 .login-box .input-box .form-group h6 {
   margin-top: 60px;
   text-align: center;
 }
 
-/* line 90, ../scss/login/_login.scss */
+/* line 117, ../scss/login/_login.scss */
 .input-group {
   position: relative;
   display: table;
   border-collapse: separate;
 }
 
-/* line 95, ../scss/login/_login.scss */
+/* line 122, ../scss/login/_login.scss */
 .form-group {
   margin-bottom: 15px;
 }
 
-/* line 99, ../scss/login/_login.scss */
+/* line 126, ../scss/login/_login.scss */
 .btn-block {
   display: block;
   width: 100%;
@@ -752,7 +826,7 @@ supports grid feature
   padding-left: 0;
 }
 
-/* line 105, ../scss/login/_login.scss */
+/* line 132, ../scss/login/_login.scss */
 .btn-primary-blue {
   color: #fff;
   background-color: #428bca;
@@ -763,7 +837,7 @@ supports grid feature
   line-height: 0px;
 }
 
-/* line 115, ../scss/login/_login.scss */
+/* line 142, ../scss/login/_login.scss */
 .form-control {
   display: block;
   width: 100%;
@@ -782,14 +856,14 @@ supports grid feature
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
-/* line 132, ../scss/login/_login.scss */
+/* line 159, ../scss/login/_login.scss */
 .alert-danger, .alert-error {
   color: #a94442;
   background-color: #f2dede;
   border-color: #ebccd1;
 }
 
-/* line 137, ../scss/login/_login.scss */
+/* line 164, ../scss/login/_login.scss */
 .alert {
   border-radius: 0;
 }

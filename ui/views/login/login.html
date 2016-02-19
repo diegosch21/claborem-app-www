@@ -1,20 +1,20 @@
 <div class="main-backgroud">
 	<div class="login-box">
 		<h1>
-			<img src="../images/logo-login.png" alt="Certronic" width="210px">
+			<img src="images/logo-login.png" alt="Certronic">
 		</h1>
 		<hr>
 		<h5  style="display:none" >Iniciar Sesión</h5>
 		<div class="input-box">
 	        <div class="row" style="    margin-bottom: 40px;">
-		        <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1">
+		        <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
                     <form novalidate role="form">
                         <div class="input-group form-group">
-                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                            <input type="text" id="User" name="User" class="form-control" placeholder="Nombre de Usuario" ng-model="user.name" required/>
+                            <span class="input-group-addon usuario"><i class="fa fa-2x fa-user"></i></span>
+                            <input type="text" id="User" name="User" class="form-control" placeholder="Usuario" ng-model="user.name" required/>
                         </div>
                         <div class="input-group form-group">
-                            <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                            <span class="input-group-addon password"><i class="fa fa-2x fa-key"></i></span>
                             <input type="Password" id="Password" name="Password" class="form-control" placeholder="Contraseña" ng-model="user.password" required/>
                         </div>
                         <h6  style="display:none"><input  type="checkbox" name="MantenerSesion" id="MantenerSesion" value="S">&nbsp;No cerrar sesión</h6>
@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <h6 style="display:none"><a href="olvidoPassword.php">¿Olvidó su contraseña?</a></h6>
                         </div>
-					</form>   
+					</form>
 		        </div>
 		        <!-- col -->
 	        </div>
@@ -34,6 +34,6 @@
 
 	</div>
 	<div  style="display:none" class="login-footer">
-		<img src="../images/logo-login-footer.png" alt="Certronic" width="130px">
+		<img src="images/logo-login-footer.png" alt="Certronic" width="130px">
 	</div>
 </div>

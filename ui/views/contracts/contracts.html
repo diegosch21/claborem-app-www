@@ -5,24 +5,24 @@
 
     <div class="mainpage-header">
         {{plant.nombre}}
-        <img class="mainpage-header-plantimg" src="{{plant.img}}"/>  
+        <img class="mainpage-header-plantimg" src="{{plant.img}}"/>
     </div>
 
     <div ng-controller="contractsCtrl">
         <div class="input-append">
             <a class="input-group">
-                <input type="text" ng-model="query" ng-change="search()" class="form-control" placeholder="Search">
+                <input type="text" ng-model="query" ng-change="search()" class="form-control" placeholder="Buscar...">
                 <span class="input-group-btn">
                     <span class="add-on"><i class="icon-search"></i></span>
                 </span>
-                
+
             </a>
-            
-            
+
+
         <!--<span class="add-on"><i class="icon-search"></i></span>-->
         </div>
 
-                    
+
                     <div ng-click='goToContractPage(item.id)' ng-repeat="item in pagedItems[currentPage]" class="tile-contract" >
 
                         <div class="tile-contract-num" >

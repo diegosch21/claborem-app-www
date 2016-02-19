@@ -1,5 +1,5 @@
 .main-backgroud{
-        position: absolute;
+    position: absolute;
     width: 100%;
 }
 
@@ -7,21 +7,37 @@
     background: #FFFFFF;
     min-height: 300px;
     margin: 0px auto;
-    width: 350px;
+    width: 90%;
+    max-width: 500px;
     margin-top: 100px;
-    padding-bottom: 0;
-    border: 1px solid #ccc;
-}
-
-@media screen and (max-width: 400px) {
-    .login-box {
-        width: 260px;
+    @media screen and (max-width: 400px) {
         margin-top: 50px;
-        padding-bottom: 0;
+    }
+    border: 1px solid #ccc;
+    input {
+        font-size: 20px;
+        height: 50px;
+        padding-left: 20px;
+        @media screen and (min-width: 400px) {
+            font-size: 24px;
+            padding-left: 50px;
+        }
+    }
+    button {
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 50px;
+        height: 50px;
+        text-transform: uppercase;
+        padding: 0;
+        @media screen and (min-width: 400px) {
+            font-size: 24px;
+            line-height: 60px;
+            height: 60px;
+        }
     }
 }
 
-    
 .login-footer {
         min-height: 280px;
     width: 260px;
@@ -38,6 +54,9 @@
     font-weight: 600;
     text-align: center;
     padding-top: 20px;
+    img {
+        width: 250px;
+    }
 }
 
 .login-box h5 {
@@ -63,6 +82,12 @@
     border: 0px;
     color: #FFFFFF;
     border-radius: 0px;
+    i {
+        width: 30px;
+        @media screen and (min-width: 400px) {
+            width: 50px;
+        }
+    }
 }
 
 .login-box .input-box h6 {
@@ -72,7 +97,9 @@
 }
 
 .col-xs-offset-1 {
-    margin-left: 8.33333333%;
+    @media screen and (max-width: 768px) {
+        margin-left: 8.33333333%;
+    }
 }
 
 .login-box .input-box input {

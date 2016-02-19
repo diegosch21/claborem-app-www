@@ -5,7 +5,7 @@
 
     <div ng-show='plant.img' class="mainpage-header">
         {{plant.nombre}}
-        <img class="mainpage-header-plantimg" src="{{plant.img}}"/>  
+        <img class="mainpage-header-plantimg" src="{{plant.img}}"/>
     </div>
 
     <div ng-show='plant.cumplimiento' class="mainpage-compon-cumpl">
@@ -30,7 +30,7 @@
         </div>
         <div class="mainpage-compon-container">
             <ul class="list-group">
-                <li class="list-group-item">                 
+                <li class="list-group-item">
                     <span class="label label-success label-as-badge">{{plant.Personal[0].permitidos}}</span>
                     Permitidos
                 </li>
@@ -62,7 +62,7 @@
         </div>
         <div class="mainpage-compon-container">
             <ul class="list-group">
-                <li class="list-group-item">                 
+                <li class="list-group-item">
                     <span class="label label-info label-as-badge">{{plant.Contratos[0].Activos}}</span>
                     Activos
                 </li>
@@ -89,7 +89,7 @@
         <div class="mainpage-compon-container">
             <div class="list-group-title">Permanentes</div>
             <ul class="list-group">
-                <li class="list-group-item">                 
+                <li class="list-group-item">
                     <span class="label label-info label-as-badge">{{plant.Contratistas[0].permanentes.Contratistas}}</span>
                     Contratistas
                 </li>
@@ -104,7 +104,7 @@
             </ul>
             <div class="list-group-title">Esporádicos</div>
             <ul class="list-group">
-                <li class="list-group-item">                 
+                <li class="list-group-item">
                     <span class="label label-info label-as-badge">{{plant.Contratistas[0].esporadicos.Contratistas}}</span>
                     Contratistas
                 </li>
@@ -119,7 +119,7 @@
             </ul>
             <div class="list-group-title">Subcontrataciones</div>
             <ul class="list-group">
-                <li class="list-group-item">                 
+                <li class="list-group-item">
                     <span class="label label-info label-as-badge">{{plant.Contratistas[0].subcontrataciones.empresassubcontratistas}}</span>
                     Empresas Subcontratistas
                 </li>
@@ -152,7 +152,7 @@
                 <div ng-switch-when="Documentos">
                     <div class="list-group-title">{{item.fechaVencimiento}} - {{item.titulo}}</div>
                     <ul class="list-group">
-                        <li class="list-group-item auto-height" ng-repeat="data in item.data">                 
+                        <li class="list-group-item auto-height" ng-repeat="data in item.data">
                             <span ng-show="data.cantidad > 1" class="label label-danger label-as-badge">{{data.cantidad}}</span>
                             {{data.titulo}}
                         </li>
