@@ -31,9 +31,9 @@
 
         <div ng-click='goToWorkerPage(item.id)' ng-repeat="item in pagedItems[currentPage]" class="tile-contract" >
             <div class="tile-contract-num" >
-                id: {{item.id}}
-                <div class="tile-contract-fiscal">
-                    {{item.Nombre}} {{item.Apellido}}
+                <!-- id: {{item.id}} -->
+                <div class="tile-contract-fiscal" style="text-transform: capitalize;">
+                    {{item.Apellido}} {{item.Nombre}}
                 </div>
                 <div class="tile-contract-fiscal">
                     CUIL: {{item.Cuil}}
@@ -41,10 +41,10 @@
             </div>
             <div class="tile-contract-fechas">
                 <div class="tile-contract-fecha">
-                    <span>Prox. Venc.: {{item.ProxVenc}}</span>
+                    <span>{{item.Acceso}}</span>
                 </div>
                 <div class="tile-contract-fecha">
-                    <span>Acceso: {{item.Acceso}}</span>
+                    <span>Prox. Venc.: {{item.ProxVenc}}</span>
                 </div>
             </div>
 

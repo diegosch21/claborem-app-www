@@ -32,21 +32,6 @@ angular.module('myApp.contracts', []).controller('contractsCtrl', ['$scope', '$r
     }
 
 
-    // $rootScope.$watch('plant', function () {
-    //     if($rootScope.plant.id){
-    //         var data = {
-    //             token : AuthSrv.currentUser().token,
-    //             idPlanta : $rootScope.plant.id
-    //         }
-    //         ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('contratos'), data, data).success(function(d){
-    //             console.log(d);
-    //             $scope.items = d;
-    //             $scope.search();
-    //         })
-
-    //     };
-    // }, true);
-
     var searchMatch = function (haystack, needle) {
         if (!needle) {
             return true;

@@ -31,22 +31,6 @@ angular.module('myApp.maquinarias', []).controller('maquinariasCtrl', ['$scope',
         });
     }
 
-
-    // $rootScope.$watch('plant', function () {
-    //     if($rootScope.plant.id){
-    //         var data = {
-    //             token : AuthSrv.currentUser().token,
-    //             idPlanta : $rootScope.plant.id
-    //         }
-    //         ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('maquinarias'), data, data).success(function(d){
-    //             console.log(d);
-    //             $scope.items = d;
-    //             $scope.search();
-    //         })
-
-    //     };
-    // }, true);
-
     var searchMatch = function (haystack, needle) {
         if (!needle) {
             return true;

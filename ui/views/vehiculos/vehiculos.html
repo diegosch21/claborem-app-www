@@ -31,20 +31,22 @@
 
         <div ng-click='goToVehiculoPage(item.id)' ng-repeat="item in pagedItems[currentPage]" class="tile-contract" >
             <div class="tile-contract-num" >
-                Dominio: {{item.Dominio}}
                 <div class="tile-contract-fiscal">
                     {{item.Marca}}
                 </div>
                 <div class="tile-contract-fiscal">
                     Modelo: {{item.Modelo}}
                 </div>
+                <div class="tile-contract-fiscal">
+                    Dominio: {{item.Dominio}}
+                </div>
             </div>
             <div class="tile-contract-fechas">
                 <div class="tile-contract-fecha">
-                    <span>Prox. Venc.: {{item.ProxVenc}}</span>
+                    <span>{{item.Acceso}}</span>
                 </div>
                 <div class="tile-contract-fecha">
-                    <span>Acceso: {{item.Acceso}}</span>
+                    <span>Prox. Venc.: {{item.ProxVenc}}</span>
                 </div>
             </div>
 

@@ -1,4 +1,4 @@
-<div class="container nopad" fade-in>
+<div class="container nopad">
 
     <div ng-include src="'views/partials/navbar-top.html'"></div>
     <div ng-include src="'views/partials/page-header.html'"></div>
@@ -19,12 +19,12 @@
         </div>
 
         <ul class="nav nav-tabs" style="margin-top: 15px;">
-            <li class="active"><a data-toggle="tab" href="#general">General</a></li>
-            <li><a data-toggle="tab" href="#documentos">Documentos</a></li>
+            <li class="active"><a data-toggle="tab" href="#documentos">Documentos</a></li>
+            <li><a data-toggle="tab" href="#general">General</a></li>
         </ul>
 
         <div class="tab-content">
-            <div id="general" class="tab-pane fade in active">
+            <div id="general" class="tab-pane fade">
                 <div ng-show="!maquinariaData[0].General" class="mainpage-compon large-font" ng-cloak>
                     <div class="mainpage-compon-title">
                         <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
@@ -36,26 +36,26 @@
                     </div>
                     <div class="mainpage-compon-container">
                         <ul class="list-group">
-                            <li ng-show="maquinariaData[0].General[0].Marca" class="list-group-item auto-height">
+                            <li class="list-group-item auto-height">
                                 <span>Marca: <span class="bold-primaty-color">{{maquinariaData[0].General[0].Marca}}</span></span>
                             </li>
-                            <li ng-show="maquinariaData[0].General[0].NumeroSerie" class="list-group-item auto-height">
+                            <li class="list-group-item auto-height">
                                 <span>Nº de Serie: <span class="bold-primaty-color">{{maquinariaData[0].General[0].NumeroSerie}}</span></span>
                             </li>
-                            <li ng-show="maquinariaData[0].General[0].Descripcion" class="list-group-item auto-height">
+                            <li class="list-group-item auto-height">
                                 <span>Descripcion: <span class="bold-primaty-color">{{maquinariaData[0].General[0].Descripcion}}</span></span>
                             </li>
-                            <li ng-show="maquinariaData[0].General[0].EmpresaVerifica" class="list-group-item auto-height">
+                            <li class="list-group-item auto-height">
                                 <span>Verificadora: <span class="bold-primaty-color">{{maquinariaData[0].General[0].EmpresaVerifica}}</span></span>
                             </li>
-                            <li ng-show="maquinariaData[0].General[0].Estado" class="list-group-item auto-height">
+                            <li class="list-group-item auto-height">
                                 <span>Estado: <span class="bold-primaty-color">{{maquinariaData[0].General[0].Estado}}</span></span>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div id="documentos" class="tab-pane fade">
+            <div id="documentos" class="tab-pane fade in active">
                 <div ng-show="!maquinariaData[0].Documentos" class="mainpage-compon large-font" ng-cloak>
                     <div class="mainpage-compon-title">
                         <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
@@ -70,7 +70,7 @@
                             <thead>
                                 <tr>
                                     <th>Documento</th>
-                                    <th>Cumple</th>
+                                    <th>Estado</th>
                                     <th>Vencimento</th>
                                 </tr>
                             </thead>

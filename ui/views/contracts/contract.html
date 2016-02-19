@@ -21,9 +21,9 @@
         <ul class="nav nav-tabs" style="    margin-top: 15px;">
             <li class="active"><a data-toggle="tab" href="#general">General</a></li>
             <li><a data-toggle="tab" href="#empleados">Empleados</a></li>
+            <li><a data-toggle="tab" href="#vehiculos">Vehículos</a></li>
             <li><a data-toggle="tab" href="#maquinarias">Maquinarias</a></li>
             <li><a data-toggle="tab" href="#subcontratistas">Subcontratistas</a></li>
-            <li><a data-toggle="tab" href="#vehiculos">Vehículos</a></li>
         </ul>
 
         <div class="tab-content">
@@ -63,14 +63,13 @@
                 </div>
                 <div ng-show="contractData[0].Empleados" class="mainpage-compon large-font" >
                     <div class="mainpage-compon-title">
-                        <i class="fa fa-info"></i><span class="compon-title">Empleados</span>
+                        <!-- <i class="fa fa-info"></i><span class="compon-title">Empleados</span> -->
                     </div>
                     <div ng-click='goToWorkerPage(item.id)' ng-repeat="item in contractData[0].Empleados" class="tile-contract" >
 
                         <div class="tile-contract-num" >
-                            id: {{item.id}}
                             <div class="tile-contract-fiscal">
-                                {{item.Nombre}} {{item.Apellido}}
+                                {{item.Apellido}} {{item.Nombre}} 
                             </div>
                             <div class="tile-contract-fiscal">
                                 CUIL: {{item.Cuil}}
@@ -78,10 +77,10 @@
                         </div>
                         <div class="tile-contract-fechas">
                             <div class="tile-contract-fecha">
-                                <span>Prox. Venc.: {{item.ProxVenc}}</span>
+                                <span>{{item.Acceso}}</span>
                             </div>
                             <div class="tile-contract-fecha">
-                                <span>Acceso: {{item.Acceso}}</span>
+                                <span>Prox. Venc.: {{item.ProxVenc}}</span>
                             </div>
                         </div>
 
@@ -97,14 +96,16 @@
                 </div>
                 <div ng-show="contractData[0].Maquinarias" class="mainpage-compon large-font" >
                     <div class="mainpage-compon-title">
-                        <i class="fa fa-info"></i><span class="compon-title">Maquinarias</span>
+                        <!-- <i class="fa fa-info"></i><span class="compon-title">Maquinarias</span> -->
                     </div>
                     <div ng-click='goToMaquinariaPage(item.id)' ng-repeat="item in contractData[0].Maquinarias" class="tile-contract" >
 
                         <div class="tile-contract-num" >
-                            Nº de Serie: {{item.NumeroSerie}}
                             <div class="tile-contract-fiscal">
                                 {{item.Marca}}
+                            </div>
+                            <div class="tile-contract-fiscal">
+                                Nº de Serie: {{item.NumeroSerie}}
                             </div>
                             <div class="tile-contract-fiscal">
                                 {{item.Descripcion}}
@@ -112,10 +113,10 @@
                         </div>
                         <div class="tile-contract-fechas">
                             <div class="tile-contract-fecha">
-                                <span>Prox. Venc.: {{item.ProxVenc}}</span>
+                                <span>{{item.Acceso}}</span>
                             </div>
                             <div class="tile-contract-fecha">
-                                <span>Acceso: {{item.Acceso}}</span>
+                                <span>Prox. Venc.: {{item.ProxVenc}}</span>
                             </div>
                         </div>
 
@@ -131,15 +132,15 @@
                 </div>
                 <div ng-show="contractData[0].SubContratistas" class="mainpage-compon large-font" >
                     <div class="mainpage-compon-title">
-                        <i class="fa fa-info"></i><span class="compon-title">Subcontratistas</span>
+                        <!-- <i class="fa fa-info"></i><span class="compon-title">Subcontratistas</span> -->
                     </div>
                     <div ng-click='goToContratistaPage(item.id)' ng-repeat="item in contractData[0].SubContratistas" class="tile-contract" >
 
                         <div class="tile-contract-num" >
-                            CUIT: {{item.Cuit}}
                             <div class="tile-contract-fiscal">
-                            Razón Social:    {{item.RazonSocial}}
+                            {{item.RazonSocial}}
                             </div>
+                            CUIT: {{item.Cuit}}
                         </div>
                         <div class="tile-contract-fechas">
                             <div class="tile-contract-fecha">
@@ -159,25 +160,27 @@
                 </div>
                 <div ng-show="contractData[0].Vehiculos" class="mainpage-compon large-font" >
                     <div class="mainpage-compon-title">
-                        <i class="fa fa-info"></i><span class="compon-title">Vehículos</span>
+                        <!-- <i class="fa fa-info"></i><span class="compon-title">Vehículos</span> -->
                     </div>
                     <div ng-click='goToVehiculoPage(item.id)' ng-repeat="item in contractData[0].Vehiculos" class="tile-contract" >
 
                         <div class="tile-contract-num" >
-                            Dominio: {{item.Dominio}}
                             <div class="tile-contract-fiscal">
                                 {{item.Marca}}
                             </div>
                             <div class="tile-contract-fiscal">
                                 Modelo: {{item.Modelo}}
                             </div>
+                            <div class="tile-contract-fiscal">
+                                Dominio: {{item.Dominio}}
+                            </div>
                         </div>
                         <div class="tile-contract-fechas">
                             <div class="tile-contract-fecha">
-                                <span>Prox. Venc.: {{item.ProxVenc}}</span>
+                                <span>{{item.Acceso}}</span>
                             </div>
                             <div class="tile-contract-fecha">
-                                <span>Acceso: {{item.Acceso}}</span>
+                                <span>Prox. Venc.: {{item.ProxVenc}}</span>
                             </div>
                         </div>
                     </div>

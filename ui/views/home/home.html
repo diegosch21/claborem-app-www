@@ -43,17 +43,17 @@
                         Denegados
                     </li>
                     <li class="list-group-item">
-                        <a class="label label-danger label-as-badge">{{plant.Personal[0].sinmovimientos}}</a>
+                        <a class="label label-warning label-as-badge">{{plant.Personal[0].sinmovimiento}}</a>
                         Sin Movimiento <small class="text-muted">(2 meses)</small>
                     </li>
                 </ul>
                 <div class="row visitors-list-summary text-center text-primary">
-                    <div class="col-md-6 col-sm-6 col-xs-6 visitor-item border">
-                        <div class="mainpage-title">Permitidos</div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 visitor-item border" style="padding-top: 12px">
+                        <!-- <div class="mainpage-title">Permitidos</div> -->
                         <a class="label label-big label-success font-medium"> <i class="fa fa-thumbs-up text-white"></i> {{((plant.Personal[0].permitidos + plant.Personal[0].sinmovimientos)/(plant.Personal[0].permitidos + plant.Personal[0].sinmovimientos + plant.Personal[0].denegados)*100).toFixed()}}%</a>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-xs-6 visitor-item">
-                        <div class="mainpage-title">Denegados</div>
+                    <div class="col-md-6 col-sm-6 col-xs-6 visitor-item" style="padding-top: 12px">
+                        <!-- <div class="mainpage-title">Denegados</div> -->
                         <a class="label label-big label-danger font-medium"> <i class="fa fa-thumbs-down text-white"></i> {{((plant.Personal[0].denegados)/(plant.Personal[0].permitidos + plant.Personal[0].sinmovimientos + plant.Personal[0].denegados)*100).toFixed()}}%</a>
                     </div>
                 </div>
@@ -131,7 +131,7 @@
             </div>
         </div>
 
-        <div ng-show='rank' class="mainpage-compon">
+        <div ng-show='plant.Ranking' class="mainpage-compon">
             <div class="mainpage-compon-title">
                 <i class="fa fa-trophy"></i><span class="compon-title">Ranking</span>
             </div>
@@ -149,12 +149,12 @@
 
         <div ng-show='plant.Calendario' class="mainpage-compon">
             <div class="mainpage-compon-title">
-                <i class="fa fa-calendar"></i><span class="compon-title">Calendario</span>
+                <i class="fa fa-calendar"></i><span class="compon-title">Próximos vencimientos</span>
             </div>
             <div class="mainpage-compon-container">
                 <div ng-repeat="item in plant.Calendario"  ng-switch="item.titulo">
-                    <div ng-switch-when="Documentos">
-                        <div class="list-group-title">{{item.fechaVencimiento}} - {{item.titulo}}</div>
+                    <div ng-switch-when="Documentos" ng-show="item.fechaVencimiento">
+                        <div class="list-group-title">{{item.fechaVencimiento}}<!--  - {{item.titulo}} --></div>
                         <ul class="list-group">
                             <li class="list-group-item auto-height" ng-repeat="data in item.data">
                                 <span ng-show="data.cantidad > 1" class="label label-danger label-as-badge">{{data.cantidad}}</span>
@@ -162,8 +162,8 @@
                             </li>
                         </ul>
                     </div>
-                    <div ng-switch-when="Contrato">
-                        <div class="list-group-title">{{item.fechaVencimiento}} - {{item.titulo}}</div>
+                    <div ng-switch-when="Contrato" ng-show="item.fechaVencimiento">
+                        <div class="list-group-title">{{item.fechaVencimiento}}<!--  - {{item.titulo}} --></div>
                         <ul class="list-group">
                             <li class="list-group-item auto-height">
                                 <div class="left">Número: </div><span class="bold-primaty-color float-right">{{item.data.Numero}}</span>
