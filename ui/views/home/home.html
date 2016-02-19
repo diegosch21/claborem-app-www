@@ -6,6 +6,10 @@
     <div ng-show='loading' class="spinner">
         <i class="fa fa-circle-o-notch fa-spin"></i>
     </div>
+    <div ng-show='disconnect' class="disconnect">
+        <p>No se puede acceder a los datos del servidor.<br> Por favor, revise su conexión a internet.</p>
+        <a ng-click="reintentar()">Reintentar conexión</a>
+    </div>
 
     <div fade-in ng-show=!loading>
         <div ng-show='plant.cumplimiento' class="mainpage-compon-cumpl" fade-in>

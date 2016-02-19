@@ -238,7 +238,7 @@ directives.directive('fadeIn', function () {
         compile:function (elm) {
             $(elm).css('opacity', 0.0);
             return function (scope, elm, attrs) {
-                $(elm).animate({ opacity:1.0 }, 1500);
+                $(elm).animate({ opacity:1.0 }, 1000);
             };
         }
     };
@@ -262,28 +262,12 @@ angular.module('myApp.main', []).controller('mainCtrl', ['$scope', '$rootScope',
 
 
     $rootScope.plant = {};
-    var getdata = function () {
-        var data = {
-            'token': AuthSrv.currentUser().token
-        };
-        var getDataSuccess = function(data){
-            console.log(data[0]);
-            $rootScope.data = data[0];
-            $rootScope.plantas = $rootScope.data.plantas;
 
-            $rootScope.currentId = 0
-            $rootScope.plant = $rootScope.data.plantas[$rootScope.currentId];
-        };
-        var getDataFail = function(data){
-            console.log(data);
-        };
-        ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('home'), data, data).success(getDataSuccess).error(getDataFail);
-    }
 
     if (AuthSrv.initialState() || !AuthSrv.authorized()) {
         $location.path("/login");
     }else{
-        getdata();
+        RedirectSrv.redirect('/');
     }
 
     $rootScope.logout = function () {
@@ -292,6 +276,7 @@ angular.module('myApp.main', []).controller('mainCtrl', ['$scope', '$rootScope',
     $rootScope.changePlant = function(id){
         $rootScope.currentId = id;
         $rootScope.plant = $rootScope.plantas[id];
+        RedirectSrv.redirect('/');
     }
 
     $scope.goToContracts = function(){
@@ -339,10 +324,13 @@ angular.module('myApp.contract', []).controller('contractCtrl', ['$scope', '$roo
         var getDataSuccess = function(d){
             $scope.contractData = d;
             console.log(d);
+            $scope.loading = false;
         };
         var getDataFail = function(d){
             console.log(d);
+            $scope.loading = false;
         };
+        $scope.loading = true;
         ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('contract'), data, data).success(getDataSuccess).error(getDataFail);
     }
 
@@ -391,27 +379,34 @@ angular.module('myApp.contracts', []).controller('contractsCtrl', ['$scope', '$r
             token : AuthSrv.currentUser().token,
             idPlanta : $rootScope.plant.id
         }
-        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('contratos'), data, data).success(function(d){
+        $scope.loading = true;
+        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('contratos'), data, data)
+        .success(function(d){
             console.log(d);
             $scope.items = d;
-        })
+            $scope.search();
+            $scope.loading = false;
+        }).error(function(d){
+            console.log(d);
+            $scope.loading = false;
+        });
     }
 
 
-    $rootScope.$watch('plant', function () {
-        if($rootScope.plant.id){
-            var data = {
-                token : AuthSrv.currentUser().token,
-                idPlanta : $rootScope.plant.id
-            }
-            ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('contratos'), data, data).success(function(d){
-                console.log(d);
-                $scope.items = d;
-                $scope.search();
-            })
+    // $rootScope.$watch('plant', function () {
+    //     if($rootScope.plant.id){
+    //         var data = {
+    //             token : AuthSrv.currentUser().token,
+    //             idPlanta : $rootScope.plant.id
+    //         }
+    //         ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('contratos'), data, data).success(function(d){
+    //             console.log(d);
+    //             $scope.items = d;
+    //             $scope.search();
+    //         })
 
-        };
-    }, true);
+    //     };
+    // }, true);
 
     var searchMatch = function (haystack, needle) {
         if (!needle) {
@@ -518,10 +513,13 @@ angular.module('myApp.contratista', []).controller('contratistaCtrl', ['$scope',
         var getDataSuccess = function(d){
             $scope.contratistaData = d;
             console.log(d);
+            $scope.loading = false;
         };
         var getDataFail = function(d){
             console.log(d);
+            $scope.loading = false;
         };
+        $scope.loading = true;
         ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('contratista'), data, data).success(getDataSuccess).error(getDataFail);
     }
 
@@ -561,27 +559,34 @@ angular.module('myApp.contratistas', []).controller('contratistasCtrl', ['$scope
             token : AuthSrv.currentUser().token,
             idPlanta : $rootScope.plant.id
         }
-        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('contratistas'), data, data).success(function(d){
+        $scope.loading = true;
+        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('contratistas'), data, data)
+        .success(function(d){
             console.log(d);
             $scope.items = d;
-        })
+            $scope.search();
+            $scope.loading = false;
+        }).error(function(d){
+            console.log(d);
+            $scope.loading = false;
+        });
     }
 
 
-    $rootScope.$watch('plant', function () {
-        if($rootScope.plant.id){
-            var data = {
-                token : AuthSrv.currentUser().token,
-                idPlanta : $rootScope.plant.id
-            }
-            ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('contratistas'), data, data).success(function(d){
-                console.log(d);
-                $scope.items = d;
-                $scope.search();
-            })
+    // $rootScope.$watch('plant', function () {
+    //     if($rootScope.plant.id){
+    //         var data = {
+    //             token : AuthSrv.currentUser().token,
+    //             idPlanta : $rootScope.plant.id
+    //         }
+    //         ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('contratistas'), data, data).success(function(d){
+    //             console.log(d);
+    //             $scope.items = d;
+    //             $scope.search();
+    //         })
 
-        };
-    }, true);
+    //     };
+    // }, true);
 
     var searchMatch = function (haystack, needle) {
         if (!needle) {
@@ -679,7 +684,6 @@ angular.module('myApp.contratistas', []).controller('contratistasCtrl', ['$scope
 
 angular.module('myApp.home', []).controller('homeCtrl', ['$scope', '$rootScope', 'ApiHttpSrv', 'ConfigSrv', '$location', 'AuthSrv', 'RedirectSrv',function($scope, $rootScope, ApiHttpSrv, ConfigSrv, $location, AuthSrv, RedirectSrv) {
 
-    $rootScope.plant = {};
     var getdata = function () {
         var data = {
             'token': AuthSrv.currentUser().token
@@ -689,20 +693,34 @@ angular.module('myApp.home', []).controller('homeCtrl', ['$scope', '$rootScope',
             $rootScope.data = data[0];
             $rootScope.plantas = $rootScope.data.plantas;
 
-            $rootScope.currentId = 0
+            if(!$rootScope.currentId) { // si ya estaba seteado previamente, agarro esa planta
+                $rootScope.currentId = 0
+            }
+
             $rootScope.plant = $rootScope.data.plantas[$rootScope.currentId];
+            $scope.loading = false;
         };
         var getDataFail = function(data){
             console.log(data);
+            $scope.loading = false;
+            $scope.disconnect = true;
         };
+        $scope.loading = true;
+        $scope.disconnect = false;
         ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('home'), data, data).success(getDataSuccess).error(getDataFail);
     }
 
     if (AuthSrv.initialState() || !AuthSrv.authorized()) {
         $location.path('/login');
-    }else{
+    }
+    else {
         getdata();
     }
+
+    $scope.reintentar = function(){
+        getdata()
+    }
+
 
 }]);
 'use strict';
@@ -738,10 +756,13 @@ angular.module('myApp.maquinaria', []).controller('maquinariaCtrl', ['$scope', '
         var getDataSuccess = function(d){
             $scope.maquinariaData = d;
             console.log(d);
+            $scope.loading = false;
         };
         var getDataFail = function(d){
             console.log(d);
+            $scope.loading = false;
         };
+        $scope.loading = true;
         ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('maquinaria'), data, data).success(getDataSuccess).error(getDataFail);
     }
 
@@ -781,27 +802,34 @@ angular.module('myApp.maquinarias', []).controller('maquinariasCtrl', ['$scope',
             token : AuthSrv.currentUser().token,
             idPlanta : $rootScope.plant.id
         }
-        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('maquinarias'), data, data).success(function(d){
+        $scope.loading = true;
+        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('maquinarias'), data, data)
+        .success(function(d){
             console.log(d);
             $scope.items = d;
-        })
+            $scope.search();
+            $scope.loading = false;
+        }).error(function(d){
+            console.log(d);
+            $scope.loading = false;
+        });
     }
 
 
-    $rootScope.$watch('plant', function () {
-        if($rootScope.plant.id){
-            var data = {
-                token : AuthSrv.currentUser().token,
-                idPlanta : $rootScope.plant.id
-            }
-            ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('maquinarias'), data, data).success(function(d){
-                console.log(d);
-                $scope.items = d;
-                $scope.search();
-            })
+    // $rootScope.$watch('plant', function () {
+    //     if($rootScope.plant.id){
+    //         var data = {
+    //             token : AuthSrv.currentUser().token,
+    //             idPlanta : $rootScope.plant.id
+    //         }
+    //         ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('maquinarias'), data, data).success(function(d){
+    //             console.log(d);
+    //             $scope.items = d;
+    //             $scope.search();
+    //         })
 
-        };
-    }, true);
+    //     };
+    // }, true);
 
     var searchMatch = function (haystack, needle) {
         if (!needle) {
@@ -897,174 +925,6 @@ angular.module('myApp.maquinarias', []).controller('maquinariasCtrl', ['$scope',
 }]);
 'use strict';
 
-angular.module('myApp.worker', []).controller('workerCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', '$routeParams', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, $routeParams, ApiHttpSrv, ConfigSrv) {
-
-    var getdata = function () {
-        var data = {
-            'token': AuthSrv.currentUser().token,
-            'idPlanta': $routeParams.idP,
-            'id': $routeParams.idE
-        };
-        var getDataSuccess = function(d){
-            $scope.workerData = d;
-            console.log(d);
-        };
-        var getDataFail = function(d){
-            console.log(d);
-        };
-        ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('worker'), data, data).success(getDataSuccess).error(getDataFail);
-    }
-
-    if (AuthSrv.initialState() || !AuthSrv.authorized()) {
-        RedirectSrv.redirect('/login');
-    }else{
-        getdata();
-    }
-    $('#info').tab('show');
-    $('#info a').click(function (e) {
-      e.preventDefault()
-      $(this).tab('show')
-    });
-
-}]);
-'use strict';
-
-angular.module('myApp.workforce', []).controller('workforceCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, ApiHttpSrv, ConfigSrv) {
-
-    if (AuthSrv.initialState() || !AuthSrv.authorized()) {
-        RedirectSrv.redirect('/login');
-    };
-    $scope.sortingOrder = 'Ape';
-    $scope.reverse = false;
-    $scope.filteredItems = [];
-    $scope.groupedItems = [];
-    $scope.itemsPerPage = 10;
-    $scope.pagedItems = [];
-    $scope.currentPage = 0;
-    if($rootScope.plant.id){
-        console.log($rootScope.plant);
-        var data = {
-            token : AuthSrv.currentUser().token,
-            idPlanta : $rootScope.plant.id
-        }
-        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('personal'), data, data).success(function(d){
-            console.log(d);
-            $scope.items = d;
-        })
-    }
-
-
-    $rootScope.$watch('plant', function () {
-        if($rootScope.plant.id){
-            var data = {
-                token : AuthSrv.currentUser().token,
-                idPlanta : $rootScope.plant.id
-            }
-            ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('personal'), data, data).success(function(d){
-                console.log(d);
-                $scope.items = d;
-                $scope.search();
-            })
-
-        };
-    }, true);
-
-    var searchMatch = function (haystack, needle) {
-        if (!needle) {
-            return true;
-        }
-        if(haystack){
-            return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
-        }
-
-    };
-
-    $scope.open = function(link){
-        $window.open(link, '_blank');
-    }
-
-    $scope.goToWorkerPage = function(id){
-        RedirectSrv.redirect('worker/' + $rootScope.plant.id + '/' + id);
-    }
-
-    // init the filtered items
-    $scope.search = function () {
-        $scope.filteredItems = $filter('filter')($scope.items, function (item) {
-            for(var attr in item) {
-                if (searchMatch(item[attr], $scope.query))
-                    return true;
-            }
-            return false;
-        });
-        // take care of the sorting order
-        if ($scope.sortingOrder !== '') {
-            $scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
-        }
-        $scope.currentPage = 0;
-        // now group by pages
-        $scope.groupToPages();
-    };
-
-    // calculate page in place
-    $scope.groupToPages = function () {
-        $scope.pagedItems = [];
-
-        for (var i = 0; i < $scope.filteredItems.length; i++) {
-            if (i % $scope.itemsPerPage === 0) {
-                $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [ $scope.filteredItems[i] ];
-            } else {
-                $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
-            }
-        }
-    };
-
-    $scope.range = function (start, end) {
-        var ret = [];
-        if (!end) {
-            end = start;
-            start = 0;
-        }
-        for (var i = start; i < end; i++) {
-            ret.push(i);
-        }
-        return ret;
-    };
-
-    $scope.prevPage = function () {
-        if ($scope.currentPage > 0) {
-            $scope.currentPage--;
-        }
-    };
-
-    $scope.nextPage = function () {
-        if ($scope.currentPage < $scope.pagedItems.length - 1) {
-            $scope.currentPage++;
-        }
-    };
-
-    $scope.setPage = function () {
-        $scope.currentPage = this.n;
-    };
-
-    // functions have been describe process the data for display
-    if($rootScope.plant.data){
-        $scope.search();
-    }
-
-
-    // change sorting order
-    $scope.sort_by = function(newSortingOrder) {
-        if ($scope.sortingOrder == newSortingOrder)
-            $scope.reverse = !$scope.reverse;
-
-        $scope.sortingOrder = newSortingOrder;
-
-
-    };
-
-}]);
-'use strict';
-
 angular.module('myApp.vehiculo', []).controller('vehiculoCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', '$routeParams', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, $routeParams, ApiHttpSrv, ConfigSrv) {
 
     var getdata = function () {
@@ -1076,10 +936,13 @@ angular.module('myApp.vehiculo', []).controller('vehiculoCtrl', ['$scope', '$roo
         var getDataSuccess = function(d){
             $scope.vehiculoData = d;
             console.log(d);
+            $scope.loading = false;
         };
         var getDataFail = function(d){
             console.log(d);
+            $scope.loading = false;
         };
+        $scope.loading = true;
         ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('vehiculo'), data, data).success(getDataSuccess).error(getDataFail);
     }
 
@@ -1119,27 +982,34 @@ angular.module('myApp.vehiculos', []).controller('vehiculosCtrl', ['$scope', '$r
             token : AuthSrv.currentUser().token,
             idPlanta : $rootScope.plant.id
         }
-        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('vehiculos'), data, data).success(function(d){
+        $scope.loading = true;
+        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('vehiculos'), data, data)
+        .success(function(d){
             console.log(d);
             $scope.items = d;
-        })
+            $scope.search();
+            $scope.loading = false;
+        }).error(function(d){
+            console.log(d);
+            $scope.loading = false;
+        });
     }
 
 
-    $rootScope.$watch('plant', function () {
-        if($rootScope.plant.id){
-            var data = {
-                token : AuthSrv.currentUser().token,
-                idPlanta : $rootScope.plant.id
-            }
-            ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('vehiculos'), data, data).success(function(d){
-                console.log(d);
-                $scope.items = d;
-                $scope.search();
-            })
+    // $rootScope.$watch('plant', function () {
+    //     if($rootScope.plant.id){
+    //         var data = {
+    //             token : AuthSrv.currentUser().token,
+    //             idPlanta : $rootScope.plant.id
+    //         }
+    //         ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('vehiculos'), data, data).success(function(d){
+    //             console.log(d);
+    //             $scope.items = d;
+    //             $scope.search();
+    //         })
 
-        };
-    }, true);
+    //     };
+    // }, true);
 
     var searchMatch = function (haystack, needle) {
         if (!needle) {
@@ -1221,6 +1091,168 @@ angular.module('myApp.vehiculos', []).controller('vehiculosCtrl', ['$scope', '$r
     $scope.goToVehiculoPage = function(id){
         RedirectSrv.redirect('vehiculo/' + $rootScope.plant.id + '/' + id);
     }
+
+    // change sorting order
+    $scope.sort_by = function(newSortingOrder) {
+        if ($scope.sortingOrder == newSortingOrder)
+            $scope.reverse = !$scope.reverse;
+
+        $scope.sortingOrder = newSortingOrder;
+
+
+    };
+
+}]);
+'use strict';
+
+angular.module('myApp.worker', []).controller('workerCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', '$routeParams', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, $routeParams, ApiHttpSrv, ConfigSrv) {
+
+    var getdata = function () {
+        var data = {
+            'token': AuthSrv.currentUser().token,
+            'idPlanta': $routeParams.idP,
+            'id': $routeParams.idE
+        };
+        var getDataSuccess = function(d){
+            $scope.workerData = d;
+            console.log(d);
+            $scope.loading = false;
+        };
+        var getDataFail = function(d){
+            console.log(d);
+            $scope.loading = false;
+        };
+        $scope.loading = true;
+        ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('worker'), data, data).success(getDataSuccess).error(getDataFail);
+    }
+
+    if (AuthSrv.initialState() || !AuthSrv.authorized()) {
+        RedirectSrv.redirect('/login');
+    }else{
+        getdata();
+    }
+    $('#info').tab('show');
+    $('#info a').click(function (e) {
+      e.preventDefault()
+      $(this).tab('show')
+    });
+
+}]);
+'use strict';
+
+angular.module('myApp.workforce', []).controller('workforceCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, ApiHttpSrv, ConfigSrv) {
+
+    if (AuthSrv.initialState() || !AuthSrv.authorized()) {
+        RedirectSrv.redirect('/login');
+    };
+    $scope.sortingOrder = 'Ape';
+    $scope.reverse = false;
+    $scope.filteredItems = [];
+    $scope.groupedItems = [];
+    $scope.itemsPerPage = 10;
+    $scope.pagedItems = [];
+    $scope.currentPage = 0;
+    if($rootScope.plant.id){
+        console.log($rootScope.plant);
+        var data = {
+            token : AuthSrv.currentUser().token,
+            idPlanta : $rootScope.plant.id
+        }
+        $scope.loading = true;
+        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('personal'), data, data)
+        .success(function(d){
+            console.log(d);
+            $scope.items = d;
+            $scope.search();
+            $scope.loading = false;
+        }).error(function(d){
+            console.log(d);
+            $scope.loading = false;
+        });
+    }
+
+    var searchMatch = function (haystack, needle) {
+        if (!needle) {
+            return true;
+        }
+        if(haystack){
+            return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+        }
+
+    };
+
+    $scope.open = function(link){
+        $window.open(link, '_blank');
+    }
+
+    $scope.goToWorkerPage = function(id){
+        RedirectSrv.redirect('worker/' + $rootScope.plant.id + '/' + id);
+    }
+
+    // init the filtered items
+    $scope.search = function () {
+        $scope.filteredItems = $filter('filter')($scope.items, function (item) {
+            for(var attr in item) {
+                if (searchMatch(item[attr], $scope.query))
+                    return true;
+            }
+            return false;
+        });
+        // take care of the sorting order
+        if ($scope.sortingOrder !== '') {
+            $scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
+        }
+        $scope.currentPage = 0;
+        // now group by pages
+        $scope.groupToPages();
+    };
+
+    // calculate page in place
+    $scope.groupToPages = function () {
+        $scope.pagedItems = [];
+
+        for (var i = 0; i < $scope.filteredItems.length; i++) {
+            if (i % $scope.itemsPerPage === 0) {
+                $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [ $scope.filteredItems[i] ];
+            } else {
+                $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
+            }
+        }
+    };
+
+    $scope.range = function (start, end) {
+        var ret = [];
+        if (!end) {
+            end = start;
+            start = 0;
+        }
+        for (var i = start; i < end; i++) {
+            ret.push(i);
+        }
+        return ret;
+    };
+
+    $scope.prevPage = function () {
+        if ($scope.currentPage > 0) {
+            $scope.currentPage--;
+        }
+    };
+
+    $scope.nextPage = function () {
+        if ($scope.currentPage < $scope.pagedItems.length - 1) {
+            $scope.currentPage++;
+        }
+    };
+
+    $scope.setPage = function () {
+        $scope.currentPage = this.n;
+    };
+
+    // functions have been describe process the data for display
+    if($rootScope.plant.data){
+        $scope.search();
+    }
+
 
     // change sorting order
     $scope.sort_by = function(newSortingOrder) {

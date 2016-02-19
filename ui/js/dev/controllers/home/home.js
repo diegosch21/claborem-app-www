@@ -21,8 +21,10 @@ angular.module('myApp.home', []).controller('homeCtrl', ['$scope', '$rootScope',
         var getDataFail = function(data){
             console.log(data);
             $scope.loading = false;
+            $scope.disconnect = true;
         };
         $scope.loading = true;
+        $scope.disconnect = false;
         ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('home'), data, data).success(getDataSuccess).error(getDataFail);
     }
 
@@ -31,6 +33,10 @@ angular.module('myApp.home', []).controller('homeCtrl', ['$scope', '$rootScope',
     }
     else {
         getdata();
+    }
+
+    $scope.reintentar = function(){
+        getdata()
     }
 
 

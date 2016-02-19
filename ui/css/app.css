@@ -718,6 +718,13 @@ supports grid feature
   color: #495b79;
 }
 
+/* line 438, ../scss/home/_home.scss */
+.disconnect {
+  padding: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
 /* line 1, ../scss/login/_login.scss */
 .main-backgroud {
   position: absolute;
