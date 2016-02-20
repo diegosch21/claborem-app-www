@@ -36,6 +36,12 @@
             height: 60px;
         }
     }
+    .disconnect {
+        padding: 0 8px 10px;
+        margin-top: -10px;
+        text-align: center;
+        font-size: 14px;
+    }
 }
 
 .login-footer {
@@ -74,7 +80,7 @@
 }
 
 .login-box .input-box {
-    margin-top: 20px;
+    margin: 20px 0 30px;
 }
 
 .login-box .input-box .input-group-addon {
@@ -157,6 +163,7 @@
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 .alert-danger, .alert-error {
+    margin-top: 10px;
     color: #a94442;
     background-color: #f2dede;
     border-color: #ebccd1;

@@ -30,6 +30,7 @@ angular.module('myApp.services').service('AuthSrv', function ($http, $rootScope,
         };
         var loginFail = function(data){
             console.log(data);
+            $rootScope.disconnect = true;
         };
         ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('login'), data, data).success(loginSuccess).error(loginFail);
 

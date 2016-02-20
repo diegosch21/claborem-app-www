@@ -859,8 +859,15 @@ td.estado-doc span, th.estado-doc span {
     height: 60px;
   }
 }
+/* line 39, ../scss/login/_login.scss */
+.login-box .disconnect {
+  padding: 0 8px 10px;
+  margin-top: -10px;
+  text-align: center;
+  font-size: 14px;
+}
 
-/* line 41, ../scss/login/_login.scss */
+/* line 47, ../scss/login/_login.scss */
 .login-footer {
   min-height: 280px;
   width: 260px;
@@ -869,7 +876,7 @@ td.estado-doc span, th.estado-doc span {
   text-align: center;
 }
 
-/* line 49, ../scss/login/_login.scss */
+/* line 55, ../scss/login/_login.scss */
 .login-box h1 {
   color: #2f4051;
   font-size: 25px;
@@ -879,12 +886,12 @@ td.estado-doc span, th.estado-doc span {
   text-align: center;
   padding-top: 20px;
 }
-/* line 57, ../scss/login/_login.scss */
+/* line 63, ../scss/login/_login.scss */
 .login-box h1 img {
   width: 250px;
 }
 
-/* line 62, ../scss/login/_login.scss */
+/* line 68, ../scss/login/_login.scss */
 .login-box h5 {
   text-align: center;
   font-family: 'Raleway';
@@ -893,37 +900,37 @@ td.estado-doc span, th.estado-doc span {
   font-size: 13px;
 }
 
-/* line 70, ../scss/login/_login.scss */
+/* line 76, ../scss/login/_login.scss */
 .login-box hr {
   border-width: 1px;
   border-color: #0b1d30;
   opacity: 0.3;
 }
 
-/* line 76, ../scss/login/_login.scss */
+/* line 82, ../scss/login/_login.scss */
 .login-box .input-box {
-  margin-top: 20px;
+  margin: 20px 0 30px;
 }
 
-/* line 80, ../scss/login/_login.scss */
+/* line 86, ../scss/login/_login.scss */
 .login-box .input-box .input-group-addon {
   background: #2f4051;
   border: 0px;
   color: #FFFFFF;
   border-radius: 0px;
 }
-/* line 85, ../scss/login/_login.scss */
+/* line 91, ../scss/login/_login.scss */
 .login-box .input-box .input-group-addon i {
   width: 30px;
 }
 @media screen and (min-width: 400px) {
-  /* line 85, ../scss/login/_login.scss */
+  /* line 91, ../scss/login/_login.scss */
   .login-box .input-box .input-group-addon i {
     width: 50px;
   }
 }
 
-/* line 93, ../scss/login/_login.scss */
+/* line 99, ../scss/login/_login.scss */
 .login-box .input-box h6 {
   font-family: 'Raleway';
   font-weight: 600;
@@ -931,13 +938,13 @@ td.estado-doc span, th.estado-doc span {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 99, ../scss/login/_login.scss */
+  /* line 105, ../scss/login/_login.scss */
   .col-xs-offset-1 {
     margin-left: 8.33333333%;
   }
 }
 
-/* line 105, ../scss/login/_login.scss */
+/* line 111, ../scss/login/_login.scss */
 .login-box .input-box input {
   background: #4f5c6c;
   border-radius: 0px;
@@ -945,25 +952,25 @@ td.estado-doc span, th.estado-doc span {
   color: #FFFFFF !important;
 }
 
-/* line 112, ../scss/login/_login.scss */
+/* line 118, ../scss/login/_login.scss */
 .login-box .input-box .form-group h6 {
   margin-top: 60px;
   text-align: center;
 }
 
-/* line 117, ../scss/login/_login.scss */
+/* line 123, ../scss/login/_login.scss */
 .input-group {
   position: relative;
   display: table;
   border-collapse: separate;
 }
 
-/* line 122, ../scss/login/_login.scss */
+/* line 128, ../scss/login/_login.scss */
 .form-group {
   margin-bottom: 15px;
 }
 
-/* line 126, ../scss/login/_login.scss */
+/* line 132, ../scss/login/_login.scss */
 .btn-block {
   display: block;
   width: 100%;
@@ -971,7 +978,7 @@ td.estado-doc span, th.estado-doc span {
   padding-left: 0;
 }
 
-/* line 132, ../scss/login/_login.scss */
+/* line 138, ../scss/login/_login.scss */
 .btn-primary-blue {
   color: #fff;
   background-color: #428bca;
@@ -982,7 +989,7 @@ td.estado-doc span, th.estado-doc span {
   line-height: 0px;
 }
 
-/* line 142, ../scss/login/_login.scss */
+/* line 148, ../scss/login/_login.scss */
 .form-control {
   display: block;
   width: 100%;
@@ -1001,14 +1008,15 @@ td.estado-doc span, th.estado-doc span {
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
-/* line 159, ../scss/login/_login.scss */
+/* line 165, ../scss/login/_login.scss */
 .alert-danger, .alert-error {
+  margin-top: 10px;
   color: #a94442;
   background-color: #f2dede;
   border-color: #ebccd1;
 }
 
-/* line 164, ../scss/login/_login.scss */
+/* line 171, ../scss/login/_login.scss */
 .alert {
   border-radius: 0;
 }

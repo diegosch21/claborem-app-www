@@ -6,6 +6,7 @@ angular.module('myApp.login', []).controller('loginCtrl', ['$scope', 'ApiHttpSrv
        $location.path("/home");
     }
     $rootScope.loginfail = false;
+    $rootScope.disconnect = false;
 
     $scope.login = function (user) {
         var data = {
@@ -13,7 +14,6 @@ angular.module('myApp.login', []).controller('loginCtrl', ['$scope', 'ApiHttpSrv
             "pass": $scope.user.password
         };
         AuthSrv.login(data);
-
 
     }
 
