@@ -393,21 +393,6 @@ angular.module('myApp.contracts', []).controller('contractsCtrl', ['$scope', '$r
     }
 
 
-    // $rootScope.$watch('plant', function () {
-    //     if($rootScope.plant.id){
-    //         var data = {
-    //             token : AuthSrv.currentUser().token,
-    //             idPlanta : $rootScope.plant.id
-    //         }
-    //         ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('contratos'), data, data).success(function(d){
-    //             console.log(d);
-    //             $scope.items = d;
-    //             $scope.search();
-    //         })
-
-    //     };
-    // }, true);
-
     var searchMatch = function (haystack, needle) {
         if (!needle) {
             return true;
@@ -571,22 +556,6 @@ angular.module('myApp.contratistas', []).controller('contratistasCtrl', ['$scope
             $scope.loading = false;
         });
     }
-
-
-    // $rootScope.$watch('plant', function () {
-    //     if($rootScope.plant.id){
-    //         var data = {
-    //             token : AuthSrv.currentUser().token,
-    //             idPlanta : $rootScope.plant.id
-    //         }
-    //         ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('contratistas'), data, data).success(function(d){
-    //             console.log(d);
-    //             $scope.items = d;
-    //             $scope.search();
-    //         })
-
-    //     };
-    // }, true);
 
     var searchMatch = function (haystack, needle) {
         if (!needle) {
@@ -815,22 +784,6 @@ angular.module('myApp.maquinarias', []).controller('maquinariasCtrl', ['$scope',
         });
     }
 
-
-    // $rootScope.$watch('plant', function () {
-    //     if($rootScope.plant.id){
-    //         var data = {
-    //             token : AuthSrv.currentUser().token,
-    //             idPlanta : $rootScope.plant.id
-    //         }
-    //         ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('maquinarias'), data, data).success(function(d){
-    //             console.log(d);
-    //             $scope.items = d;
-    //             $scope.search();
-    //         })
-
-    //     };
-    // }, true);
-
     var searchMatch = function (haystack, needle) {
         if (!needle) {
             return true;
@@ -994,22 +947,6 @@ angular.module('myApp.vehiculos', []).controller('vehiculosCtrl', ['$scope', '$r
             $scope.loading = false;
         });
     }
-
-
-    // $rootScope.$watch('plant', function () {
-    //     if($rootScope.plant.id){
-    //         var data = {
-    //             token : AuthSrv.currentUser().token,
-    //             idPlanta : $rootScope.plant.id
-    //         }
-    //         ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('vehiculos'), data, data).success(function(d){
-    //             console.log(d);
-    //             $scope.items = d;
-    //             $scope.search();
-    //         })
-
-    //     };
-    // }, true);
 
     var searchMatch = function (haystack, needle) {
         if (!needle) {

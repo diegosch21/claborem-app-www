@@ -27,12 +27,12 @@
 
         <div class="tab-content">
             <div id="documentos" class="tab-pane fade in active">
-                <div ng-show="!workerData[0].Documentos" class="mainpage-compon large-font" ng-cloak>
+                <div ng-show="!workerData[0].Documentos" class="mainpage-compon large-font info" ng-cloak>
                     <div class="mainpage-compon-title">
                         <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
                     </div>
                 </div>
-                <div ng-show="workerData[0].Documentos" class="mainpage-compon large-font">
+                <div ng-show="workerData[0].Documentos" class="mainpage-compon large-font info">
                     <!-- <div class="mainpage-compon-title">
                         <i class="fa fa-indent"></i><span class="compon-title">Documentos</span>
                     </div> -->
@@ -41,15 +41,17 @@
                             <thead>
                                 <tr>
                                     <th>Documento</th>
-                                    <th>Estado</th>
+                                    <th class="estado-doc">Estado</th>
                                     <th>Vencimento</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="item in workerData[0].Documentos">
                                     <td>{{item.Nombre}}</td>
-                                    <td>
-                                        <span style="margin-right: 15px;" class="label label-as-badge accessicon" ng-class="{'label-danger':item.Cumple=='No','label-success':item.Cumple=='Si'}"><i ng-class="{'fa fa-times':item.Cumple=='No','fa fa-check':item.Cumple=='Si'}"></i></span>
+                                    <td class="estado-doc">
+                                        <span class="label label-as-badge accessicon" ng-class="{'label-danger':item.Cumple=='No','label-success':item.Cumple=='Si'}">
+                                            <i ng-class="{'fa fa-times':item.Cumple=='No','fa fa-check':item.Cumple=='Si'}"></i>
+                                        </span>
                                     </td>
                                     <td>{{item.Vencimiento}}</td>
                                 </tr>
@@ -59,12 +61,12 @@
                 </div>
             </div>
             <div id="general" class="tab-pane fade">
-                <div ng-show="!workerData[0].General" class="mainpage-compon large-font" ng-cloak>
+                <div ng-show="!workerData[0].General" class="mainpage-compon large-font info" ng-cloak>
                     <div class="mainpage-compon-title">
                         <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
                     </div>
                 </div>
-                <div ng-show="workerData[0].General" class="mainpage-compon large-font">
+                <div ng-show="workerData[0].General" class="mainpage-compon large-font info">
                     <div class="mainpage-compon-title">
                         <i class="fa fa-info"></i><span class="compon-title">Información General</span>
                     </div>
@@ -111,12 +113,12 @@
                 </div>
             </div>
             <div id="laboral" class="tab-pane fade">
-                <div ng-show="!workerData[0].Laboral" class="mainpage-compon large-font" ng-cloak>
+                <div ng-show="!workerData[0].Laboral" class="mainpage-compon large-font info" ng-cloak>
                     <div class="mainpage-compon-title">
                         <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
                     </div>
                 </div>
-                <div ng-show="workerData[0].Laboral" class="mainpage-compon large-font" >
+                <div ng-show="workerData[0].Laboral" class="mainpage-compon large-font info" >
                     <div class="mainpage-compon-title">
                         <i class="fa fa-info"></i><span class="compon-title">Info. Laboral</span>
                     </div>

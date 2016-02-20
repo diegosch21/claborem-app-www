@@ -21,9 +21,7 @@
                 <span class="input-group-btn">
                     <span class="add-on"><i class="icon-search"></i></span>
                 </span>
-
             </a>
-
         <!--<span class="add-on"><i class="icon-search"></i></span>-->
         </div>
 
@@ -31,6 +29,10 @@
             <i class="fa fa-circle-o-notch fa-spin"></i>
         </div>
 
+        <div class="pre-listado" ng-show='pagedItems.length'>
+            <div class="col-izq">Contrato</div>
+            <div class="col-der">Período</div>
+        </div>
         <div ng-click='goToContractPage(item.id)' ng-repeat="item in pagedItems[currentPage]" class="tile-contract" >
 
             <div class="tile-contract-num" >
@@ -56,7 +58,7 @@
         <div class="pagination pull-right" ng-show='pagedItems.length'>
             <ul>
                 <li ng-class="{disabled: currentPage == 0}">
-                    <a href ng-click="prevPage()">« Prev</a>
+                    <a href ng-click="prevPage()">« </a>
                 </li>
                 <li ng-repeat="n in range(pagedItems.length)"
                     ng-class="{active: n == currentPage}"
@@ -64,7 +66,7 @@
                     <a href ng-bind="n + 1">1</a>
                 </li>
                 <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
-                    <a href ng-click="nextPage()">Next »</a>
+                    <a href ng-click="nextPage()"> »</a>
                 </li>
             </ul>
         </div>

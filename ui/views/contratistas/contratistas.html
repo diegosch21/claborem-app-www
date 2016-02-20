@@ -28,17 +28,23 @@
             <i class="fa fa-circle-o-notch fa-spin"></i>
         </div>
 
-        <div ng-click='goToContratistaPage(item.id)' ng-repeat="item in pagedItems[currentPage]" class="tile-contract" >
+        <div class="pre-listado contratista" ng-show='pagedItems.length'>
+            <div class="col-izq">Contratistas</div>
+            <div class="col-der">Contacto</div>
+        </div>
+        <div ng-click='goToContratistaPage(item.id)' ng-repeat="item in pagedItems[currentPage]" class="tile-contract contratistas" >
 
             <div class="tile-contract-num" >
-                CUIT: {{item.Cuit}}
                 <div class="tile-contract-fiscal">
-                Razón Social:    {{item.RazonSocial}}
+                    <strong>{{item.RazonSocial}}</strong>
+                </div>
+                <div class="tile-contract-fiscal">
+                    CUIT: {{item.Cuit}}
                 </div>
             </div>
             <div class="tile-contract-fechas">
                 <div class="tile-contract-fecha">
-                    <span>Teléfono: {{item.Telefono}}</span>
+                    <span>Tel: {{item.Telefono}}</span>
                 </div>
             </div>
 
@@ -47,7 +53,7 @@
         <div class="pagination pull-right" ng-show='pagedItems.length'>
             <ul>
                 <li ng-class="{disabled: currentPage == 0}">
-                    <a href ng-click="prevPage()">« Prev</a>
+                    <a href ng-click="prevPage()">« </a>
                 </li>
                 <li ng-repeat="n in range(pagedItems.length)"
                     ng-class="{active: n == currentPage}"
@@ -55,7 +61,7 @@
                     <a href ng-bind="n + 1">1</a>
                 </li>
                 <li ng-class="{disabled: currentPage == pagedItems.length - 1}">
-                    <a href ng-click="nextPage()">Next »</a>
+                    <a href ng-click="nextPage()"> »</a>
                 </li>
             </ul>
         </div>
