@@ -10,11 +10,11 @@ angular.module('myApp.vehiculo', []).controller('vehiculoCtrl', ['$scope', '$roo
         };
         var getDataSuccess = function(d){
             $scope.vehiculoData = d;
-            console.log(d);
+            // console.log(d);
             $scope.loading = false;
         };
         var getDataFail = function(d){
-            console.log(d);
+            // console.log(d);
             $scope.loading = false;
         };
         $scope.loading = true;

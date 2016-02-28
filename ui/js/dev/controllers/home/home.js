@@ -7,7 +7,7 @@ angular.module('myApp.home', []).controller('homeCtrl', ['$scope', '$rootScope',
             'token': AuthSrv.currentUser().token
         };
         var getDataSuccess = function(data){
-            console.log(data[0]);
+            // console.log(data[0]);
             $rootScope.data = data[0];
             $rootScope.plantas = $rootScope.data.plantas;
 
@@ -17,9 +17,10 @@ angular.module('myApp.home', []).controller('homeCtrl', ['$scope', '$rootScope',
 
             $rootScope.plant = $rootScope.data.plantas[$rootScope.currentId];
             $scope.loading = false;
+            $rootScope.updateHome = false; // flag de actualizar en false: no se volverá a pedir la data hasta no setearlo en true
         };
         var getDataFail = function(data){
-            console.log(data);
+            // console.log(data);
             $scope.loading = false;
             $scope.disconnect = true;
         };
@@ -27,16 +28,17 @@ angular.module('myApp.home', []).controller('homeCtrl', ['$scope', '$rootScope',
         $scope.disconnect = false;
         ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('home'), data, data).success(getDataSuccess).error(getDataFail);
     }
-
     if (AuthSrv.initialState() || !AuthSrv.authorized()) {
         $location.path('/login');
     }
-    else {
+
+    // si ya estaba seteada la planta no la actualizo (salvo que esté seteado el flag de actualizar)
+    if (!$rootScope.plant || $rootScope.updateHome) {
         getdata();
     }
 
     $scope.reintentar = function(){
-        getdata()
+        getdata();
     }
 
 

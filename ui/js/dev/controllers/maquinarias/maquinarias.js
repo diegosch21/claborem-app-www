@@ -13,7 +13,7 @@ angular.module('myApp.maquinarias', []).controller('maquinariasCtrl', ['$scope',
     $scope.pagedItems = [];
     $scope.currentPage = 0;
     if($rootScope.plant.id){
-        console.log($rootScope.plant);
+        // console.log($rootScope.plant);
         var data = {
             token : AuthSrv.currentUser().token,
             idPlanta : $rootScope.plant.id
@@ -21,12 +21,12 @@ angular.module('myApp.maquinarias', []).controller('maquinariasCtrl', ['$scope',
         $scope.loading = true;
         ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('maquinarias'), data, data)
         .success(function(d){
-            console.log(d);
+            // console.log(d);
             $scope.items = d;
             $scope.search();
             $scope.loading = false;
         }).error(function(d){
-            console.log(d);
+            // console.log(d);
             $scope.loading = false;
         });
     }

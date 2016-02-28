@@ -10,11 +10,11 @@ angular.module('myApp.worker', []).controller('workerCtrl', ['$scope', '$rootSco
         };
         var getDataSuccess = function(d){
             $scope.workerData = d;
-            console.log(d);
+            // console.log(d);
             $scope.loading = false;
         };
         var getDataFail = function(d){
-            console.log(d);
+            // console.log(d);
             $scope.loading = false;
         };
         $scope.loading = true;

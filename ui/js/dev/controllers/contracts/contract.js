@@ -9,11 +9,11 @@ angular.module('myApp.contract', []).controller('contractCtrl', ['$scope', '$roo
         };
         var getDataSuccess = function(d){
             $scope.contractData = d;
-            console.log(d);
+            // console.log(d);
             $scope.loading = false;
         };
         var getDataFail = function(d){
-            console.log(d);
+            // console.log(d);
             $scope.loading = false;
         };
         $scope.loading = true;

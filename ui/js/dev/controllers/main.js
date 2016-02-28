@@ -1,6 +1,9 @@
 'use strict';
 
-angular.module('myApp.main', []).controller('mainCtrl', ['$scope', '$rootScope', 'ApiHttpSrv', 'ConfigSrv', '$location', 'AuthSrv', 'RedirectSrv',function($scope, $rootScope, ApiHttpSrv, ConfigSrv, $location, AuthSrv, RedirectSrv) {
+angular.module('myApp.main', [])
+    .controller('mainCtrl',
+        ['$scope', '$rootScope', '$window', 'ApiHttpSrv', 'ConfigSrv', '$location', 'AuthSrv', 'RedirectSrv',
+        function($scope, $rootScope, $window, ApiHttpSrv, ConfigSrv, $location, AuthSrv, RedirectSrv) {
 
 
     $rootScope.plant = {};
@@ -9,6 +12,7 @@ angular.module('myApp.main', []).controller('mainCtrl', ['$scope', '$rootScope',
     if (AuthSrv.initialState() || !AuthSrv.authorized()) {
         $location.path("/login");
     }else{
+        $rootScope.updateHome = true; // inicialmente debo actualizar la home
         RedirectSrv.redirect('/');
     }
 
@@ -40,6 +44,7 @@ angular.module('myApp.main', []).controller('mainCtrl', ['$scope', '$rootScope',
 
 
     $scope.goToHome = function(){
+        $rootScope.updateHome = true;  // si aprieto inicio actualiza la home
         RedirectSrv.redirect('/');
     }
 
@@ -52,5 +57,8 @@ angular.module('myApp.main', []).controller('mainCtrl', ['$scope', '$rootScope',
         RedirectSrv.redirect('/workforce');
     }
 
+    $rootScope.goBack = function(){
+        $window.history.back();
+    }
 
 }]);

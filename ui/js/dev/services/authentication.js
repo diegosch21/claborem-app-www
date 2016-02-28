@@ -20,6 +20,7 @@ angular.module('myApp.services').service('AuthSrv', function ($http, $rootScope,
                 localStorage.setItem("type", currentUser.type);
                 localStorage.setItem("token", currentUser.token);
                 initialState = false;
+                $rootScope.updateHome = true; // inicialmente debo obtener data de la home
                 RedirectSrv.redirect('/');
 
             }else{

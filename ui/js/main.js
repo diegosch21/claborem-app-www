@@ -130,4 +130,21 @@ myApp.run(function ($rootScope, $location, $http, $timeout, AuthSrv, RedirectSrv
         }
     }, true);
 
+    // Detectar boton back
+    // Bind the `$locationChangeSuccess` event on the rootScope,
+    //  so that we dont need to bind in individual controllers.
+
+    // $rootScope.$on('$locationChangeSuccess', function() {
+    //     $rootScope.actualLocation = $location.path();
+    // });
+
+    // $rootScope.$watch(function () {return $location.path()}, function (newLocation, oldLocation) {
+    //     if($rootScope.actualLocation === newLocation) {
+    //         $rootScope.isBack = true;
+    //     }
+    //     else {
+    //         $rootScope.isBack = false;
+    //     }
+    // });
+
 });
