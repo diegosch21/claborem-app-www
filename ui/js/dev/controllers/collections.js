@@ -101,10 +101,6 @@ angular.module('myApp.collections', [])
             groupToPages();
         }
 
-        $scope.open = function(link){
-            $window.open(link, '_blank');
-        }
-
         $scope.range = function (start, end) {
             var ret = [];
             if (!end) {

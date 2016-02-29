@@ -5,8 +5,8 @@
 
 angular.module('myApp.entity', [])
 .controller('entityCtrl',
-    ['$scope', '$rootScope','$routeParams', 'context', '$window', '$filter', 'AuthSrv', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',
-    function($scope, $rootScope, $routeParams, context, $window, $filter, AuthSrv, RedirectSrv, ApiHttpSrv, ConfigSrv) {
+    ['$scope', '$rootScope','$routeParams', 'context', '$window', 'AuthSrv', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',
+    function($scope, $rootScope, $routeParams, context, $window, AuthSrv, RedirectSrv, ApiHttpSrv, ConfigSrv) {
 
     var url_get = ConfigSrv.getApiUrl(context.type); // en context.type se setea el tipo de entidad (contratos, vehiculos, etc)
 

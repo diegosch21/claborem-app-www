@@ -265,10 +265,6 @@ angular.module('myApp.main', [])
         ['$scope', '$rootScope', '$window', 'ApiHttpSrv', 'ConfigSrv', '$location', 'AuthSrv', 'RedirectSrv',
         function($scope, $rootScope, $window, ApiHttpSrv, ConfigSrv, $location, AuthSrv, RedirectSrv) {
 
-
-    $rootScope.plant = {};
-
-
     if (AuthSrv.initialState() || !AuthSrv.authorized()) {
         $location.path("/login");
     }else{
@@ -331,6 +327,9 @@ angular.module('myApp.main', [])
         RedirectSrv.redirect('/vehiculo/' + $rootScope.plant.id + '/' + id);
     }
 
+    $scope.goToReportes = function(){
+        RedirectSrv.redirect('/reportes');
+    }
 
     $rootScope.goBack = function(){
         $window.history.back();
@@ -339,6 +338,10 @@ angular.module('myApp.main', [])
     $rootScope.goToHome = function(){
         // $rootScope.updateHome = true;  // si aprieto inicio actualiza la home
         RedirectSrv.redirect('/');
+    }
+
+    $rootScope.open = function(link){
+        $window.open(link, '_blank');
     }
 
     $scope.collapse = function(id){
@@ -450,10 +453,6 @@ angular.module('myApp.collections', [])
             groupToPages();
         }
 
-        $scope.open = function(link){
-            $window.open(link, '_blank');
-        }
-
         $scope.range = function (start, end) {
             var ret = [];
             if (!end) {
@@ -498,8 +497,8 @@ angular.module('myApp.collections', [])
 
 angular.module('myApp.entity', [])
 .controller('entityCtrl',
-    ['$scope', '$rootScope','$routeParams', 'context', '$window', '$filter', 'AuthSrv', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',
-    function($scope, $rootScope, $routeParams, context, $window, $filter, AuthSrv, RedirectSrv, ApiHttpSrv, ConfigSrv) {
+    ['$scope', '$rootScope','$routeParams', 'context', '$window', 'AuthSrv', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',
+    function($scope, $rootScope, $routeParams, context, $window, AuthSrv, RedirectSrv, ApiHttpSrv, ConfigSrv) {
 
     var url_get = ConfigSrv.getApiUrl(context.type); // en context.type se setea el tipo de entidad (contratos, vehiculos, etc)
 
@@ -571,7 +570,6 @@ angular.module('myApp.home', [])
         if (!$rootScope.plant || $rootScope.updateHome) {
             getdata();
         }
-
         $scope.update = function(){
             getdata();
         }
@@ -594,6 +592,52 @@ angular.module('myApp.login', []).controller('loginCtrl', ['$scope', 'ApiHttpSrv
         };
         AuthSrv.login(data);
 
+    }
+
+}]);
+'use strict';
+
+angular.module('myApp.reportes', [])
+.controller('reportesCtrl',
+    ['$scope', '$rootScope', '$window', 'AuthSrv', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',
+    function($scope, $rootScope, $window, AuthSrv, RedirectSrv, ApiHttpSrv, ConfigSrv) {
+
+    var url_get = ConfigSrv.getApiUrl('reportes');
+
+    var getData = function () {
+        var data = {
+            'token': AuthSrv.currentUser().token,
+            'idPlanta': $rootScope.plant.id,
+        };
+        var getDataSuccess = function(d){
+            $scope.reportesData = {};
+            angular.forEach(d,function(reporte) {
+                if (!$scope.reportesData[reporte.Grupo]) {
+                    $scope.reportesData[reporte.Grupo] = []
+                };
+                $scope.reportesData[reporte.Grupo].push({
+                    'Nombre' : reporte.Nombre,
+                    'Link' : reporte.Link
+                });
+            });
+            $scope.loading = false;
+        };
+        var getDataFail = function(d){
+            // console.log(d);
+            $scope.loading = false;
+        };
+        $scope.loading = true;
+        ApiHttpSrv.createApiHttp('post', url_get, data, data).success(getDataSuccess).error(getDataFail);
+    }
+
+    if (AuthSrv.initialState() || !AuthSrv.authorized()) {
+        RedirectSrv.redirect('/login');
+    }else{
+        getData();
+    }
+
+    $scope.openPDF = function(link){
+        $window.open(link, '_system');
     }
 
 }]);

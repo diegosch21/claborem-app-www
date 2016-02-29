@@ -5,10 +5,6 @@ angular.module('myApp.main', [])
         ['$scope', '$rootScope', '$window', 'ApiHttpSrv', 'ConfigSrv', '$location', 'AuthSrv', 'RedirectSrv',
         function($scope, $rootScope, $window, ApiHttpSrv, ConfigSrv, $location, AuthSrv, RedirectSrv) {
 
-
-    $rootScope.plant = {};
-
-
     if (AuthSrv.initialState() || !AuthSrv.authorized()) {
         $location.path("/login");
     }else{
@@ -71,6 +67,9 @@ angular.module('myApp.main', [])
         RedirectSrv.redirect('/vehiculo/' + $rootScope.plant.id + '/' + id);
     }
 
+    $scope.goToReportes = function(){
+        RedirectSrv.redirect('/reportes');
+    }
 
     $rootScope.goBack = function(){
         $window.history.back();
@@ -79,6 +78,10 @@ angular.module('myApp.main', [])
     $rootScope.goToHome = function(){
         // $rootScope.updateHome = true;  // si aprieto inicio actualiza la home
         RedirectSrv.redirect('/');
+    }
+
+    $rootScope.open = function(link){
+        $window.open(link, '_blank');
     }
 
     $scope.collapse = function(id){

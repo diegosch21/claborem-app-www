@@ -40,7 +40,6 @@ angular.module('myApp.home', [])
         if (!$rootScope.plant || $rootScope.updateHome) {
             getdata();
         }
-
         $scope.update = function(){
             getdata();
         }

@@ -23,7 +23,8 @@
                 "vehiculos": "http://www.c-laborem.com.ar/certronic/appMovil/contratista/tablaVehiculos.php",
                 "vehiculo": "http://www.c-laborem.com.ar/certronic/appMovil/contratista/datosVehiculo.php",
                 "maquinarias": "http://www.c-laborem.com.ar/certronic/appMovil/contratista/tablaMaquinarias.php",
-                "maquinaria": "http://www.c-laborem.com.ar/certronic/appMovil/contratista/datosMaquinaria.php"
+                "maquinaria": "http://www.c-laborem.com.ar/certronic/appMovil/contratista/datosMaquinaria.php",
+                "reportes": "http://www.c-laborem.com.ar/certronic/appMovil/contratista/reportes.php"
             }
         }
     }

@@ -1,0 +1,37 @@
+<div class="container nopad">
+
+    <div ng-include src="'views/partials/navbar-top.html'"></div>
+    <div ng-include src="'views/partials/page-header.html'"></div>
+
+    <div fade-in ng-controller="reportesCtrl">
+
+        <div class="section-header">
+            <span class="back" ng-click='goBack()'>
+                <i class="fa fa-chevron-left"></i></span>
+            </span>
+            <span class="title">
+                <i class="fa fa-bar-chart-o"></i>
+                Reportes
+            </span>
+        </div>
+
+        <div ng-show='loading' class="spinner">
+            <i class="fa fa-circle-o-notch fa-spin"></i>
+        </div>
+        <div ng-show="!loading">
+            <div class="panel panel-reportes" ng-repeat="(grupo,reportes) in reportesData">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{grupo}}</h3>
+                </div>
+                <div class="panel-body list-group">
+                    <a ng-click="openPDF(reporte.Link)" class="list-group-item" ng-repeat="reporte in reportes">
+                        <i class="fa fa-file-pdf-o"></i> {{reporte.Nombre}}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer"></div>
+</div>

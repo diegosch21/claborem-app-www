@@ -41,18 +41,18 @@
                 <span class="fa fa-truck main-menu-icons"></span>
                 <a>Vehículos</a>
             </li>
-            <li ng-click='goToMaquinarias(); collapse("top-nav");' ng-show="plant.Menu[0].maquinarias == true">
+            <li ng-click='goToMaquinarias(); collapse("top-nav");' ng-show="plant.Menu[0].maquinarias">
                 <span class="fa fa-cogs main-menu-icons"></span>
                 <a>Maquinarias</a>
+            </li>
+            <li ng-click='goToReportes(); collapse("top-nav");' ng-show="plant">
+                <span class="fa fa-bar-chart-o main-menu-icons"></span>
+                <a>Reportes</a>
             </li>
             <!--
             <li ng-show="plant.Menu[0].fiscales">
                 <span class="fa fa-legal main-menu-icons"></span>
                 <a>Fiscales</a>
-            </li>
-            <li ng-show="plant.Menu[0].reportes">
-                <span class="fa fa-bar-chart-o main-menu-icons"></span>
-                <a>Reportes</a>
             </li>
             <li ng-show="plant.Menu[0].mensajes">
                 <span class="fa fa-envelope main-menu-icons"></span>

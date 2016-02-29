@@ -8,6 +8,7 @@ var myApp = angular.module('myApp',
         'myApp.home',
         'myApp.collections',
         'myApp.entity',
+        'myApp.reportes',
         'myApp.main',
         'myApp.login',
         'myApp.services',
@@ -142,6 +143,10 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
                 type: 'maquinaria'
             }; }
         }
+    });
+
+    $routeProvider.when('/reportes', {
+        templateUrl:'views/reportes/reportes.html', // controller indicado via ng-controller
     });
 
     // by default, redirect to site root

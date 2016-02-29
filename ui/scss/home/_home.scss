@@ -1,3 +1,6 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
 // Override boostrap for large screens
 @media (min-width: 768px) {
     .navbar-header {
@@ -570,4 +573,32 @@ td.estado-doc, th.estado-doc {
     text-align: center;
     padding-bottom: 10px;
     font-weight: 700;
+}
+
+.panel-reportes {
+    margin: 20px 15px;
+    border-color: $link-color;
+    >.panel-heading {
+        color: white;
+        background-color: $link-color;
+        border-color: $link-color;
+    }
+    >.panel-body {
+        padding: 0;
+    }
+    .list-group-item  {
+        width: 100%;
+        line-height: 1.5;
+        padding: 10px;
+        padding-left: 36px;
+        margin-left: 0;
+        height: auto;
+        .fa {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            margin-top: -8px;
+            font-size: 16px;
+        }
+    }
 }
