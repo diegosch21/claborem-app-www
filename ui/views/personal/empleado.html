@@ -14,7 +14,7 @@
             </span>
             <span class="title">
                 <i class="fa fa-group"></i>
-                <span class="entidad">{{workerData[0].General[0].Apellido}} {{workerData[0].General[0].Nombre}}</span>
+                <span class="entidad">{{entityData[0].General[0].Apellido}} {{entityData[0].General[0].Nombre}}</span>
             </span>
         </div>
 
@@ -27,12 +27,12 @@
 
         <div class="tab-content">
             <div id="documentos" class="tab-pane fade in active">
-                <div ng-show="!workerData[0].Documentos" class="mainpage-compon large-font info" ng-cloak>
+                <div ng-show="!entityData[0].Documentos" class="mainpage-compon large-font info" ng-cloak>
                     <div class="mainpage-compon-title">
                         <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
                     </div>
                 </div>
-                <div ng-show="workerData[0].Documentos" class="mainpage-compon large-font info">
+                <div ng-show="entityData[0].Documentos" class="mainpage-compon large-font info">
                     <!-- <div class="mainpage-compon-title">
                         <i class="fa fa-indent"></i><span class="compon-title">Documentos</span>
                     </div> -->
@@ -46,11 +46,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="item in workerData[0].Documentos">
+                                <tr ng-repeat="item in entityData[0].Documentos">
                                     <td>{{item.Nombre}}</td>
                                     <td class="estado-doc">
-                                        <span class="label label-as-badge accessicon" ng-class="{'label-danger':item.Cumple=='No','label-success':item.Cumple=='Si'}">
-                                            <i ng-class="{'fa fa-times':item.Cumple=='No','fa fa-check':item.Cumple=='Si'}"></i>
+                                        <span class="label label-as-badge accessicon"
+                                            ng-class="{'label-danger':item.Cumple=='No','label-success':item.Cumple=='Si', 'label-warning': item.Cumple=='Si*'}">
+                                            <i ng-class="{'fa fa-times':item.Cumple=='No','fa fa-check':item.Cumple=='Si', 'fa fa-exclamation-triangle':item.Cumple=='Si*'}"></i>
                                         </span>
                                     </td>
                                     <td>{{item.Vencimiento}}</td>
@@ -61,92 +62,92 @@
                 </div>
             </div>
             <div id="general" class="tab-pane fade">
-                <div ng-show="!workerData[0].General" class="mainpage-compon large-font info" ng-cloak>
+                <div ng-show="!entityData[0].General" class="mainpage-compon large-font info" ng-cloak>
                     <div class="mainpage-compon-title">
                         <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
                     </div>
                 </div>
-                <div ng-show="workerData[0].General" class="mainpage-compon large-font info">
+                <div ng-show="entityData[0].General" class="mainpage-compon large-font info">
                     <div class="mainpage-compon-title">
                         <i class="fa fa-info"></i><span class="compon-title">Información General</span>
                     </div>
                     <div class="mainpage-compon-container">
                         <ul class="list-group">
                             <li class="list-group-item auto-height">
-                                <span>Apellido: <span class="bold-primaty-color">{{workerData[0].General[0].Apellido}}</span></span>
+                                <span>Apellido: <span class="bold-primaty-color">{{entityData[0].General[0].Apellido}}</span></span>
                             </li>
                             <li class="list-group-item auto-height">
-                                <span>Nombre: <span class="bold-primaty-color">{{workerData[0].General[0].Nombre}}</span></span>
+                                <span>Nombre: <span class="bold-primaty-color">{{entityData[0].General[0].Nombre}}</span></span>
                             </li>
                             <li class="list-group-item  auto-height">
-                                <span>CUIL: <span class="bold-primaty-color">{{workerData[0].General[0].CUIL}}</span></span>
+                                <span>CUIL: <span class="bold-primaty-color">{{entityData[0].General[0].CUIL}}</span></span>
                             </li>
                             <li class="list-group-item auto-height">
-                                <span><!-- Documento:  --><span class="bold-primaty-color">{{workerData[0].General[0].Documento}}</span></span>
+                                <span><!-- Documento:  --><span class="bold-primaty-color">{{entityData[0].General[0].Documento}}</span></span>
                             </li>
                             <li class="list-group-item auto-height">
-                                <span>Fecha de Nacimiento: <span class="bold-primaty-color">{{workerData[0].General[0].FechaNacimiento}}</span></span>
+                                <span>Fecha de Nacimiento: <span class="bold-primaty-color">{{entityData[0].General[0].FechaNacimiento}}</span></span>
                             </li>
                             <li class="list-group-item auto-height">
-                                <span>Sexo: <span class="bold-primaty-color">{{workerData[0].General[0].Sexo}}</span></span>
+                                <span>Sexo: <span class="bold-primaty-color">{{entityData[0].General[0].Sexo}}</span></span>
                             </li>
                             <li class="list-group-item auto-height">
-                                <span>Estado Civil: <span class="bold-primaty-color">{{workerData[0].General[0].EstadoCivil}}</span></span>
+                                <span>Estado Civil: <span class="bold-primaty-color">{{entityData[0].General[0].EstadoCivil}}</span></span>
                             </li>
                             <li class="list-group-item auto-height">
-                                <span>Nacionalidad: <span class="bold-primaty-color">{{workerData[0].General[0].Nacionalidad}}</span></span>
+                                <span>Nacionalidad: <span class="bold-primaty-color">{{entityData[0].General[0].Nacionalidad}}</span></span>
                             </li>
                             <li class="list-group-item auto-height">
-                                <span>Dirección: <span class="bold-primaty-color">{{workerData[0].General[0].Direccion}}</span></span>
+                                <span>Dirección: <span class="bold-primaty-color">{{entityData[0].General[0].Direccion}}</span></span>
                             </li>
                             <li class="list-group-item auto-height">
-                                <span>País: <span class="bold-primaty-color">{{workerData[0].General[0].Pais}}</span></span>
+                                <span>País: <span class="bold-primaty-color">{{entityData[0].General[0].Pais}}</span></span>
                             </li>
                             <li class="list-group-item auto-height">
-                                <span>Provincia: <span class="bold-primaty-color">{{workerData[0].General[0].Provincia}}</span></span>
+                                <span>Provincia: <span class="bold-primaty-color">{{entityData[0].General[0].Provincia}}</span></span>
                             </li>
                             <li class="list-group-item auto-height">
-                                <span>Ciudad: <span class="bold-primaty-color">{{workerData[0].General[0].Ciudad}}</span></span>
+                                <span>Ciudad: <span class="bold-primaty-color">{{entityData[0].General[0].Ciudad}}</span></span>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div id="laboral" class="tab-pane fade">
-                <div ng-show="!workerData[0].Laboral" class="mainpage-compon large-font info" ng-cloak>
+                <div ng-show="!entityData[0].Laboral" class="mainpage-compon large-font info" ng-cloak>
                     <div class="mainpage-compon-title">
                         <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
                     </div>
                 </div>
-                <div ng-show="workerData[0].Laboral" class="mainpage-compon large-font info" >
+                <div ng-show="entityData[0].Laboral" class="mainpage-compon large-font info" >
                     <div class="mainpage-compon-title">
                         <i class="fa fa-info"></i><span class="compon-title">Info. Laboral</span>
                     </div>
                     <div class="mainpage-compon-container">
                         <ul class="list-group">
                             <li class="list-group-item auto-height">
-                                <span>Fecha de Ingreso: <span class="bold-primaty-color">{{workerData[0].Laboral[0].FechaIngreso}}</span></span>
+                                <span>Fecha de Ingreso: <span class="bold-primaty-color">{{entityData[0].Laboral[0].FechaIngreso}}</span></span>
                             </li>
                             <li class="list-group-item auto-height">
-                                <span>Modalidad: <span class="bold-primaty-color">{{workerData[0].Laboral[0].Modalidad}}</span></span>
+                                <span>Modalidad: <span class="bold-primaty-color">{{entityData[0].Laboral[0].Modalidad}}</span></span>
                             </li>
                             <li class="list-group-item auto-height">
-                                <span>Obra Social: <span class="bold-primaty-color">{{workerData[0].Laboral[0].ObraSocial}}</span></span>
+                                <span>Obra Social: <span class="bold-primaty-color">{{entityData[0].Laboral[0].ObraSocial}}</span></span>
                             </li>
                             <li class="list-group-item auto-height">
-                                <span>Tipo: <span class="bold-primaty-color">{{workerData[0].Laboral[0].Tipo}}</span></span>
+                                <span>Tipo: <span class="bold-primaty-color">{{entityData[0].Laboral[0].Tipo}}</span></span>
                             </li>
                             <li class="list-group-item auto-height">
-                                <span>Categoría: <span class="bold-primaty-color">{{workerData[0].Laboral[0].Categoria}}</span></span>
+                                <span>Categoría: <span class="bold-primaty-color">{{entityData[0].Laboral[0].Categoria}}</span></span>
                             </li>
                             <li class="list-group-item auto-height">
-                                <span>Función: <span class="bold-primaty-color">{{workerData[0].Laboral[0].Funcion}}</span></span>
+                                <span>Función: <span class="bold-primaty-color">{{entityData[0].Laboral[0].Funcion}}</span></span>
                             </li>
                             <li class="list-group-item auto-height">
-                                <span>Afiliado Sindicato: <span class="bold-primaty-color">{{workerData[0].Laboral[0].Afiliado}}</span></span>
+                                <span>Afiliado Sindicato: <span class="bold-primaty-color">{{entityData[0].Laboral[0].Afiliado}}</span></span>
                             </li>
                             <li class="list-group-item auto-height">
-                                <span>Representante Gremial: <span class="bold-primaty-color">{{workerData[0].Laboral[0].RepresentanteGremial}}</span></span>
+                                <span>Representante Gremial: <span class="bold-primaty-color">{{entityData[0].Laboral[0].RepresentanteGremial}}</span></span>
                             </li>
                         </ul>
                     </div>

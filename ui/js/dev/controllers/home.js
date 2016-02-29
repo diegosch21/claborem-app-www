@@ -17,9 +17,7 @@ angular.module('myApp.home', [])
                 if(!$rootScope.currentId) { // si ya estaba seteado previamente, agarro esa planta
                     $rootScope.currentId = 0
                 }
-
                 $rootScope.plant = $rootScope.data.plantas[$rootScope.currentId];
-
                 $rootScope.collections = {};
 
                 $scope.loading = false;

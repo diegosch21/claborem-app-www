@@ -14,7 +14,7 @@
             </span>
             <span class="title">
                 <i class="fa fa-briefcase"></i>
-                <span class="entidad">{{contratistaData[0].General[0].RazonSocial}}</span>
+                <span class="entidad">{{entityData[0].General[0].RazonSocial}}</span>
             </span>
         </div>
 
@@ -28,42 +28,42 @@
 
         <div class="tab-content">
             <div id="general" class="tab-pane fade">
-                <div ng-show="!contratistaData[0].General" class="mainpage-compon large-font info" ng-cloak>
+                <div ng-show="!entityData[0].General" class="mainpage-compon large-font info" ng-cloak>
                     <div class="mainpage-compon-title">
                         <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
                     </div>
                 </div>
-                <div ng-show="contratistaData[0].General" class="mainpage-compon large-font info">
+                <div ng-show="entityData[0].General" class="mainpage-compon large-font info">
                     <div class="mainpage-compon-title">
                         <i class="fa fa-info"></i><span class="compon-title">Información General</span>
                     </div>
                     <div class="mainpage-compon-container">
                         <ul class="list-group">
-                            <li ng-show="contratistaData[0].General[0].RazonSocial" class="list-group-item">
-                                <span>Razón Social: <span class="bold-primaty-color">{{contratistaData[0].General[0].RazonSocial}}</span></span>
+                            <li ng-show="entityData[0].General[0].RazonSocial" class="list-group-item">
+                                <span>Razón Social: <span class="bold-primaty-color">{{entityData[0].General[0].RazonSocial}}</span></span>
                             </li>
-                            <li ng-show="contratistaData[0].General[0].Cuit" class="list-group-item">
-                                <span>CUIT: <span class="bold-primaty-color">{{contratistaData[0].General[0].Cuit}}</span></span>
+                            <li ng-show="entityData[0].General[0].Cuit" class="list-group-item">
+                                <span>CUIT: <span class="bold-primaty-color">{{entityData[0].General[0].Cuit}}</span></span>
                             </li>
-                            <li ng-show="contratistaData[0].General[0].Email" class="list-group-item">
-                                <span>Email: <span class="bold-primaty-color">{{contratistaData[0].General[0].Email}}</span></span>
+                            <li ng-show="entityData[0].General[0].Email" class="list-group-item">
+                                <span>Email: <span class="bold-primaty-color">{{entityData[0].General[0].Email}}</span></span>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div id="empleados" class="tab-pane fade">
-                <div ng-show="!contratistaData[0].Empleados" class="mainpage-compon large-font info" ng-cloak>
+                <div ng-show="!entityData[0].Empleados" class="mainpage-compon large-font info" ng-cloak>
                     <div class="mainpage-compon-title">
                         <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
                     </div>
                 </div>
-                <div ng-show="contratistaData[0].Empleados" class="mainpage-compon large-font" >
+                <div ng-show="entityData[0].Empleados" class="mainpage-compon large-font" >
                     <div class="pre-listado">
                         <div class="col-izq">Empleados</div>
                         <div class="col-der">Estado</div>
                     </div>
-                    <div ng-click='goToEmpleadoPage(item.id)' ng-repeat="item in contratistaData[0].Empleados" class="tile-contract" >
+                    <div ng-click='goToEmpleadoPage(item.id)' ng-repeat="item in entityData[0].Empleados" class="tile-contract" >
 
                         <div class="tile-contract-num" >
                             <div class="tile-contract-fiscal">
@@ -74,8 +74,16 @@
                             </div>
                         </div>
                         <div class="tile-contract-fechas">
-                            <div class="tile-contract-fecha">
-                                <span>{{item.Acceso}}</span>
+                            <div class="tile-contract-fecha" ng-switch on="item.Acceso">
+                                <span ng-switch-when="0" class="label label-as-badge item-acceso label-success">
+                                    Permitido
+                                </span>
+                                <span ng-switch-when="1" class="label label-as-badge item-acceso label-warning">
+                                    Permitido
+                                </span>
+                                <span ng-switch-when="2" class="label label-as-badge item-acceso label-danger">
+                                    Denegado
+                                </span>
                             </div>
                             <div class="tile-contract-fecha">
                                 <span>Próx venc: {{item.ProxVenc}}</span>
@@ -87,17 +95,17 @@
             </div>
 
             <div id="maquinarias" class="tab-pane fade">
-                <div ng-show="!contratistaData[0].Maquinarias" class="mainpage-compon large-font info" ng-cloak>
+                <div ng-show="!entityData[0].Maquinarias" class="mainpage-compon large-font info" ng-cloak>
                     <div class="mainpage-compon-title">
                         <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
                     </div>
                 </div>
-                <div ng-show="contratistaData[0].Maquinarias" class="mainpage-compon large-font" >
+                <div ng-show="entityData[0].Maquinarias" class="mainpage-compon large-font" >
                     <div class="pre-listado">
                         <div class="col-izq">Maquinarias</div>
                         <div class="col-der">Estado</div>
                     </div>
-                    <div ng-click='goToMaquinariaPage(item.id)' ng-repeat="item in contratistaData[0].Maquinarias" class="tile-contract tres-renglones" >
+                    <div ng-click='goToMaquinariaPage(item.id)' ng-repeat="item in entityData[0].Maquinarias" class="tile-contract tres-renglones" >
 
                         <div class="tile-contract-num" >
                             <div class="tile-contract-fiscal">
@@ -111,8 +119,16 @@
                             </div>
                         </div>
                         <div class="tile-contract-fechas">
-                            <div class="tile-contract-fecha">
-                                <span>{{item.Acceso}}</span>
+                            <div class="tile-contract-fecha" ng-switch="item.Acceso">
+                                <span ng-switch-when="0" class="label label-as-badge item-acceso label-success">
+                                    Permitido
+                                </span>
+                                <span ng-switch-when="1" class="label label-as-badge item-acceso label-warning">
+                                    Permitido
+                                </span>
+                                <span ng-switch-when="2" class="label label-as-badge item-acceso label-danger">
+                                    Denegado
+                                </span>
                             </div>
                             <div class="tile-contract-fecha">
                                 <span>Próx venc: {{item.ProxVenc}}</span>
@@ -124,12 +140,12 @@
             </div>
 
             <div id="documentos" class="tab-pane fade in active">
-                <div ng-show="!contratistaData[0].Documentos" class="mainpage-compon large-font info" ng-cloak>
+                <div ng-show="!entityData[0].Documentos" class="mainpage-compon large-font info" ng-cloak>
                     <div class="mainpage-compon-title">
                         <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
                     </div>
                 </div>
-                <div ng-show="contratistaData[0].Documentos" class="mainpage-compon large-font  info">
+                <div ng-show="entityData[0].Documentos" class="mainpage-compon large-font  info">
                     <!-- <div class="mainpage-compon-title">
                         <i class="fa fa-indent"></i><span class="compon-title">Documentos</span>
                     </div> -->
@@ -143,11 +159,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="item in contratistaData[0].Documentos">
+                                <tr ng-repeat="item in entityData[0].Documentos">
                                     <td>{{item.Titulo}}</td>
                                     <td class="estado-doc">
-                                        <span class="label label-as-badge accessicon" ng-class="{'label-danger':item.Cumple=='No','label-success':item.Cumple=='Si'}">
-                                            <i ng-class="{'fa fa-times':item.Cumple=='No','fa fa-check':item.Cumple=='Si'}"></i>
+                                        <span class="label label-as-badge accessicon"
+                                            ng-class="{'label-danger':item.Cumple=='No','label-success':item.Cumple=='Si', 'label-warning': item.Cumple=='Si*'}">
+                                            <i ng-class="{'fa fa-times':item.Cumple=='No','fa fa-check':item.Cumple=='Si', 'fa fa-exclamation-triangle':item.Cumple=='Si*'}"></i>
                                         </span>
                                     </td>
                                     <td>{{item.Vencimiento}}</td>
@@ -159,17 +176,17 @@
             </div>
 
             <div id="vehiculos" class="tab-pane fade">
-                <div ng-show="!contratistaData[0].Vehiculos" class="mainpage-compon large-font info" ng-cloak>
+                <div ng-show="!entityData[0].Vehiculos" class="mainpage-compon large-font info" ng-cloak>
                     <div class="mainpage-compon-title">
                         <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
                     </div>
                 </div>
-                <div ng-show="contratistaData[0].Vehiculos" class="mainpage-compon large-font" >
+                <div ng-show="entityData[0].Vehiculos" class="mainpage-compon large-font" >
                     <div class="pre-listado">
                         <div class="col-izq">Vehículos</div>
                         <div class="col-der">Estado</div>
                     </div>
-                    <div ng-click='goToVehiculoPage(item.id)' ng-repeat="item in contratistaData[0].Vehiculos" class="tile-contract tres-renglones" >
+                    <div ng-click='goToVehiculoPage(item.id)' ng-repeat="item in entityData[0].Vehiculos" class="tile-contract tres-renglones" >
 
                         <div class="tile-contract-num" >
                             <div class="tile-contract-fiscal">
@@ -183,8 +200,16 @@
                             </div>
                         </div>
                         <div class="tile-contract-fechas">
-                            <div class="tile-contract-fecha">
-                                <span>{{item.Acceso}}</span>
+                            <div class="tile-contract-fecha" ng-switch="item.Acceso">
+                                <span ng-switch-when="0" class="label label-as-badge item-acceso label-success">
+                                    Permitido
+                                </span>
+                                <span ng-switch-when="1" class="label label-as-badge item-acceso label-warning">
+                                    Permitido
+                                </span>
+                                <span ng-switch-when="2" class="label label-as-badge item-acceso label-danger">
+                                    Denegado
+                                </span>
                             </div>
                             <div class="tile-contract-fecha">
                                 <span>Próx venc: {{item.ProxVenc}}</span>

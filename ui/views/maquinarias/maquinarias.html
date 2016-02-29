@@ -45,8 +45,16 @@
                 </div>
             </div>
             <div class="tile-contract-fechas">
-                <div class="tile-contract-fecha">
-                    <span>{{item.Acceso}}</span>
+                <div class="tile-contract-fecha" ng-switch="item.Acceso">
+                    <span ng-switch-when="0" class="label label-as-badge item-acceso label-success">
+                        Permitido
+                    </span>
+                    <span ng-switch-when="1" class="label label-as-badge item-acceso label-warning">
+                        Permitido
+                    </span>
+                    <span ng-switch-when="2" class="label label-as-badge item-acceso label-danger">
+                        Denegado
+                    </span>
                 </div>
                 <div class="tile-contract-fecha">
                     <span>Próx venc: {{item.ProxVenc}}</span>

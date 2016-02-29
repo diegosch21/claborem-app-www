@@ -18,6 +18,11 @@ angular.module('myApp.main', [])
 
     $rootScope.logout = function () {
         AuthSrv.logout();
+        $rootScope.data = null;
+        $rootScope.plantas = null;
+        $rootScope.currentId = null;
+        $rootScope.plant = null;
+        $rootScope.collections = {};
     }
     $rootScope.changePlant = function(id){
         $rootScope.currentId = id;
@@ -31,7 +36,7 @@ angular.module('myApp.main', [])
     }
 
     $scope.goToContratoPage = function(id){
-        RedirectSrv.redirect('/contrato/' + id);
+        RedirectSrv.redirect('/contrato/' + $rootScope.plant.id + '/' + id);
     }
 
     $scope.goToContratistas = function(){
@@ -39,7 +44,7 @@ angular.module('myApp.main', [])
     }
 
     $scope.goToContratistaPage = function(id){
-        RedirectSrv.redirect('contratista/' + $rootScope.plant.id + '/' + id);
+        RedirectSrv.redirect('/contratista/' + $rootScope.plant.id + '/' + id);
     }
 
     $scope.goToPersonal = function(){
@@ -47,7 +52,7 @@ angular.module('myApp.main', [])
     }
 
     $scope.goToEmpleadoPage = function(id){
-        RedirectSrv.redirect('empleado/' + $rootScope.plant.id + '/' + id);
+        RedirectSrv.redirect('/empleado/' + $rootScope.plant.id + '/' + id);
     }
 
     $scope.goToMaquinarias = function(){
@@ -55,7 +60,7 @@ angular.module('myApp.main', [])
     }
 
     $scope.goToMaquinariaPage = function(id){
-        RedirectSrv.redirect('maquinaria/' + $rootScope.plant.id + '/' + id);
+        RedirectSrv.redirect('/maquinaria/' + $rootScope.plant.id + '/' + id);
     }
 
     $scope.goToVehiculos = function(){
@@ -63,7 +68,7 @@ angular.module('myApp.main', [])
     }
 
     $scope.goToVehiculoPage = function(id){
-        RedirectSrv.redirect('vehiculo/' + $rootScope.plant.id + '/' + id);
+        RedirectSrv.redirect('/vehiculo/' + $rootScope.plant.id + '/' + id);
     }
 
 

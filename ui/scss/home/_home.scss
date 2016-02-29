@@ -16,17 +16,51 @@
     }
 }
 
+.navbar-header {
+    .navbar-brand {
+        img {
+            width: 120px;
+        }
+        padding: 10px 0px;
+        margin-right: -120px; // para permitir que la razon social la superponga si es necesario
+    }
+    .razon-social {
+        float: right;
+        color: white;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 0 5px;
+        line-height: 48px;
+        background-color: $secondary-color;
+        max-width: 40%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    @media (max-width: 400px) {
+        .menu {
+            padding: 14px 5px 10px;
+            .fa-list {
+                font-size: 20px;
+            }
+        }
+        .navbar-brand {
+            padding: 14px 0;
+            img {
+                width: 80px;
+            }
+        }
+        .razon-social {
+            font-size: 12px;
+        }
+    }
+}
 
 .left{
     float:left;
 }
 .navbar-color{
     background-color: $secondary-color;
-
-}
-
-.navbar-brand {
-    padding: 10px 0px;
 }
 
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form, .navbar-inverse .navbar-toggle {
@@ -120,6 +154,7 @@
     text-align: center;
     padding: 0;
     span {
+        font-weight: bold;
         cursor: pointer;
         color: $main-color;
         i {
@@ -211,6 +246,11 @@
     font-weight: bold;
     line-height: 1;
     margin-top: 2px;
+    &.item-acceso {
+        float: none;
+        margin-top: 0;
+        font-size: 12px;
+    }
 }
 
 .label-danger {
@@ -386,12 +426,12 @@
 }
 .tile-contract-num{
     width: 50%;
-    height: 50px;
+    height: 56px;
     float: left;
 }
 .tile-contract-fiscal{
-    padding-top: 4px;
-    height: 22px;
+    padding-top: 2px;
+    height: 24px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -399,14 +439,14 @@
 
 .tile-contract-fechas{
     width: 50%;
-    height: 54px;
+    height: 56px;
     float: right;
 }
 
 .tile-contract-fecha{
     width: 100%;
-    height: 22px;
-    padding-top: 4px;
+    height: 24px;
+    padding-top: 2px;
     padding-left: 10px;
     overflow: hidden;
     text-overflow: ellipsis;

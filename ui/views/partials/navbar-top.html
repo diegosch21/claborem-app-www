@@ -1,10 +1,10 @@
 <nav class="navbar navbar-inverse navbar-fixed-top navbar-color">
     <div class="navbar-header">
-        <div type="button" class="navbar-toggle left" data-toggle="collapse" data-target="#top-nav" ng-click='collapse("top-nav-plants");'>
+        <div type="button" class="navbar-toggle menu left" data-toggle="collapse" data-target="#top-nav" ng-click='collapse("top-nav-plants");'>
             <span class="fa fa-list navbar-toggle-color"></span>
         </div>
         <a class="navbar-brand">
-            <img alt="C-Laborem" width="120" src="images/logo-header.png">
+            <img alt="C-Laborem" src="images/logo-header.png">
         </a>
         <div type="button" class="navbar-toggle navbar-toggle-right" ng-click="logout()">
             <span class="fa fa-sign-out navbar-toggle-color"></span>
@@ -12,6 +12,9 @@
         <div type="button" class="navbar-toggle navbar-toggle-right" data-toggle="collapse" data-target="#top-nav-plants"  ng-click='collapse("top-nav");'>
             <span class="fa fa-building navbar-toggle-color"></span>
         </div>
+        <span class="razon-social" ng-show="data.RazonSocial">
+            {{data.RazonSocial}}
+        </span>
         <!-- <div type="button" class="navbar-toggle navbar-toggle-right">
             <span class="fa fa-user navbar-toggle-color"></span>
         </div> -->

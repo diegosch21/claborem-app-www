@@ -1,3 +1,6 @@
+/**
+ * Controller para listados: contratos, contratistas, personal, vehículos, maquinarias
+ */
 'use strict';
 
 angular.module('myApp.collections', [])
@@ -11,7 +14,7 @@ angular.module('myApp.collections', [])
         if(!$rootScope.plant) {
             $rootScope.goToHome();
         }
-console.log($rootScope.collections);
+
         // los items son guardados en $rootScope.collections.<type> cuando se obtiene la data
         $scope.pagedItems = [];
         $scope.currentPage = 0;

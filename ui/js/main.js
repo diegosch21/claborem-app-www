@@ -7,11 +7,7 @@ var myApp = angular.module('myApp',
         'myApp.directives', // custom directives
         'myApp.home',
         'myApp.collections',
-        'myApp.contract',
-        'myApp.worker',
-        'myApp.contratista',
-        'myApp.maquinaria',
-        'myApp.vehiculo',
+        'myApp.entity',
         'myApp.main',
         'myApp.login',
         'myApp.services',
@@ -54,9 +50,14 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
         }
     });
 
-    $routeProvider.when('/contrato/:id', {
+    $routeProvider.when('/contrato/:idP/:id', {
         templateUrl:'views/contracts/contrato.html',
-        controller: 'contractCtrl'
+        controller: 'entityCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'contrato'
+            }; }
+        }
     });
 
     $routeProvider.when('/contratistas', {
@@ -70,9 +71,14 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
         }
     });
 
-    $routeProvider.when('/contratista/:idP/:idC', {
+    $routeProvider.when('/contratista/:idP/:id', {
         templateUrl:'views/contratistas/contratista.html',
-        controller: 'contratistaCtrl'
+        controller: 'entityCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'contratista'
+            }; }
+        }
     });
 
     $routeProvider.when('/personal', {
@@ -86,9 +92,14 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
         }
     });
 
-    $routeProvider.when('/empleado/:idP/:idE', {
+    $routeProvider.when('/empleado/:idP/:id', {
         templateUrl:'views/personal/empleado.html',
-        controller: 'workerCtrl'
+        controller: 'entityCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'empleado'
+            }; }
+        }
     });
 
     $routeProvider.when('/vehiculos', {
@@ -102,9 +113,14 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
         }
     });
 
-    $routeProvider.when('/vehiculo/:idP/:idV', {
+    $routeProvider.when('/vehiculo/:idP/:id', {
         templateUrl:'views/vehiculos/vehiculo.html',
-        controller: 'vehiculoCtrl'
+        controller: 'entityCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'vehiculo'
+            }; }
+        }
     });
 
     $routeProvider.when('/maquinarias', {
@@ -118,9 +134,14 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
         }
     });
 
-    $routeProvider.when('/maquinaria/:idP/:idM', {
+    $routeProvider.when('/maquinaria/:idP/:id', {
         templateUrl:'views/maquinarias/maquinaria.html',
-        controller: 'maquinariaCtrl'
+        controller: 'entityCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'maquinaria'
+            }; }
+        }
     });
 
     // by default, redirect to site root
@@ -149,7 +170,7 @@ myApp.run(function ($rootScope, $location, $http, $timeout, AuthSrv, RedirectSrv
 
         // when user logs in, redirect to home
         if (AuthSrv.authorized()) {
-            //$location.path("/");
+            //$location.path("/"); // in mainCtrl
         }
 
         // when user logs out, redirect to login

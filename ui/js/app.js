@@ -278,33 +278,66 @@ angular.module('myApp.main', [])
 
     $rootScope.logout = function () {
         AuthSrv.logout();
+        $rootScope.data = null;
+        $rootScope.plantas = null;
+        $rootScope.currentId = null;
+        $rootScope.plant = null;
+        $rootScope.collections = {};
     }
     $rootScope.changePlant = function(id){
         $rootScope.currentId = id;
         $rootScope.plant = $rootScope.plantas[id];
+        $rootScope.collections = {}; // destruyo las colecciones (para prevenir errores con back button)
         RedirectSrv.redirect('/');
     }
 
-    $scope.goToContracts = function(){
-        RedirectSrv.redirect('/contracts');
+    $scope.goToContratos = function(){
+        RedirectSrv.redirect('/contratos');
     }
 
-    $scope.goToMaquinarias = function(){
-        RedirectSrv.redirect('/maquinarias');
-    }
-
-
-    $scope.goToVehiculos = function(){
-        RedirectSrv.redirect('/vehiculos');
+    $scope.goToContratoPage = function(id){
+        RedirectSrv.redirect('/contrato/' + $rootScope.plant.id + '/' + id);
     }
 
     $scope.goToContratistas = function(){
         RedirectSrv.redirect('/contratistas');
     }
 
+    $scope.goToContratistaPage = function(id){
+        RedirectSrv.redirect('/contratista/' + $rootScope.plant.id + '/' + id);
+    }
 
-    $scope.goToHome = function(){
-        $rootScope.updateHome = true;  // si aprieto inicio actualiza la home
+    $scope.goToPersonal = function(){
+        RedirectSrv.redirect('/personal');
+    }
+
+    $scope.goToEmpleadoPage = function(id){
+        RedirectSrv.redirect('/empleado/' + $rootScope.plant.id + '/' + id);
+    }
+
+    $scope.goToMaquinarias = function(){
+        RedirectSrv.redirect('/maquinarias');
+    }
+
+    $scope.goToMaquinariaPage = function(id){
+        RedirectSrv.redirect('/maquinaria/' + $rootScope.plant.id + '/' + id);
+    }
+
+    $scope.goToVehiculos = function(){
+        RedirectSrv.redirect('/vehiculos');
+    }
+
+    $scope.goToVehiculoPage = function(id){
+        RedirectSrv.redirect('/vehiculo/' + $rootScope.plant.id + '/' + id);
+    }
+
+
+    $rootScope.goBack = function(){
+        $window.history.back();
+    }
+
+    $rootScope.goToHome = function(){
+        // $rootScope.updateHome = true;  // si aprieto inicio actualiza la home
         RedirectSrv.redirect('/');
     }
 
@@ -313,200 +346,171 @@ angular.module('myApp.main', [])
         $('#' + id).addClass('collapse');
     }
 
-    $scope.goToWorkForce = function(){
-        RedirectSrv.redirect('/workforce');
-    }
-
-    $rootScope.goBack = function(){
-        $window.history.back();
-    }
-
 }]);
+/**
+ * Controller para listados: contratos, contratistas, personal, vehículos, maquinarias
+ */
 'use strict';
 
-angular.module('myApp.contract', []).controller('contractCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', '$routeParams', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, $routeParams, ApiHttpSrv, ConfigSrv) {
+angular.module('myApp.collections', [])
+    .controller('collectionsCtrl',
+        ['$scope', '$rootScope','context', '$window', '$filter', 'AuthSrv', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',
+        function($scope, $rootScope, context, $window, $filter, AuthSrv,  RedirectSrv, ApiHttpSrv, ConfigSrv) {
 
-    var getdata = function () {
-        var data = {
-            'token': AuthSrv.currentUser().token,
-            'id': $routeParams.id
+        if (AuthSrv.initialState() || !AuthSrv.authorized()) {
+            RedirectSrv.redirect('/login');
         };
-        var getDataSuccess = function(d){
-            $scope.contractData = d;
-            // console.log(d);
-            $scope.loading = false;
-        };
-        var getDataFail = function(d){
-            // console.log(d);
-            $scope.loading = false;
-        };
-        $scope.loading = true;
-        ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('contract'), data, data).success(getDataSuccess).error(getDataFail);
-    }
-
-    if (AuthSrv.initialState() || !AuthSrv.authorized()) {
-        RedirectSrv.redirect('/login');
-    }else{
-        getdata();
-    }
-    $('#info').tab('show');
-    $('#info a').click(function (e) {
-      e.preventDefault()
-      $(this).tab('show')
-    });
-
-    $scope.goToWorkerPage = function(id){
-        RedirectSrv.redirect('worker/' + $rootScope.plant.id + '/' + id);
-    }
-    $scope.goToMaquinariaPage = function(id){
-        RedirectSrv.redirect('maquinaria/' + $rootScope.plant.id + '/' + id);
-    }
-    $scope.goToContratistaPage = function(id){
-        RedirectSrv.redirect('contratista/' + $rootScope.plant.id + '/' + id);
-    }
-    $scope.goToVehiculoPage = function(id){
-        RedirectSrv.redirect('vehiculo/' + $rootScope.plant.id + '/' + id);
-    }
-
-}]);
-'use strict';
-
-angular.module('myApp.contracts', []).controller('contractsCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, ApiHttpSrv, ConfigSrv) {
-
-    if (AuthSrv.initialState() || !AuthSrv.authorized()) {
-        RedirectSrv.redirect('/login');
-    };
-    $scope.sortingOrder = 'Num';
-    $scope.reverse = false;
-    $scope.filteredItems = [];
-    $scope.groupedItems = [];
-    $scope.itemsPerPage = 10;
-    $scope.pagedItems = [];
-    $scope.currentPage = 0;
-    if($rootScope.plant.id){
-        // console.log($rootScope.plant);
-        var data = {
-            token : AuthSrv.currentUser().token,
-            idPlanta : $rootScope.plant.id
+        if(!$rootScope.plant) {
+            $rootScope.goToHome();
         }
-        $scope.loading = true;
-        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('contratos'), data, data)
-        .success(function(d){
-            // console.log(d);
-            $scope.items = d;
-            $scope.search();
-            $scope.loading = false;
-        }).error(function(d){
-            // console.log(d);
-            $scope.loading = false;
-        });
-    }
 
-
-    var searchMatch = function (haystack, needle) {
-        if (!needle) {
-            return true;
-        }
-        if(haystack){
-            return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
-        }
-    };
-
-    $scope.open = function(link){
-        $window.open(link, '_blank');
-    }
-
-    // init the filtered items
-    $scope.search = function () {
-        $scope.filteredItems = $filter('filter')($scope.items, function (item) {
-            for(var attr in item) {
-                if (searchMatch(item[attr], $scope.query))
-                    return true;
-            }
-            return false;
-        });
-        // take care of the sorting order
-        if ($scope.sortingOrder !== '') {
-            $scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
-        }
-        $scope.currentPage = 0;
-        // now group by pages
-        $scope.groupToPages();
-    };
-
-    // calculate page in place
-    $scope.groupToPages = function () {
+        // los items son guardados en $rootScope.collections.<type> cuando se obtiene la data
         $scope.pagedItems = [];
+        $scope.currentPage = 0;
 
-        for (var i = 0; i < $scope.filteredItems.length; i++) {
-            if (i % $scope.itemsPerPage === 0) {
-                $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [ $scope.filteredItems[i] ];
-            } else {
-                $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
+        var itemsPerPage = 10;
+        var filteredItems = [];
+        var sortingOrder = context.sortingOrder;
+        var reverse = false;
+
+        var url_get = ConfigSrv.getApiUrl(context.type); // en context.type se setea el tipo de coleccion (contratos, vehiculos, etc)
+
+        var getData = function() {
+            var data = {
+                token : AuthSrv.currentUser().token,
+                idPlanta : $rootScope.plant.id
             }
+            $scope.loading = true;
+            ApiHttpSrv.createApiHttp('get', url_get, data, data)
+            .success(function(d){
+                // console.log(d);
+                $rootScope.collections[context.type] = d;
+                groupToPages();
+                // $scope.search();
+                $scope.loading = false;
+                $rootScope.updateCollection = false; // flag de actualizar en false: no se volverá a pedir la data hasta no setearlo en true
+                $scope.currentPlantId = $rootScope.plant.id
+            }).error(function(d){
+                // console.log(d);
+                $scope.loading = false;
+            });
         }
-    };
 
-    $scope.range = function (start, end) {
-        var ret = [];
-        if (!end) {
-            end = start;
-            start = 0;
+        var searchMatch = function (haystack, needle) {
+            if (!needle) {
+                return true;
+            }
+            if(haystack){
+                return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+            }
+        };
+
+        // calculate page in place
+        var groupToPages = function (filtered) {
+            $scope.pagedItems = [];
+
+            var items = $rootScope.collections[context.type];
+            if (filtered) {
+                items = $scope.filteredItems;
+            }
+
+            for (var i = 0; i < items.length; i++) {
+                if (i % itemsPerPage === 0) {
+                    $scope.pagedItems[Math.floor(i / itemsPerPage)] = [ items[i] ];
+                } else {
+                    $scope.pagedItems[Math.floor(i / itemsPerPage)].push(items[i]);
+                }
+            }
+        };
+
+        // init the filtered items
+        $scope.search = function () {
+            $scope.filteredItems = $filter('filter')($rootScope.collections[context.type], function (item) {
+                for(var attr in item) {
+                    if (searchMatch(item[attr], $scope.query))  // si no hay query retorna true
+                        return true;
+                }
+                return false;
+            });
+            // take care of the sorting order
+            if (sortingOrder && sortingOrder !== '') {
+                $scope.filteredItems = $filter('orderBy')($scope.filteredItems, sortingOrder, $scope.reverse);
+            }
+            $scope.currentPage = 0;
+            // now group by pages
+            groupToPages(true);
+        };
+
+        // Cargo y muestro data:
+        if (!$rootScope.collections[context.type]) {
+            // si no hay items, obtengo la data
+            getData();
         }
-        for (var i = start; i < end; i++) {
-            ret.push(i);
+        else {
+            groupToPages();
         }
-        return ret;
-    };
 
-    $scope.prevPage = function () {
-        if ($scope.currentPage > 0) {
-            $scope.currentPage--;
+        $scope.open = function(link){
+            $window.open(link, '_blank');
         }
-    };
 
-    $scope.nextPage = function () {
-        if ($scope.currentPage < $scope.pagedItems.length - 1) {
-            $scope.currentPage++;
-        }
-    };
+        $scope.range = function (start, end) {
+            var ret = [];
+            if (!end) {
+                end = start;
+                start = 0;
+            }
+            for (var i = start; i < end; i++) {
+                ret.push(i);
+            }
+            return ret;
+        };
 
-    $scope.setPage = function () {
-        $scope.currentPage = this.n;
-    };
+        $scope.prevPage = function () {
+            if ($scope.currentPage > 0) {
+                $scope.currentPage--;
+            }
+        };
 
-    // functions have been describe process the data for display
-    if($rootScope.plant.data){
-        $scope.search();
-    }
+        $scope.nextPage = function () {
+            if ($scope.currentPage < $scope.pagedItems.length - 1) {
+                $scope.currentPage++;
+            }
+        };
 
-    $scope.goToContractPage = function(id){
-        RedirectSrv.redirect('contract/' + id);
-    }
+        $scope.setPage = function () {
+            $scope.currentPage = this.n;
+        };
 
-    // change sorting order
-    $scope.sort_by = function(newSortingOrder) {
-        if ($scope.sortingOrder == newSortingOrder)
-            $scope.reverse = !$scope.reverse;
+        // change sorting order
+        $scope.sort_by = function(newSortingOrder) {
+            if (sortingOrder == newSortingOrder)
+                reverse = !reverse;
 
-        $scope.sortingOrder = newSortingOrder;
-
-
-    };
+            sortingOrder = newSortingOrder;
+        };
 
 }]);
+/**
+ * Controller para mostrar la data de una entidad: contrato, contratista, empleado, vehículo, maquinaria
+ */
 'use strict';
 
-angular.module('myApp.contratista', []).controller('contratistaCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', '$routeParams', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, $routeParams, ApiHttpSrv, ConfigSrv) {
+angular.module('myApp.entity', [])
+.controller('entityCtrl',
+    ['$scope', '$rootScope','$routeParams', 'context', '$window', '$filter', 'AuthSrv', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',
+    function($scope, $rootScope, $routeParams, context, $window, $filter, AuthSrv, RedirectSrv, ApiHttpSrv, ConfigSrv) {
 
-    var getdata = function () {
+    var url_get = ConfigSrv.getApiUrl(context.type); // en context.type se setea el tipo de entidad (contratos, vehiculos, etc)
+
+    var getData = function () {
         var data = {
             'token': AuthSrv.currentUser().token,
             'idPlanta': $routeParams.idP,
-            'id': $routeParams.idC
+            'id': $routeParams.id
         };
         var getDataSuccess = function(d){
-            $scope.contratistaData = d;
+            $scope.entityData = d;
             // console.log(d);
             $scope.loading = false;
         };
@@ -515,193 +519,68 @@ angular.module('myApp.contratista', []).controller('contratistaCtrl', ['$scope',
             $scope.loading = false;
         };
         $scope.loading = true;
-        ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('contratista'), data, data).success(getDataSuccess).error(getDataFail);
+        ApiHttpSrv.createApiHttp('post', url_get, data, data).success(getDataSuccess).error(getDataFail);
     }
 
     if (AuthSrv.initialState() || !AuthSrv.authorized()) {
         RedirectSrv.redirect('/login');
     }else{
-        getdata();
+        getData();
     }
+
     $('#info').tab('show');
     $('#info a').click(function (e) {
-      e.preventDefault()
-      $(this).tab('show')
+        e.preventDefault();
+        $(this).tab('show');
     });
 
-    $scope.goToWorkerPage = function(id){
-        RedirectSrv.redirect('worker/' + $rootScope.plant.id + '/' + id);
-    }
-
 }]);
 'use strict';
 
-angular.module('myApp.contratistas', []).controller('contratistasCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, ApiHttpSrv, ConfigSrv) {
+angular.module('myApp.home', [])
+.controller('homeCtrl',
+    ['$scope', '$rootScope', 'ApiHttpSrv', 'ConfigSrv', '$location', 'AuthSrv', 'RedirectSrv',
+    function($scope, $rootScope, ApiHttpSrv, ConfigSrv, $location, AuthSrv, RedirectSrv) {
 
-    if (AuthSrv.initialState() || !AuthSrv.authorized()) {
-        RedirectSrv.redirect('/login');
-    };
-    $scope.sortingOrder = 'Num';
-    $scope.reverse = false;
-    $scope.filteredItems = [];
-    $scope.groupedItems = [];
-    $scope.itemsPerPage = 10;
-    $scope.pagedItems = [];
-    $scope.currentPage = 0;
-    if($rootScope.plant.id){
-        // console.log($rootScope.plant);
-        var data = {
-            token : AuthSrv.currentUser().token,
-            idPlanta : $rootScope.plant.id
+        var getdata = function () {
+            var data = {
+                'token': AuthSrv.currentUser().token
+            };
+            var getDataSuccess = function(data){
+                // console.log(data[0]);
+                $rootScope.data = data[0];
+                $rootScope.plantas = $rootScope.data.plantas;
+
+                if(!$rootScope.currentId) { // si ya estaba seteado previamente, agarro esa planta
+                    $rootScope.currentId = 0
+                }
+                $rootScope.plant = $rootScope.data.plantas[$rootScope.currentId];
+                $rootScope.collections = {};
+
+                $scope.loading = false;
+                $rootScope.updateHome = false; // flag de actualizar en false: no se volverá a pedir la data hasta no setearlo en true
+            };
+            var getDataFail = function(data){
+                // console.log(data);
+                $scope.loading = false;
+                $scope.disconnect = true;
+            };
+            $scope.loading = true;
+            $scope.disconnect = false;
+            ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('home'), data, data).success(getDataSuccess).error(getDataFail);
         }
-        $scope.loading = true;
-        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('contratistas'), data, data)
-        .success(function(d){
-            // console.log(d);
-            $scope.items = d;
-            $scope.search();
-            $scope.loading = false;
-        }).error(function(d){
-            // console.log(d);
-            $scope.loading = false;
-        });
-    }
-
-    var searchMatch = function (haystack, needle) {
-        if (!needle) {
-            return true;
+        if (AuthSrv.initialState() || !AuthSrv.authorized()) {
+            $location.path('/login');
         }
-        if(haystack){
-            return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+
+        // si ya estaba seteada la planta no la actualizo (salvo que esté seteado el flag de actualizar)
+        if (!$rootScope.plant || $rootScope.updateHome) {
+            getdata();
         }
-    };
 
-    $scope.open = function(link){
-        $window.open(link, '_blank');
-    }
-
-    // init the filtered items
-    $scope.search = function () {
-        $scope.filteredItems = $filter('filter')($scope.items, function (item) {
-            for(var attr in item) {
-                if (searchMatch(item[attr], $scope.query))
-                    return true;
-            }
-            return false;
-        });
-        // take care of the sorting order
-        if ($scope.sortingOrder !== '') {
-            $scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
+        $scope.update = function(){
+            getdata();
         }
-        $scope.currentPage = 0;
-        // now group by pages
-        $scope.groupToPages();
-    };
-
-    // calculate page in place
-    $scope.groupToPages = function () {
-        $scope.pagedItems = [];
-
-        for (var i = 0; i < $scope.filteredItems.length; i++) {
-            if (i % $scope.itemsPerPage === 0) {
-                $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [ $scope.filteredItems[i] ];
-            } else {
-                $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
-            }
-        }
-    };
-
-    $scope.range = function (start, end) {
-        var ret = [];
-        if (!end) {
-            end = start;
-            start = 0;
-        }
-        for (var i = start; i < end; i++) {
-            ret.push(i);
-        }
-        return ret;
-    };
-
-    $scope.prevPage = function () {
-        if ($scope.currentPage > 0) {
-            $scope.currentPage--;
-        }
-    };
-
-    $scope.nextPage = function () {
-        if ($scope.currentPage < $scope.pagedItems.length - 1) {
-            $scope.currentPage++;
-        }
-    };
-
-    $scope.setPage = function () {
-        $scope.currentPage = this.n;
-    };
-
-    // functions have been describe process the data for display
-    if($rootScope.plant.data){
-        $scope.search();
-    }
-
-    $scope.goToContratistaPage = function(id){
-        RedirectSrv.redirect('contratista/' + $rootScope.plant.id + '/' + id);
-    }
-
-    // change sorting order
-    $scope.sort_by = function(newSortingOrder) {
-        if ($scope.sortingOrder == newSortingOrder)
-            $scope.reverse = !$scope.reverse;
-
-        $scope.sortingOrder = newSortingOrder;
-
-
-    };
-
-}]);
-'use strict';
-
-angular.module('myApp.home', []).controller('homeCtrl', ['$scope', '$rootScope', 'ApiHttpSrv', 'ConfigSrv', '$location', 'AuthSrv', 'RedirectSrv',function($scope, $rootScope, ApiHttpSrv, ConfigSrv, $location, AuthSrv, RedirectSrv) {
-
-    var getdata = function () {
-        var data = {
-            'token': AuthSrv.currentUser().token
-        };
-        var getDataSuccess = function(data){
-            // console.log(data[0]);
-            $rootScope.data = data[0];
-            $rootScope.plantas = $rootScope.data.plantas;
-
-            if(!$rootScope.currentId) { // si ya estaba seteado previamente, agarro esa planta
-                $rootScope.currentId = 0
-            }
-
-            $rootScope.plant = $rootScope.data.plantas[$rootScope.currentId];
-            $scope.loading = false;
-            $rootScope.updateHome = false; // flag de actualizar en false: no se volverá a pedir la data hasta no setearlo en true
-        };
-        var getDataFail = function(data){
-            // console.log(data);
-            $scope.loading = false;
-            $scope.disconnect = true;
-        };
-        $scope.loading = true;
-        $scope.disconnect = false;
-        ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('home'), data, data).success(getDataSuccess).error(getDataFail);
-    }
-    if (AuthSrv.initialState() || !AuthSrv.authorized()) {
-        $location.path('/login');
-    }
-
-    // si ya estaba seteada la planta no la actualizo (salvo que esté seteado el flag de actualizar)
-    if (!$rootScope.plant || $rootScope.updateHome) {
-        getdata();
-    }
-
-    $scope.reintentar = function(){
-        getdata();
-    }
-
 
 }]);
 'use strict';
@@ -722,495 +601,5 @@ angular.module('myApp.login', []).controller('loginCtrl', ['$scope', 'ApiHttpSrv
         AuthSrv.login(data);
 
     }
-
-}]);
-'use strict';
-
-angular.module('myApp.maquinaria', []).controller('maquinariaCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', '$routeParams', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, $routeParams, ApiHttpSrv, ConfigSrv) {
-
-    var getdata = function () {
-        var data = {
-            'token': AuthSrv.currentUser().token,
-            'idPlanta': $routeParams.idP,
-            'id': $routeParams.idM
-        };
-        var getDataSuccess = function(d){
-            $scope.maquinariaData = d;
-            // console.log(d);
-            $scope.loading = false;
-        };
-        var getDataFail = function(d){
-            // console.log(d);
-            $scope.loading = false;
-        };
-        $scope.loading = true;
-        ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('maquinaria'), data, data).success(getDataSuccess).error(getDataFail);
-    }
-
-    if (AuthSrv.initialState() || !AuthSrv.authorized()) {
-        RedirectSrv.redirect('/login');
-    }else{
-        getdata();
-    }
-    $('#info').tab('show');
-    $('#info a').click(function (e) {
-      e.preventDefault()
-      $(this).tab('show')
-    });
-
-    $scope.goToWorkerPage = function(id){
-        RedirectSrv.redirect('worker/' + $rootScope.plant.id + '/' + id);
-    }
-
-}]);
-'use strict';
-
-angular.module('myApp.maquinarias', []).controller('maquinariasCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, ApiHttpSrv, ConfigSrv) {
-
-    if (AuthSrv.initialState() || !AuthSrv.authorized()) {
-        RedirectSrv.redirect('/login');
-    };
-    $scope.sortingOrder = 'Num';
-    $scope.reverse = false;
-    $scope.filteredItems = [];
-    $scope.groupedItems = [];
-    $scope.itemsPerPage = 10;
-    $scope.pagedItems = [];
-    $scope.currentPage = 0;
-    if($rootScope.plant.id){
-        // console.log($rootScope.plant);
-        var data = {
-            token : AuthSrv.currentUser().token,
-            idPlanta : $rootScope.plant.id
-        }
-        $scope.loading = true;
-        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('maquinarias'), data, data)
-        .success(function(d){
-            // console.log(d);
-            $scope.items = d;
-            $scope.search();
-            $scope.loading = false;
-        }).error(function(d){
-            // console.log(d);
-            $scope.loading = false;
-        });
-    }
-
-    var searchMatch = function (haystack, needle) {
-        if (!needle) {
-            return true;
-        }
-        if(haystack){
-            return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
-        }
-    };
-
-    $scope.open = function(link){
-        $window.open(link, '_blank');
-    }
-
-    // init the filtered items
-    $scope.search = function () {
-        $scope.filteredItems = $filter('filter')($scope.items, function (item) {
-            for(var attr in item) {
-                if (searchMatch(item[attr], $scope.query))
-                    return true;
-            }
-            return false;
-        });
-        // take care of the sorting order
-        if ($scope.sortingOrder !== '') {
-            $scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
-        }
-        $scope.currentPage = 0;
-        // now group by pages
-        $scope.groupToPages();
-    };
-
-    // calculate page in place
-    $scope.groupToPages = function () {
-        $scope.pagedItems = [];
-
-        for (var i = 0; i < $scope.filteredItems.length; i++) {
-            if (i % $scope.itemsPerPage === 0) {
-                $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [ $scope.filteredItems[i] ];
-            } else {
-                $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
-            }
-        }
-    };
-
-    $scope.range = function (start, end) {
-        var ret = [];
-        if (!end) {
-            end = start;
-            start = 0;
-        }
-        for (var i = start; i < end; i++) {
-            ret.push(i);
-        }
-        return ret;
-    };
-
-    $scope.prevPage = function () {
-        if ($scope.currentPage > 0) {
-            $scope.currentPage--;
-        }
-    };
-
-    $scope.nextPage = function () {
-        if ($scope.currentPage < $scope.pagedItems.length - 1) {
-            $scope.currentPage++;
-        }
-    };
-
-    $scope.setPage = function () {
-        $scope.currentPage = this.n;
-    };
-
-    // functions have been describe process the data for display
-    if($rootScope.plant.data){
-        $scope.search();
-    }
-
-    $scope.goToMaquinariaPage = function(id){
-        RedirectSrv.redirect('maquinaria/' + $rootScope.plant.id + '/' + id);
-    }
-
-    // change sorting order
-    $scope.sort_by = function(newSortingOrder) {
-        if ($scope.sortingOrder == newSortingOrder)
-            $scope.reverse = !$scope.reverse;
-
-        $scope.sortingOrder = newSortingOrder;
-
-
-    };
-
-}]);
-'use strict';
-
-angular.module('myApp.vehiculo', []).controller('vehiculoCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', '$routeParams', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, $routeParams, ApiHttpSrv, ConfigSrv) {
-
-    var getdata = function () {
-        var data = {
-            'token': AuthSrv.currentUser().token,
-            'idPlanta': $routeParams.idP,
-            'id': $routeParams.idV
-        };
-        var getDataSuccess = function(d){
-            $scope.vehiculoData = d;
-            // console.log(d);
-            $scope.loading = false;
-        };
-        var getDataFail = function(d){
-            // console.log(d);
-            $scope.loading = false;
-        };
-        $scope.loading = true;
-        ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('vehiculo'), data, data).success(getDataSuccess).error(getDataFail);
-    }
-
-    if (AuthSrv.initialState() || !AuthSrv.authorized()) {
-        RedirectSrv.redirect('/login');
-    }else{
-        getdata();
-    }
-    $('#info').tab('show');
-    $('#info a').click(function (e) {
-      e.preventDefault()
-      $(this).tab('show')
-    });
-
-    $scope.goToWorkerPage = function(id){
-        RedirectSrv.redirect('worker/' + $rootScope.plant.id + '/' + id);
-    }
-
-}]);
-'use strict';
-
-angular.module('myApp.vehiculos', []).controller('vehiculosCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, ApiHttpSrv, ConfigSrv) {
-
-    if (AuthSrv.initialState() || !AuthSrv.authorized()) {
-        RedirectSrv.redirect('/login');
-    };
-    $scope.sortingOrder = 'Num';
-    $scope.reverse = false;
-    $scope.filteredItems = [];
-    $scope.groupedItems = [];
-    $scope.itemsPerPage = 10;
-    $scope.pagedItems = [];
-    $scope.currentPage = 0;
-    if($rootScope.plant.id){
-        // console.log($rootScope.plant);
-        var data = {
-            token : AuthSrv.currentUser().token,
-            idPlanta : $rootScope.plant.id
-        }
-        $scope.loading = true;
-        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('vehiculos'), data, data)
-        .success(function(d){
-            // console.log(d);
-            $scope.items = d;
-            $scope.search();
-            $scope.loading = false;
-        }).error(function(d){
-            // console.log(d);
-            $scope.loading = false;
-        });
-    }
-
-    var searchMatch = function (haystack, needle) {
-        if (!needle) {
-            return true;
-        }
-        if(haystack){
-            return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
-        }
-    };
-
-    $scope.open = function(link){
-        $window.open(link, '_blank');
-    }
-
-    // init the filtered items
-    $scope.search = function () {
-        $scope.filteredItems = $filter('filter')($scope.items, function (item) {
-            for(var attr in item) {
-                if (searchMatch(item[attr], $scope.query))
-                    return true;
-            }
-            return false;
-        });
-        // take care of the sorting order
-        if ($scope.sortingOrder !== '') {
-            $scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
-        }
-        $scope.currentPage = 0;
-        // now group by pages
-        $scope.groupToPages();
-    };
-
-    // calculate page in place
-    $scope.groupToPages = function () {
-        $scope.pagedItems = [];
-
-        for (var i = 0; i < $scope.filteredItems.length; i++) {
-            if (i % $scope.itemsPerPage === 0) {
-                $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [ $scope.filteredItems[i] ];
-            } else {
-                $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
-            }
-        }
-    };
-
-    $scope.range = function (start, end) {
-        var ret = [];
-        if (!end) {
-            end = start;
-            start = 0;
-        }
-        for (var i = start; i < end; i++) {
-            ret.push(i);
-        }
-        return ret;
-    };
-
-    $scope.prevPage = function () {
-        if ($scope.currentPage > 0) {
-            $scope.currentPage--;
-        }
-    };
-
-    $scope.nextPage = function () {
-        if ($scope.currentPage < $scope.pagedItems.length - 1) {
-            $scope.currentPage++;
-        }
-    };
-
-    $scope.setPage = function () {
-        $scope.currentPage = this.n;
-    };
-
-    // functions have been describe process the data for display
-    if($rootScope.plant.data){
-        $scope.search();
-    }
-
-    $scope.goToVehiculoPage = function(id){
-        RedirectSrv.redirect('vehiculo/' + $rootScope.plant.id + '/' + id);
-    }
-
-    // change sorting order
-    $scope.sort_by = function(newSortingOrder) {
-        if ($scope.sortingOrder == newSortingOrder)
-            $scope.reverse = !$scope.reverse;
-
-        $scope.sortingOrder = newSortingOrder;
-
-
-    };
-
-}]);
-'use strict';
-
-angular.module('myApp.worker', []).controller('workerCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', '$routeParams', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, $routeParams, ApiHttpSrv, ConfigSrv) {
-
-    var getdata = function () {
-        var data = {
-            'token': AuthSrv.currentUser().token,
-            'idPlanta': $routeParams.idP,
-            'id': $routeParams.idE
-        };
-        var getDataSuccess = function(d){
-            $scope.workerData = d;
-            // console.log(d);
-            $scope.loading = false;
-        };
-        var getDataFail = function(d){
-            // console.log(d);
-            $scope.loading = false;
-        };
-        $scope.loading = true;
-        ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('worker'), data, data).success(getDataSuccess).error(getDataFail);
-    }
-
-    if (AuthSrv.initialState() || !AuthSrv.authorized()) {
-        RedirectSrv.redirect('/login');
-    }else{
-        getdata();
-    }
-    $('#info').tab('show');
-    $('#info a').click(function (e) {
-      e.preventDefault()
-      $(this).tab('show')
-    });
-
-}]);
-'use strict';
-
-angular.module('myApp.workforce', []).controller('workforceCtrl', ['$scope', '$rootScope','AuthSrv', '$filter', '$window', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',function($scope, $rootScope, AuthSrv, $filter, $window, RedirectSrv, ApiHttpSrv, ConfigSrv) {
-
-    if (AuthSrv.initialState() || !AuthSrv.authorized()) {
-        RedirectSrv.redirect('/login');
-    };
-    $scope.sortingOrder = 'Ape';
-    $scope.reverse = false;
-    $scope.filteredItems = [];
-    $scope.groupedItems = [];
-    $scope.itemsPerPage = 10;
-    $scope.pagedItems = [];
-    $scope.currentPage = 0;
-    if($rootScope.plant.id){
-        // console.log($rootScope.plant);
-        var data = {
-            token : AuthSrv.currentUser().token,
-            idPlanta : $rootScope.plant.id
-        }
-        $scope.loading = true;
-        ApiHttpSrv.createApiHttp('get', ConfigSrv.getApiUrl('personal'), data, data)
-        .success(function(d){
-            // console.log(d);
-            $scope.items = d;
-            $scope.search();
-            $scope.loading = false;
-        }).error(function(d){
-            // console.log(d);
-            $scope.loading = false;
-        });
-    }
-
-    var searchMatch = function (haystack, needle) {
-        if (!needle) {
-            return true;
-        }
-        if(haystack){
-            return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
-        }
-
-    };
-
-    $scope.open = function(link){
-        $window.open(link, '_blank');
-    }
-
-    $scope.goToWorkerPage = function(id){
-        RedirectSrv.redirect('worker/' + $rootScope.plant.id + '/' + id);
-    }
-
-    // init the filtered items
-    $scope.search = function () {
-        $scope.filteredItems = $filter('filter')($scope.items, function (item) {
-            for(var attr in item) {
-                if (searchMatch(item[attr], $scope.query))
-                    return true;
-            }
-            return false;
-        });
-        // take care of the sorting order
-        if ($scope.sortingOrder !== '') {
-            $scope.filteredItems = $filter('orderBy')($scope.filteredItems, $scope.sortingOrder, $scope.reverse);
-        }
-        $scope.currentPage = 0;
-        // now group by pages
-        $scope.groupToPages();
-    };
-
-    // calculate page in place
-    $scope.groupToPages = function () {
-        $scope.pagedItems = [];
-
-        for (var i = 0; i < $scope.filteredItems.length; i++) {
-            if (i % $scope.itemsPerPage === 0) {
-                $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)] = [ $scope.filteredItems[i] ];
-            } else {
-                $scope.pagedItems[Math.floor(i / $scope.itemsPerPage)].push($scope.filteredItems[i]);
-            }
-        }
-    };
-
-    $scope.range = function (start, end) {
-        var ret = [];
-        if (!end) {
-            end = start;
-            start = 0;
-        }
-        for (var i = start; i < end; i++) {
-            ret.push(i);
-        }
-        return ret;
-    };
-
-    $scope.prevPage = function () {
-        if ($scope.currentPage > 0) {
-            $scope.currentPage--;
-        }
-    };
-
-    $scope.nextPage = function () {
-        if ($scope.currentPage < $scope.pagedItems.length - 1) {
-            $scope.currentPage++;
-        }
-    };
-
-    $scope.setPage = function () {
-        $scope.currentPage = this.n;
-    };
-
-    // functions have been describe process the data for display
-    if($rootScope.plant.data){
-        $scope.search();
-    }
-
-
-    // change sorting order
-    $scope.sort_by = function(newSortingOrder) {
-        if ($scope.sortingOrder == newSortingOrder)
-            $scope.reverse = !$scope.reverse;
-
-        $scope.sortingOrder = newSortingOrder;
-
-
-    };
 
 }]);
