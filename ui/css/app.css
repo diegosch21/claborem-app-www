@@ -203,97 +203,98 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   white-space: nowrap;
 }
-@media (max-width: 359px) {
+@media (max-width: 400px) {
   /* line 44, ../scss/home/_home.scss */
   .navbar-header .menu {
     padding: 14px 5px 10px;
+    margin-right: 5px !important;
   }
   /* line 46, ../scss/home/_home.scss */
   .navbar-header .menu .fa-list {
     font-size: 20px;
   }
-  /* line 50, ../scss/home/_home.scss */
+  /* line 51, ../scss/home/_home.scss */
   .navbar-header .navbar-brand {
-    padding: 14px 0;
+    padding: 13px 0;
   }
-  /* line 52, ../scss/home/_home.scss */
+  /* line 53, ../scss/home/_home.scss */
   .navbar-header .navbar-brand img {
-    width: 80px;
+    width: 90px;
   }
-  /* line 56, ../scss/home/_home.scss */
+  /* line 57, ../scss/home/_home.scss */
   .navbar-header .razon-social {
     font-size: 12px;
   }
 }
 
-/* line 62, ../scss/home/_home.scss */
+/* line 63, ../scss/home/_home.scss */
 .left {
   float: left;
 }
 
-/* line 65, ../scss/home/_home.scss */
+/* line 66, ../scss/home/_home.scss */
 .navbar-color {
   background-color: #495b79;
 }
 
-/* line 69, ../scss/home/_home.scss */
+/* line 70, ../scss/home/_home.scss */
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form, .navbar-inverse .navbar-toggle {
   border-color: #495b79;
 }
 
-/* line 73, ../scss/home/_home.scss */
+/* line 74, ../scss/home/_home.scss */
 .navbar-inverse .navbar-toggle:hover,
 .navbar-inverse .navbar-toggle:focus {
   background-color: #495b79;
   border-color: #495b79;
 }
 
-/* line 78, ../scss/home/_home.scss */
+/* line 79, ../scss/home/_home.scss */
 .navbar-toggle-color {
   color: white;
   font-size: 20px;
 }
-/* line 81, ../scss/home/_home.scss */
+/* line 82, ../scss/home/_home.scss */
 .navbar-toggle-color.fa-list {
   font-size: 2em;
 }
 
-/* line 85, ../scss/home/_home.scss */
+/* line 86, ../scss/home/_home.scss */
 .navbar-toggle-right {
   padding: 12px 10px 7px 9px;
   margin: 0px !important;
 }
 
-/* line 89, ../scss/home/_home.scss */
+/* line 90, ../scss/home/_home.scss */
 .navbar-inverse .navbar-toggle {
   margin-top: 0;
   margin-bottom: 0;
   margin-right: 10px;
 }
 
-/* line 94, ../scss/home/_home.scss */
+/* line 95, ../scss/home/_home.scss */
 .navbar-inverse {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-/* line 98, ../scss/home/_home.scss */
+/* line 99, ../scss/home/_home.scss */
 .nav > li {
   border-color: #495b79;
   border-bottom: 1px solid transparent;
 }
 @media (max-width: 768px) {
-  /* line 98, ../scss/home/_home.scss */
+  /* line 99, ../scss/home/_home.scss */
   .nav > li {
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
 }
 
-/* line 105, ../scss/home/_home.scss */
+/* line 106, ../scss/home/_home.scss */
 .navbar-nav {
   margin: 0 -15px;
 }
 
-/* line 108, ../scss/home/_home.scss */
+/* line 109, ../scss/home/_home.scss */
 .main-menu-icons {
   color: white;
   position: relative;
@@ -304,7 +305,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 16px;
 }
 
-/* line 117, ../scss/home/_home.scss */
+/* line 118, ../scss/home/_home.scss */
 .mainpage-header {
   color: #2F4051;
   margin-top: 47px;
@@ -312,7 +313,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 40px;
   padding-left: 10px;
 }
-/* line 123, ../scss/home/_home.scss */
+/* line 124, ../scss/home/_home.scss */
 .mainpage-header .planta-nombre {
   font-weight: bold;
   font-size: 1.2em;
@@ -320,13 +321,13 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-block;
 }
 
-/* line 132, ../scss/home/_home.scss */
+/* line 133, ../scss/home/_home.scss */
 .nopad {
   padding-right: 0;
   padding-left: 0;
 }
 
-/* line 136, ../scss/home/_home.scss */
+/* line 137, ../scss/home/_home.scss */
 .mainpage-header-plantimg {
   width: 120px;
   margin-top: 2px;
@@ -334,7 +335,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-right: 5px;
 }
 
-/* line 142, ../scss/home/_home.scss */
+/* line 143, ../scss/home/_home.scss */
 .mainpage-compon-cumpl {
   margin-top: 12px;
   margin-bottom: 15px;
@@ -346,29 +347,29 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 5px;
 }
 
-/* line 152, ../scss/home/_home.scss */
+/* line 153, ../scss/home/_home.scss */
 .progress-bar {
   background-color: #337ab7;
 }
 
-/* line 155, ../scss/home/_home.scss */
+/* line 156, ../scss/home/_home.scss */
 .mainpage-update {
   width: 100%;
   text-align: center;
   padding: 0;
 }
-/* line 159, ../scss/home/_home.scss */
+/* line 160, ../scss/home/_home.scss */
 .mainpage-update span {
   font-weight: bold;
   cursor: pointer;
   color: #2F4051;
 }
-/* line 163, ../scss/home/_home.scss */
+/* line 164, ../scss/home/_home.scss */
 .mainpage-update span i {
   margin-right: 8px;
 }
 
-/* line 168, ../scss/home/_home.scss */
+/* line 169, ../scss/home/_home.scss */
 .mainpage-compon-cumpl-icon {
   width: 20%;
   height: 50px;
@@ -377,14 +378,14 @@ h1, h2, h3, h4, h5, h6 {
   float: left;
 }
 
-/* line 175, ../scss/home/_home.scss */
+/* line 176, ../scss/home/_home.scss */
 .mainpage-compon-cumpl-bar {
   width: 80%;
   height: 50px;
   float: right;
 }
 
-/* line 180, ../scss/home/_home.scss */
+/* line 181, ../scss/home/_home.scss */
 .white-icon {
   color: white;
   font-size: 36px;
@@ -392,13 +393,13 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 50px;
 }
 
-/* line 186, ../scss/home/_home.scss */
+/* line 187, ../scss/home/_home.scss */
 .progress {
   margin: 12px;
   margin-top: 5px;
 }
 
-/* line 190, ../scss/home/_home.scss */
+/* line 191, ../scss/home/_home.scss */
 .mainpage-compon-cumpl-bar-title {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   width: 100%;
@@ -408,42 +409,42 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 26px;
 }
 
-/* line 198, ../scss/home/_home.scss */
+/* line 199, ../scss/home/_home.scss */
 .mainpage-compon-staff {
   width: 100%;
   padding: 16px;
   padding-bottom: 0;
 }
 
-/* line 203, ../scss/home/_home.scss */
+/* line 204, ../scss/home/_home.scss */
 .mainpage-compon-title {
   color: #495b79;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   height: 24px;
 }
 
-/* line 208, ../scss/home/_home.scss */
+/* line 209, ../scss/home/_home.scss */
 .mainpage-compon-container {
   border: 1px solid #b9c4d5;
   border-radius: 4px;
   padding-top: 8px;
 }
 
-/* line 213, ../scss/home/_home.scss */
+/* line 214, ../scss/home/_home.scss */
 .compon-title {
   padding-left: 5px;
   line-height: 1.5em;
   font-weight: bold;
 }
 
-/* line 218, ../scss/home/_home.scss */
+/* line 219, ../scss/home/_home.scss */
 .list-group-item:first-child {
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
   margin-top: 2px;
 }
 
-/* line 223, ../scss/home/_home.scss */
+/* line 224, ../scss/home/_home.scss */
 .list-group-item {
   position: relative;
   display: block;
@@ -460,13 +461,13 @@ h1, h2, h3, h4, h5, h6 {
   color: #333;
 }
 
-/* line 238, ../scss/home/_home.scss */
+/* line 239, ../scss/home/_home.scss */
 .list-group {
   padding-left: 0;
   margin-bottom: 10px;
 }
 
-/* line 242, ../scss/home/_home.scss */
+/* line 243, ../scss/home/_home.scss */
 .label-as-badge {
   border-radius: 1em;
   float: right;
@@ -478,112 +479,112 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1;
   margin-top: 2px;
 }
-/* line 252, ../scss/home/_home.scss */
+/* line 253, ../scss/home/_home.scss */
 .label-as-badge.item-acceso {
   float: none;
   margin-top: 0;
   font-size: 12px;
 }
 
-/* line 259, ../scss/home/_home.scss */
+/* line 260, ../scss/home/_home.scss */
 .label-danger {
   background-color: #d9534f;
 }
 
-/* line 262, ../scss/home/_home.scss */
+/* line 263, ../scss/home/_home.scss */
 .label-success {
   background-color: #90c657;
 }
 
-/* line 265, ../scss/home/_home.scss */
+/* line 266, ../scss/home/_home.scss */
 .mainpage-compon-staff-resume {
   background-color: red;
 }
 
-/* line 268, ../scss/home/_home.scss */
+/* line 269, ../scss/home/_home.scss */
 .mainpage-title {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #555;
   margin-bottom: 2px;
 }
 
-/* line 273, ../scss/home/_home.scss */
+/* line 274, ../scss/home/_home.scss */
 .font-medium {
   font-size: 14px;
 }
 
-/* line 276, ../scss/home/_home.scss */
+/* line 277, ../scss/home/_home.scss */
 .visitors-list-summary .border {
   border-right: 1px solid #b9c4d5;
 }
 
-/* line 279, ../scss/home/_home.scss */
+/* line 280, ../scss/home/_home.scss */
 .visitor-item {
   height: 35px;
   padding-top: 8px;
   margin-bottom: 5px;
 }
 
-/* line 284, ../scss/home/_home.scss */
+/* line 285, ../scss/home/_home.scss */
 .mainpage-compon {
   width: 100%;
   padding: 0;
   padding-top: 15px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-/* line 289, ../scss/home/_home.scss */
+/* line 290, ../scss/home/_home.scss */
 .mainpage-compon.info {
   padding: 15px;
 }
 
-/* line 293, ../scss/home/_home.scss */
+/* line 294, ../scss/home/_home.scss */
 .home-section {
   padding: 10px 15px;
 }
 
-/* line 296, ../scss/home/_home.scss */
+/* line 297, ../scss/home/_home.scss */
 .label-warning {
   background: #f9a94a;
 }
 
-/* line 299, ../scss/home/_home.scss */
+/* line 300, ../scss/home/_home.scss */
 .list-group-title {
   font-weight: bold;
   padding: 2px 0 0 14px;
   color: #495b79;
 }
 
-/* line 304, ../scss/home/_home.scss */
+/* line 305, ../scss/home/_home.scss */
 .progress-bar-success {
   background-color: #90c657;
 }
 
-/* line 307, ../scss/home/_home.scss */
+/* line 308, ../scss/home/_home.scss */
 .progress-mini {
   height: 10px;
   margin: 0;
   margin-top: 5px;
 }
 
-/* line 312, ../scss/home/_home.scss */
+/* line 313, ../scss/home/_home.scss */
 .bg-transparent-success {
   background-color: transparent;
   color: #90c657;
   font-weight: 800;
 }
 
-/* line 317, ../scss/home/_home.scss */
+/* line 318, ../scss/home/_home.scss */
 .list-group-item-progress {
   height: auto;
   padding-bottom: 10px;
 }
 
-/* line 321, ../scss/home/_home.scss */
+/* line 322, ../scss/home/_home.scss */
 .footer {
   height: 20px;
 }
 
-/* line 324, ../scss/home/_home.scss */
+/* line 325, ../scss/home/_home.scss */
 .form-control {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   float: right;
@@ -603,7 +604,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
-/* line 342, ../scss/home/_home.scss */
+/* line 343, ../scss/home/_home.scss */
 .btn {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   display: inline-block;
@@ -625,26 +626,26 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 4px;
 }
 
-/* line 362, ../scss/home/_home.scss */
+/* line 363, ../scss/home/_home.scss */
 .btn-success {
   color: #fff;
   background-color: #5cb85c;
   border-color: #4cae4c;
 }
 
-/* line 367, ../scss/home/_home.scss */
+/* line 368, ../scss/home/_home.scss */
 .input-append {
   height: 50px;
 }
 
-/* line 370, ../scss/home/_home.scss */
+/* line 371, ../scss/home/_home.scss */
 .input-group {
   float: right;
   margin: 10px;
   margin-top: 0;
 }
 
-/* line 375, ../scss/home/_home.scss */
+/* line 376, ../scss/home/_home.scss */
 .btn-default, .btn-default:hover, .btn-default:focus {
   color: #333;
   background-color: #fff;
@@ -654,12 +655,12 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid #ccc;
 }
 
-/* line 383, ../scss/home/_home.scss */
+/* line 384, ../scss/home/_home.scss */
 .add-on {
   padding-left: 10px;
 }
 
-/* line 386, ../scss/home/_home.scss */
+/* line 387, ../scss/home/_home.scss */
 .pre-listado {
   font-weight: bold;
   font-size: 13px;
@@ -668,25 +669,25 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom: 1px solid #2F4051;
   padding: 5px 15px;
 }
-/* line 393, ../scss/home/_home.scss */
+/* line 394, ../scss/home/_home.scss */
 .pre-listado > div {
   float: left;
   width: 50%;
 }
-/* line 396, ../scss/home/_home.scss */
+/* line 397, ../scss/home/_home.scss */
 .pre-listado > div.col-der {
   padding-left: 10px;
 }
-/* line 401, ../scss/home/_home.scss */
+/* line 402, ../scss/home/_home.scss */
 .pre-listado.contratista > .col-izq {
   width: 65%;
 }
-/* line 404, ../scss/home/_home.scss */
+/* line 405, ../scss/home/_home.scss */
 .pre-listado.contratista > .col-der {
   width: 35%;
 }
 
-/* line 409, ../scss/home/_home.scss */
+/* line 410, ../scss/home/_home.scss */
 .tile-contract {
   padding: 6px 15px;
   width: 100%;
@@ -697,27 +698,27 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
 }
-/* line 418, ../scss/home/_home.scss */
+/* line 419, ../scss/home/_home.scss */
 .tile-contract.tres-renglones {
   height: 75px;
 }
-/* line 422, ../scss/home/_home.scss */
+/* line 423, ../scss/home/_home.scss */
 .tile-contract.contratistas .tile-contract-num {
   width: 65%;
 }
-/* line 425, ../scss/home/_home.scss */
+/* line 426, ../scss/home/_home.scss */
 .tile-contract.contratistas .tile-contract-fechas {
   width: 35%;
 }
 
-/* line 430, ../scss/home/_home.scss */
+/* line 431, ../scss/home/_home.scss */
 .tile-contract-num {
   width: 50%;
   height: 56px;
   float: left;
 }
 
-/* line 435, ../scss/home/_home.scss */
+/* line 436, ../scss/home/_home.scss */
 .tile-contract-fiscal {
   padding-top: 2px;
   height: 24px;
@@ -726,14 +727,14 @@ h1, h2, h3, h4, h5, h6 {
   white-space: nowrap;
 }
 
-/* line 443, ../scss/home/_home.scss */
+/* line 444, ../scss/home/_home.scss */
 .tile-contract-fechas {
   width: 50%;
   height: 56px;
   float: right;
 }
 
-/* line 449, ../scss/home/_home.scss */
+/* line 450, ../scss/home/_home.scss */
 .tile-contract-fecha {
   width: 100%;
   height: 24px;
@@ -744,7 +745,7 @@ h1, h2, h3, h4, h5, h6 {
   white-space: nowrap;
 }
 
-/* line 458, ../scss/home/_home.scss */
+/* line 459, ../scss/home/_home.scss */
 .pagination ul > li:first-child > a, .pagination ul > li:first-child > span {
   border-left-width: 1px;
   -webkit-border-radius: 3px 0 0 3px;
@@ -752,14 +753,14 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 3px 0 0 3px;
 }
 
-/* line 464, ../scss/home/_home.scss */
+/* line 465, ../scss/home/_home.scss */
 .pagination ul > .disabled > span, .pagination ul > .disabled > a, .pagination ul > .disabled > a:hover {
   color: #999999;
   background-color: transparent;
   cursor: default;
 }
 
-/* line 469, ../scss/home/_home.scss */
+/* line 470, ../scss/home/_home.scss */
 .pagination ul > li > a, .pagination ul > li > span {
   float: left;
   padding: 0px 11px;
@@ -770,12 +771,12 @@ h1, h2, h3, h4, h5, h6 {
   border-left-width: 0;
 }
 
-/* line 478, ../scss/home/_home.scss */
+/* line 479, ../scss/home/_home.scss */
 .pagination ul > li {
   display: inline;
 }
 
-/* line 482, ../scss/home/_home.scss */
+/* line 483, ../scss/home/_home.scss */
 .pagination {
   display: inline-block;
   padding-bottom: 10px;
@@ -784,36 +785,36 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 4px;
 }
 
-/* line 489, ../scss/home/_home.scss */
+/* line 490, ../scss/home/_home.scss */
 .pagination .active > a, .pagination .active > a:hover {
   color: #999999;
   background-color: transparent;
   cursor: default;
 }
 
-/* line 494, ../scss/home/_home.scss */
+/* line 495, ../scss/home/_home.scss */
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
 
-/* line 497, ../scss/home/_home.scss */
+/* line 498, ../scss/home/_home.scss */
 .auto-height {
   height: auto;
 }
 
-/* line 501, ../scss/home/_home.scss */
+/* line 502, ../scss/home/_home.scss */
 .section-header {
   margin-top: 5px;
   margin-bottom: 15px;
   position: relative;
   text-align: center;
 }
-/* line 506, ../scss/home/_home.scss */
+/* line 507, ../scss/home/_home.scss */
 .section-header span {
   display: inline-block;
   color: #495b79;
 }
-/* line 510, ../scss/home/_home.scss */
+/* line 511, ../scss/home/_home.scss */
 .section-header span.back {
   font-size: 20px;
   padding: 0 5px 0 10px;
@@ -821,29 +822,29 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   top: 0;
 }
-/* line 517, ../scss/home/_home.scss */
+/* line 518, ../scss/home/_home.scss */
 .section-header span.title {
   text-transform: uppercase;
   font-size: 16px;
   line-height: 26px;
   font-weight: bold;
 }
-/* line 522, ../scss/home/_home.scss */
+/* line 523, ../scss/home/_home.scss */
 .section-header span.title .fa {
   margin-right: 5px;
 }
-/* line 525, ../scss/home/_home.scss */
+/* line 526, ../scss/home/_home.scss */
 .section-header span.title .entidad {
   text-transform: none;
 }
 
-/* line 531, ../scss/home/_home.scss */
+/* line 532, ../scss/home/_home.scss */
 .spinner {
   width: 100%;
   height: 200px;
   position: relative;
 }
-/* line 535, ../scss/home/_home.scss */
+/* line 536, ../scss/home/_home.scss */
 .spinner .fa {
   position: absolute;
   top: 50%;
@@ -854,64 +855,64 @@ h1, h2, h3, h4, h5, h6 {
   color: #495b79;
 }
 
-/* line 545, ../scss/home/_home.scss */
+/* line 546, ../scss/home/_home.scss */
 .disconnect {
   padding: 60px 20px 20px;
   text-align: center;
   font-size: 14px;
 }
 
-/* line 550, ../scss/home/_home.scss */
+/* line 551, ../scss/home/_home.scss */
 td.estado-doc, th.estado-doc {
   text-align: center;
 }
-/* line 552, ../scss/home/_home.scss */
+/* line 553, ../scss/home/_home.scss */
 td.estado-doc span, th.estado-doc span {
   float: none;
 }
 
-/* line 556, ../scss/home/_home.scss */
+/* line 557, ../scss/home/_home.scss */
 .bold-primaty-color, .bold-primary-color {
   font-weight: 700;
   color: #2F4051;
 }
 
-/* line 562, ../scss/home/_home.scss */
+/* line 563, ../scss/home/_home.scss */
 .nav-tabs.subtabs > li {
   padding: 5px 5px 0;
 }
-/* line 564, ../scss/home/_home.scss */
+/* line 565, ../scss/home/_home.scss */
 .nav-tabs.subtabs > li > a {
   padding: 5px;
 }
-/* line 567, ../scss/home/_home.scss */
+/* line 568, ../scss/home/_home.scss */
 .nav-tabs.subtabs > li.active {
   font-weight: bold;
 }
 
-/* line 572, ../scss/home/_home.scss */
+/* line 573, ../scss/home/_home.scss */
 .aviso-documentos-pendientes {
   text-align: center;
   padding-bottom: 10px;
   font-weight: 700;
 }
 
-/* line 578, ../scss/home/_home.scss */
+/* line 579, ../scss/home/_home.scss */
 .panel-reportes {
   margin: 20px 15px;
   border-color: #428bca;
 }
-/* line 581, ../scss/home/_home.scss */
+/* line 582, ../scss/home/_home.scss */
 .panel-reportes > .panel-heading {
   color: white;
   background-color: #428bca;
   border-color: #428bca;
 }
-/* line 586, ../scss/home/_home.scss */
+/* line 587, ../scss/home/_home.scss */
 .panel-reportes > .panel-body {
   padding: 0;
 }
-/* line 589, ../scss/home/_home.scss */
+/* line 590, ../scss/home/_home.scss */
 .panel-reportes .list-group-item {
   width: 100%;
   line-height: 1.5;
@@ -920,7 +921,7 @@ td.estado-doc span, th.estado-doc span {
   margin-left: 0;
   height: auto;
 }
-/* line 596, ../scss/home/_home.scss */
+/* line 597, ../scss/home/_home.scss */
 .panel-reportes .list-group-item .fa {
   position: absolute;
   left: 10px;

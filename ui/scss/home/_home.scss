@@ -40,17 +40,18 @@ h1, h2, h3, h4, h5, h6 {
         overflow: hidden;
         white-space: nowrap;
     }
-    @media (max-width: 359px) {
+    @media (max-width: 400px) {
         .menu {
             padding: 14px 5px 10px;
             .fa-list {
                 font-size: 20px;
             }
+            margin-right: 5px !important;
         }
         .navbar-brand {
-            padding: 14px 0;
+            padding: 13px 0;
             img {
-                width: 80px;
+                width: 90px;
             }
         }
         .razon-social {
