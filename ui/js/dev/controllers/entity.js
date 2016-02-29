@@ -17,7 +17,7 @@ angular.module('myApp.entity', [])
             'id': $routeParams.id
         };
         var getDataSuccess = function(d){
-            $scope.entityData = d;
+            $scope.entityData = d[0];
             // console.log(d);
             $scope.loading = false;
         };
@@ -34,11 +34,5 @@ angular.module('myApp.entity', [])
     }else{
         getData();
     }
-
-    $('#info').tab('show');
-    $('#info a').click(function (e) {
-        e.preventDefault();
-        $(this).tab('show');
-    });
 
 }]);

@@ -554,3 +554,20 @@ td.estado-doc, th.estado-doc {
     font-weight: 700;
     color: $main-color;
 }
+
+.nav-tabs.subtabs {
+    >li {
+        padding: 5px 5px 0;
+        >a {
+            padding: 5px;
+        }
+        &.active {
+            font-weight: bold;
+        }
+    }
+}
+.aviso-documentos-pendientes {
+    text-align: center;
+    padding-bottom: 10px;
+    font-weight: 700;
+}

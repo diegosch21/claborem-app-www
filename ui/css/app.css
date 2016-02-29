@@ -871,6 +871,26 @@ td.estado-doc span, th.estado-doc span {
   color: #2F4051;
 }
 
+/* line 559, ../scss/home/_home.scss */
+.nav-tabs.subtabs > li {
+  padding: 5px 5px 0;
+}
+/* line 561, ../scss/home/_home.scss */
+.nav-tabs.subtabs > li > a {
+  padding: 5px;
+}
+/* line 564, ../scss/home/_home.scss */
+.nav-tabs.subtabs > li.active {
+  font-weight: bold;
+}
+
+/* line 569, ../scss/home/_home.scss */
+.aviso-documentos-pendientes {
+  text-align: center;
+  padding: 5px 0;
+  font-weight: 700;
+}
+
 /* line 1, ../scss/login/_login.scss */
 .main-backgroud {
   position: absolute;
