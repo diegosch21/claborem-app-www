@@ -6,15 +6,11 @@ var myApp = angular.module('myApp',
         'myApp.filters',
         'myApp.directives', // custom directives
         'myApp.home',
-        'myApp.contracts',
+        'myApp.collections',
         'myApp.contract',
-        'myApp.workforce',
         'myApp.worker',
-        'myApp.contratistas',
         'myApp.contratista',
-        'myApp.maquinarias',
         'myApp.maquinaria',
-        'myApp.vehiculos',
         'myApp.vehiculo',
         'myApp.main',
         'myApp.login',
@@ -47,37 +43,31 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
         controller: 'loginCtrl'
     });
 
-    $routeProvider.when('/contracts', {
-        templateUrl:'views/contracts/contracts.html'
+    $routeProvider.when('/contratos', {
+        templateUrl:'views/contracts/contratos.html',
+        controller: 'collectionsCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'contratos',
+                sortingOrder : 'Numero'
+            }; }
+        }
     });
 
-    $routeProvider.when('/workforce', {
-        templateUrl:'views/workforce/workforce.html'
-    });
-
-    $routeProvider.when('/worker/:idP/:idE', {
-        templateUrl:'views/workforce/worker.html',
-        controller: 'workerCtrl'
-    });
-
-    $routeProvider.when('/contract/:id', {
-        templateUrl:'views/contracts/contract.html',
+    $routeProvider.when('/contrato/:id', {
+        templateUrl:'views/contracts/contrato.html',
         controller: 'contractCtrl'
     });
 
     $routeProvider.when('/contratistas', {
         templateUrl:'views/contratistas/contratistas.html',
-        controller: 'contratistasCtrl'
-    });
-
-    $routeProvider.when('/maquinarias', {
-        templateUrl:'views/maquinarias/maquinarias.html',
-        controller: 'maquinariasCtrl'
-    });
-
-    $routeProvider.when('/vehiculos', {
-        templateUrl:'views/vehiculos/vehiculos.html',
-        controller: 'vehiculosCtrl'
+        controller: 'collectionsCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'contratistas',
+                sortingOrder : 'RazonSocial'
+            }; }
+        }
     });
 
     $routeProvider.when('/contratista/:idP/:idC', {
@@ -85,14 +75,52 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
         controller: 'contratistaCtrl'
     });
 
-    $routeProvider.when('/maquinaria/:idP/:idM', {
-        templateUrl:'views/maquinarias/maquinaria.html',
-        controller: 'maquinariaCtrl'
+    $routeProvider.when('/personal', {
+        templateUrl:'views/personal/personal.html',
+        controller: 'collectionsCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'personal',
+                sortingOrder : 'Apellido'
+            }; }
+        }
+    });
+
+    $routeProvider.when('/empleado/:idP/:idE', {
+        templateUrl:'views/personal/empleado.html',
+        controller: 'workerCtrl'
+    });
+
+    $routeProvider.when('/vehiculos', {
+        templateUrl:'views/vehiculos/vehiculos.html',
+        controller: 'collectionsCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'vehiculos',
+                sortingOrder : 'Marca'
+            }; }
+        }
     });
 
     $routeProvider.when('/vehiculo/:idP/:idV', {
         templateUrl:'views/vehiculos/vehiculo.html',
         controller: 'vehiculoCtrl'
+    });
+
+    $routeProvider.when('/maquinarias', {
+        templateUrl:'views/maquinarias/maquinarias.html',
+        controller: 'collectionsCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'maquinarias',
+                sortingOrder : 'Marca'
+            }; }
+        }
+    });
+
+    $routeProvider.when('/maquinaria/:idP/:idM', {
+        templateUrl:'views/maquinarias/maquinaria.html',
+        controller: 'maquinariaCtrl'
     });
 
     // by default, redirect to site root
@@ -130,21 +158,5 @@ myApp.run(function ($rootScope, $location, $http, $timeout, AuthSrv, RedirectSrv
         }
     }, true);
 
-    // Detectar boton back
-    // Bind the `$locationChangeSuccess` event on the rootScope,
-    //  so that we dont need to bind in individual controllers.
-
-    // $rootScope.$on('$locationChangeSuccess', function() {
-    //     $rootScope.actualLocation = $location.path();
-    // });
-
-    // $rootScope.$watch(function () {return $location.path()}, function (newLocation, oldLocation) {
-    //     if($rootScope.actualLocation === newLocation) {
-    //         $rootScope.isBack = true;
-    //     }
-    //     else {
-    //         $rootScope.isBack = false;
-    //     }
-    // });
 
 });

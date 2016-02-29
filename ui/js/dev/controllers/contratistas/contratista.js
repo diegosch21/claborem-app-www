@@ -32,8 +32,4 @@ angular.module('myApp.contratista', []).controller('contratistaCtrl', ['$scope',
       $(this).tab('show')
     });
 
-    $scope.goToWorkerPage = function(id){
-        RedirectSrv.redirect('worker/' + $rootScope.plant.id + '/' + id);
-    }
-
 }]);

@@ -3,15 +3,15 @@
     <div ng-include src="'views/partials/navbar-top.html'"></div>
     <div ng-include src="'views/partials/page-header.html'"></div>
 
-    <div ng-controller="workforceCtrl" fade-in>
+    <div fade-in>  <!-- ng-controller="collectionCtrl" (associated via routeProvider in main.js) -->
 
         <div class="section-header">
             <span class="back" ng-click='goBack()'>
                 <i class="fa fa-chevron-left"></i></span>
             </span>
             <span class="title">
-                <i class="fa fa-group"></i>
-                Personal
+                <i class="fa fa-indent"></i>
+                Contratos
             </span>
         </div>
 
@@ -21,8 +21,8 @@
                 <span class="input-group-btn">
                     <span class="add-on"><i class="icon-search"></i></span>
                 </span>
-
             </a>
+        <!--<span class="add-on"><i class="icon-search"></i></span>-->
         </div>
 
         <div ng-show='loading' class="spinner">
@@ -30,25 +30,26 @@
         </div>
 
         <div class="pre-listado" ng-show='pagedItems.length'>
-            <div class="col-izq">Empleados</div>
-            <div class="col-der">Estado</div>
+            <div class="col-izq">Contrato</div>
+            <div class="col-der">Período</div>
         </div>
-        <div ng-click='goToWorkerPage(item.id)' ng-repeat="item in pagedItems[currentPage]" class="tile-contract" >
+        <div ng-click='goToContratoPage(item.id)' ng-repeat="item in pagedItems[currentPage]" class="tile-contract" >
+
             <div class="tile-contract-num" >
-                <!-- id: {{item.id}} -->
-                <div class="tile-contract-fiscal" style="text-transform: capitalize;">
-                    <strong>{{item.Apellido}} {{item.Nombre}}</strong>
-                </div>
+                Nº: {{item.Numero}}
                 <div class="tile-contract-fiscal">
-                    CUIL: {{item.Cuil}}
+                    <div>Fiscal: {{item.Fiscal}}</div>
                 </div>
             </div>
             <div class="tile-contract-fechas">
                 <div class="tile-contract-fecha">
-                    <span>{{item.Acceso}}</span>
+                    <span>Inicio: {{item.Inicio}}</span>
                 </div>
                 <div class="tile-contract-fecha">
-                    <span>Próx venc: {{item.ProxVenc}}</span>
+                    <span>Fin: {{item.Fin}}</span>
+                </div>
+                <div class="tile-contract-fecha">
+                    <span ng-show='item.Extension'>Extensión: {{item.Extension}}</span>
                 </div>
             </div>
 
@@ -69,6 +70,7 @@
                 </li>
             </ul>
         </div>
+
 
     </div>
 

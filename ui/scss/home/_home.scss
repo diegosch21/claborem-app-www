@@ -115,6 +115,18 @@
 .progress-bar{
     background-color: #337ab7;
 }
+.mainpage-update {
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    span {
+        cursor: pointer;
+        color: $main-color;
+        i {
+            margin-right: 8px;
+        }
+    }
+}
 .mainpage-compon-cumpl-icon{
     width: 20%;
     height: 50px;

@@ -22,43 +22,63 @@ angular.module('myApp.main', [])
     $rootScope.changePlant = function(id){
         $rootScope.currentId = id;
         $rootScope.plant = $rootScope.plantas[id];
+        $rootScope.collections = {}; // destruyo las colecciones (para prevenir errores con back button)
         RedirectSrv.redirect('/');
     }
 
-    $scope.goToContracts = function(){
-        RedirectSrv.redirect('/contracts');
+    $scope.goToContratos = function(){
+        RedirectSrv.redirect('/contratos');
     }
 
-    $scope.goToMaquinarias = function(){
-        RedirectSrv.redirect('/maquinarias');
-    }
-
-
-    $scope.goToVehiculos = function(){
-        RedirectSrv.redirect('/vehiculos');
+    $scope.goToContratoPage = function(id){
+        RedirectSrv.redirect('/contrato/' + id);
     }
 
     $scope.goToContratistas = function(){
         RedirectSrv.redirect('/contratistas');
     }
 
+    $scope.goToContratistaPage = function(id){
+        RedirectSrv.redirect('contratista/' + $rootScope.plant.id + '/' + id);
+    }
 
-    $scope.goToHome = function(){
-        $rootScope.updateHome = true;  // si aprieto inicio actualiza la home
+    $scope.goToPersonal = function(){
+        RedirectSrv.redirect('/personal');
+    }
+
+    $scope.goToEmpleadoPage = function(id){
+        RedirectSrv.redirect('empleado/' + $rootScope.plant.id + '/' + id);
+    }
+
+    $scope.goToMaquinarias = function(){
+        RedirectSrv.redirect('/maquinarias');
+    }
+
+    $scope.goToMaquinariaPage = function(id){
+        RedirectSrv.redirect('maquinaria/' + $rootScope.plant.id + '/' + id);
+    }
+
+    $scope.goToVehiculos = function(){
+        RedirectSrv.redirect('/vehiculos');
+    }
+
+    $scope.goToVehiculoPage = function(id){
+        RedirectSrv.redirect('vehiculo/' + $rootScope.plant.id + '/' + id);
+    }
+
+
+    $rootScope.goBack = function(){
+        $window.history.back();
+    }
+
+    $rootScope.goToHome = function(){
+        // $rootScope.updateHome = true;  // si aprieto inicio actualiza la home
         RedirectSrv.redirect('/');
     }
 
     $scope.collapse = function(id){
         $('#' + id).removeClass('in');
         $('#' + id).addClass('collapse');
-    }
-
-    $scope.goToWorkForce = function(){
-        RedirectSrv.redirect('/workforce');
-    }
-
-    $rootScope.goBack = function(){
-        $window.history.back();
     }
 
 }]);
