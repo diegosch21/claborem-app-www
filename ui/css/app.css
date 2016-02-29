@@ -203,7 +203,7 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   white-space: nowrap;
 }
-@media (max-width: 400px) {
+@media (max-width: 359px) {
   /* line 44, ../scss/home/_home.scss */
   .navbar-header .menu {
     padding: 14px 5px 10px;
@@ -856,7 +856,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* line 545, ../scss/home/_home.scss */
 .disconnect {
-  padding: 20px;
+  padding: 60px 20px 20px;
   text-align: center;
   font-size: 14px;
 }
