@@ -958,6 +958,7 @@ td.estado-doc span, th.estado-doc span {
   margin: 0 auto;
   max-width: 500px;
   margin-top: 15%;
+  padding-bottom: 30px;
 }
 @media screen and (min-width: 700px) {
   /* line 22, ../scss/login/_login.scss */
@@ -965,19 +966,19 @@ td.estado-doc span, th.estado-doc span {
     margin-top: 120px;
   }
 }
-/* line 30, ../scss/login/_login.scss */
+/* line 31, ../scss/login/_login.scss */
 .login-box input {
   font-size: 20px;
   height: 50px;
   padding-left: 15%;
 }
 @media screen and (min-width: 400px) {
-  /* line 30, ../scss/login/_login.scss */
+  /* line 31, ../scss/login/_login.scss */
   .login-box input {
     font-size: 24px;
   }
 }
-/* line 38, ../scss/login/_login.scss */
+/* line 39, ../scss/login/_login.scss */
 .login-box button {
   font-size: 20px;
   font-weight: bold;
@@ -990,7 +991,7 @@ td.estado-doc span, th.estado-doc span {
   background-color: #008ACB;
 }
 @media screen and (min-width: 400px) {
-  /* line 38, ../scss/login/_login.scss */
+  /* line 39, ../scss/login/_login.scss */
   .login-box button {
     font-size: 24px;
     line-height: 60px;
@@ -998,7 +999,7 @@ td.estado-doc span, th.estado-doc span {
     margin-top: 40px;
   }
 }
-/* line 55, ../scss/login/_login.scss */
+/* line 56, ../scss/login/_login.scss */
 .login-box .disconnect {
   padding: 0 8px 10px;
   margin-top: -10px;
@@ -1006,7 +1007,7 @@ td.estado-doc span, th.estado-doc span {
   font-size: 14px;
 }
 
-/* line 63, ../scss/login/_login.scss */
+/* line 64, ../scss/login/_login.scss */
 .login-footer {
   min-height: 280px;
   width: 260px;
@@ -1015,7 +1016,7 @@ td.estado-doc span, th.estado-doc span {
   text-align: center;
 }
 
-/* line 71, ../scss/login/_login.scss */
+/* line 72, ../scss/login/_login.scss */
 .login-box h1 {
   color: #2f4051;
   font-size: 25px;
@@ -1025,12 +1026,12 @@ td.estado-doc span, th.estado-doc span {
   text-align: center;
   padding-top: 20px;
 }
-/* line 79, ../scss/login/_login.scss */
+/* line 80, ../scss/login/_login.scss */
 .login-box h1 img {
   width: 250px;
 }
 
-/* line 84, ../scss/login/_login.scss */
+/* line 85, ../scss/login/_login.scss */
 .login-box h5 {
   text-align: center;
   font-family: 'Raleway';
@@ -1039,14 +1040,14 @@ td.estado-doc span, th.estado-doc span {
   font-size: 13px;
 }
 
-/* line 92, ../scss/login/_login.scss */
+/* line 93, ../scss/login/_login.scss */
 .login-box hr {
   border-width: 1px;
   border-color: #0b1d30;
   opacity: 0.3;
 }
 
-/* line 98, ../scss/login/_login.scss */
+/* line 99, ../scss/login/_login.scss */
 .login-box .input-box .input-group-addon {
   background: #2f4051;
   border: 0px;
@@ -1054,18 +1055,18 @@ td.estado-doc span, th.estado-doc span {
   border-radius: 0px;
   border-right: 1px solid #FFFFFF;
 }
-/* line 104, ../scss/login/_login.scss */
+/* line 105, ../scss/login/_login.scss */
 .login-box .input-box .input-group-addon i {
   width: 30px;
 }
 @media screen and (min-width: 400px) {
-  /* line 104, ../scss/login/_login.scss */
+  /* line 105, ../scss/login/_login.scss */
   .login-box .input-box .input-group-addon i {
     width: 50px;
   }
 }
 
-/* line 112, ../scss/login/_login.scss */
+/* line 113, ../scss/login/_login.scss */
 .login-box .input-box h6 {
   font-family: 'Raleway';
   font-weight: 600;
@@ -1073,20 +1074,20 @@ td.estado-doc span, th.estado-doc span {
 }
 
 @media screen and (max-width: 768px) {
-  /* line 118, ../scss/login/_login.scss */
+  /* line 119, ../scss/login/_login.scss */
   .col-xs-offset-1 {
     margin-left: 8.33333333%;
   }
 }
 
-/* line 124, ../scss/login/_login.scss */
+/* line 125, ../scss/login/_login.scss */
 .login-box .input-box input {
   background: #2f4051;
   border-radius: 0px;
   border: none;
   color: #FFFFFF !important;
 }
-/* line 129, ../scss/login/_login.scss */
+/* line 130, ../scss/login/_login.scss */
 .login-box .input-box input:focus {
   border: none;
 }
@@ -1115,25 +1116,25 @@ td.estado-doc span, th.estado-doc span {
   line-height: 2;
 }
 
-/* line 139, ../scss/login/_login.scss */
+/* line 140, ../scss/login/_login.scss */
 .login-box .input-box .form-group h6 {
   margin-top: 60px;
   text-align: center;
 }
 
-/* line 144, ../scss/login/_login.scss */
+/* line 145, ../scss/login/_login.scss */
 .input-group {
   position: relative;
   display: table;
   border-collapse: separate;
 }
 
-/* line 149, ../scss/login/_login.scss */
+/* line 150, ../scss/login/_login.scss */
 .form-group {
   margin-bottom: 30px;
 }
 
-/* line 153, ../scss/login/_login.scss */
+/* line 154, ../scss/login/_login.scss */
 .btn-block {
   display: block;
   width: 100%;
@@ -1141,7 +1142,7 @@ td.estado-doc span, th.estado-doc span {
   padding-left: 0;
 }
 
-/* line 159, ../scss/login/_login.scss */
+/* line 160, ../scss/login/_login.scss */
 .btn-primary-blue {
   color: #fff;
   background-color: #428bca;
@@ -1152,7 +1153,7 @@ td.estado-doc span, th.estado-doc span {
   line-height: 0px;
 }
 
-/* line 169, ../scss/login/_login.scss */
+/* line 170, ../scss/login/_login.scss */
 .form-control {
   display: block;
   width: 100%;
@@ -1171,7 +1172,7 @@ td.estado-doc span, th.estado-doc span {
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
-/* line 186, ../scss/login/_login.scss */
+/* line 187, ../scss/login/_login.scss */
 .alert-danger, .alert-error {
   margin-top: 20px;
   color: #a94442;
@@ -1182,7 +1183,7 @@ td.estado-doc span, th.estado-doc span {
   padding: 0;
 }
 
-/* line 195, ../scss/login/_login.scss */
+/* line 196, ../scss/login/_login.scss */
 .alert {
   border-radius: 0;
 }
@@ -1204,9 +1205,9 @@ body .background {
   bottom: 0;
   z-index: 0;
   text-align: center;
-  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZGZkZmRmIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjY2NjY2NjIi8+PC9yYWRpYWxHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
   background-size: 100%;
-  background-image: -moz-radial-gradient(#ffffff, #ffffff, #dfdfdf);
-  background-image: -webkit-radial-gradient(#ffffff, #ffffff, #dfdfdf);
-  background-image: radial-gradient(#ffffff, #ffffff, #dfdfdf);
+  background-image: -moz-radial-gradient(#ffffff, #ffffff, #cccccc);
+  background-image: -webkit-radial-gradient(#ffffff, #ffffff, #cccccc);
+  background-image: radial-gradient(#ffffff, #ffffff, #cccccc);
 }
