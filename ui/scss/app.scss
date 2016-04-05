@@ -5,3 +5,18 @@
 @import "home/home";
 @import "login/login";
 
+html {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+    .background {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        z-index: 0;
+        text-align: center;
+        @include background-image(radial-gradient(#FFFFFF, #FFFFFF, #DFDFDF));
+    }
+}
