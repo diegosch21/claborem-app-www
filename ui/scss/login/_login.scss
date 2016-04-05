@@ -1,26 +1,39 @@
-.main-backgroud{
+$color-inputs-login: #2f4051;
+
+.main-background{
     position: absolute;
     width: 100%;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+    @include background-image(radial-gradient(#FFFFFF, #FFFFFF, #DFDFDF));
 }
 
 .login-box{
-    background: #FFFFFF;
-    min-height: 300px;
+    position: absolute;
+    top: 15%;
+    background: transparent;
     margin: 0px auto;
-    width: 90%;
-    max-width: 500px;
-    margin-top: 100px;
-    @media screen and (max-width: 400px) {
-        margin-top: 50px;
+    width: 100%;
+    .icon-login {
+        margin: 0;
+        width: 20%;
+        max-width: 150px;
     }
-    border: 1px solid #ccc;
+    .input-box {
+        margin: 0 auto;
+        max-width: 500px;
+        margin-top: 15%;
+        @media screen and (min-width: 700px) {
+            margin-top: 120px;
+        }
+    }
     input {
         font-size: 20px;
         height: 50px;
-        padding-left: 20px;
+        padding-left: 15%;
         @media screen and (min-width: 400px) {
             font-size: 24px;
-            padding-left: 50px;
         }
     }
     button {
@@ -28,13 +41,17 @@
         font-weight: bold;
         line-height: 50px;
         height: 50px;
-        text-transform: uppercase;
         padding: 0;
+        margin-top: 30px;
+        border-radius: 0;
+        border: none;
         @media screen and (min-width: 400px) {
             font-size: 24px;
             line-height: 60px;
             height: 60px;
+            margin-top: 40px;
         }
+        background-color: #008ACB;
     }
     .disconnect {
         padding: 0 8px 10px;
@@ -79,15 +96,12 @@
     opacity: 0.3;
 }
 
-.login-box .input-box {
-    margin: 20px 0 30px;
-}
-
 .login-box .input-box .input-group-addon {
-    background: #2f4051;
+    background: $color-inputs-login;
     border: 0px;
     color: #FFFFFF;
     border-radius: 0px;
+    border-right: 1px solid #FFFFFF;
     i {
         width: 30px;
         @media screen and (min-width: 400px) {
@@ -109,10 +123,18 @@
 }
 
 .login-box .input-box input {
-    background: #4f5c6c;
+    background: $color-inputs-login;
     border-radius: 0px;
     border: none;
     color: #FFFFFF !important;
+    &:focus {
+        border: none;
+    }
+    @include input-placeholder {
+        color: #FFFFFF;
+        font-size: 0.8em;
+        line-height: 34px;
+    }
 }
 
 .login-box .input-box .form-group h6 {
@@ -126,7 +148,7 @@
     border-collapse: separate;
 }
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 .btn-block {
@@ -163,10 +185,13 @@
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 .alert-danger, .alert-error {
-    margin-top: 10px;
+    margin-top: 20px;
     color: #a94442;
     background-color: #f2dede;
     border-color: #ebccd1;
+    font-size: 18px;
+    line-height: 2;
+    padding: 0;
 }
 .alert {
     border-radius: 0;

@@ -1,45 +1,38 @@
-<div class="main-backgroud">
-	<div class="login-box">
-		<h1>
-			<img src="images/logo-login.png" alt="Certronic">
-		</h1>
-		<hr>
+<div class="main-background">
+    <div ng-show='loading' class="spinner">
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+    </div>
+	<div class="login-box" ng-show='!loading'>
+        <img src="images/logo-login.png" class="icon-login">
 		<h5  style="display:none" >Iniciar Sesión</h5>
 		<div class="input-box">
 	        <div class="row">
-		        <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+		        <div class="col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
                     <form novalidate role="form">
                         <div class="input-group form-group">
                             <span class="input-group-addon usuario"><i class="fa fa-2x fa-user"></i></span>
                             <input type="text" id="User" name="User" class="form-control" placeholder="Usuario" ng-model="user.name" required/>
                         </div>
                         <div class="input-group form-group">
-                            <span class="input-group-addon password"><i class="fa fa-2x fa-key"></i></span>
+                            <span class="input-group-addon password"><i class="fa fa-2x fa-lock"></i></span>
                             <input type="Password" id="Password" name="Password" class="form-control" placeholder="Contraseña" ng-model="user.password" required/>
                         </div>
                         <h6  style="display:none"><input  type="checkbox" name="MantenerSesion" id="MantenerSesion" value="S">&nbsp;No cerrar sesión</h6>
-                        <div class="form-group">
-                            <button style="margin-top: 20px;" type="submit" class="btn btn-block btn-primary-blue pull-right" id="iniciarSesion" name="iniciarSesion" ng-click="login(user)">Iniciar</button>
-                        </div>
+                        <button type="submit" class="btn btn-block btn-primary-blue pull-right" id="iniciarSesion" name="iniciarSesion" ng-click="login(user)">Iniciar</button>
                         <!-- <div class="form-group">
                             <h6 style="display:none"><a href="olvidoPassword.php">¿Olvidó su contraseña?</a></h6>
                         </div> -->
 					</form>
 		        </div>
-		        <!-- col -->
 	        </div>
             <div class="row" ng-show="loginfail" >
-                <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 alert alert-error">
-                    Usuario o contraseña incorrecta
+                <div class="col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
+                    <div class="alert alert-error">Usuario o contraseña incorrecta</div>
                 </div>
             </div>
-    	    <!-- row -->
         </div>
         <div ng-show='disconnect' class="disconnect">
             <p>No se puede establecer conexión con el servidor.<br> Por favor, revise su conexión a internet.</p>
         </div>
-	</div>
-	<div  style="display:none" class="login-footer">
-		<img src="images/logo-login-footer.png" alt="Certronic" width="130px">
 	</div>
 </div>

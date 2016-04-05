@@ -20,19 +20,23 @@ angular.module('myApp.services').service('AuthSrv', function ($http, $rootScope,
                 localStorage.setItem("type", currentUser.type);
                 localStorage.setItem("token", currentUser.token);
                 initialState = false;
+                $rootScope.loading = false;
                 $rootScope.updateHome = true; // inicialmente debo obtener data de la home
                 RedirectSrv.redirect('/');
 
             }else{
                 auth = false;
                 $rootScope.loginfail = true;
+                $rootScope.loading = false;
             }
             return auth;
         };
         var loginFail = function(data){
             console.log(data);
             $rootScope.disconnect = true;
+            $rootScope.loading = false;
         };
+        $rootScope.loading = true;
         ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('login'), data, data).success(loginSuccess).error(loginFail);
 
     };

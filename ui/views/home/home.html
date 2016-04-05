@@ -11,7 +11,7 @@
         <!-- <a ng-click="update()">Reintentar conexión</a> (más abajo está el botón update) -->
     </div>
 
-    <div fade-in ng-show=!loading>
+    <div fade-in ng-show='!loading'>
         <div ng-show='plant.cumplimiento' class="mainpage-compon-cumpl" fade-in>
             <div class="mainpage-compon-cumpl-icon">
                 <div class="info-icon bg-primary-dark">
@@ -40,11 +40,11 @@
                 <ul class="list-group">
                     <li class="list-group-item">
                         <span class="label label-success label-as-badge">{{plant.Personal[0].permitidos}}</span>
-                        Permitidos
+                        Habilitados
                     </li>
                     <li class="list-group-item">
                         <span class="label label-danger label-as-badge">{{plant.Personal[0].denegados}}</span>
-                        Denegados
+                        Inhabilitados
                     </li>
                     <li class="list-group-item">
                         <span class="label label-warning label-as-badge">{{plant.Personal[0].sinmovimiento}}</span>
