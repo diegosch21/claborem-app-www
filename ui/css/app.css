@@ -1099,25 +1099,25 @@ td.estado-doc span, th.estado-doc span {
 .login-box .input-box input:-moz-placeholder {
   color: #FFFFFF;
   font-size: 0.8em;
-  line-height: 34px;
+  line-height: 2;
 }
 /* line 64, ../../../../../../home/diegosch/.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
 .login-box .input-box input::-moz-placeholder {
   color: #FFFFFF;
   font-size: 0.8em;
-  line-height: 34px;
+  line-height: 2;
 }
 /* line 67, ../../../../../../home/diegosch/.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
 .login-box .input-box input:-ms-input-placeholder {
   color: #FFFFFF;
   font-size: 0.8em;
-  line-height: 34px;
+  line-height: 2;
 }
 /* line 56, ../../../../../../home/diegosch/.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
 .login-box .input-box input::-webkit-input-placeholder {
   color: #FFFFFF;
   font-size: 0.8em;
-  line-height: 34px;
+  line-height: 2;
 }
 
 /* line 140, ../scss/login/_login.scss */
@@ -1164,7 +1164,7 @@ td.estado-doc span, th.estado-doc span {
   height: 34px;
   padding: 8px 12px;
   font-size: 13px;
-  line-height: 1.428571429;
+  line-height: 1.4;
   color: #333;
   vertical-align: middle;
   background-color: #fff;

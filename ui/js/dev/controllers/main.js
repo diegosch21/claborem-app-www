@@ -5,6 +5,9 @@ angular.module('myApp.main', [])
         ['$scope', '$rootScope', '$window', 'ApiHttpSrv', 'ConfigSrv', '$location', 'AuthSrv', 'RedirectSrv',
         function($scope, $rootScope, $window, ApiHttpSrv, ConfigSrv, $location, AuthSrv, RedirectSrv) {
 
+    // Evento Apache Cordova / Phonegap
+    document.addEventListener("deviceready", onDeviceReady, false);
+
     if (AuthSrv.initialState() || !AuthSrv.authorized()) {
         $location.path("/login");
     }else{
@@ -87,6 +90,34 @@ angular.module('myApp.main', [])
     $scope.collapse = function(id){
         $('#' + id).removeClass('in');
         $('#' + id).addClass('collapse');
+    }
+
+    // Evento Apache Cordova / Phonegap
+    function onDeviceReady() {
+        $scope.$apply(function() {
+            document.addEventListener("backbutton", onBackKeyButton, false); //Listen to the User clicking on the back button
+        });
+    }
+
+    function onBackKeyButton(evt) {
+        evt.preventDefault();
+        if ($location.path() == '/' || $location.path() == '/login') {
+            navigator.notification.confirm(
+                '¿Desea cerrar la aplicación?', // message
+                 exitApp,            // callback to invoke with index of button pressed
+                'SALIR',           // title
+                ['NO','SÍ']     // buttonLabels
+            );
+        }
+        else {
+            window.history.back();
+        }
+    }
+
+    function exitApp(buttonIndex) {
+        if(buttonIndex == 2) {
+            navigator.app.exitApp();
+        }
     }
 
 }]);

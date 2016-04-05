@@ -133,7 +133,7 @@ $color-inputs-login: #2f4051;
     @include input-placeholder {
         color: #FFFFFF;
         font-size: 0.8em;
-        line-height: 34px;
+        line-height: 2;
     }
 }
 
@@ -173,7 +173,7 @@ $color-inputs-login: #2f4051;
     height: 34px;
     padding: 8px 12px;
     font-size: 13px;
-    line-height: 1.428571429;
+    line-height: 1.4;
     color: #333;
     vertical-align: middle;
     background-color: #fff;
