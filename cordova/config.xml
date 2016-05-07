@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.imotion.claborem"
+    version="1.1.3"
+    xmlns="http://www.w3.org/ns/widgets"
+    xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>CLaborem</name>
+    <description>
+        CLaborem - Certificación laboral
+    </description>
+    <author email="info@imotionconsulting.com.ar" href="http://imotionconsulting.com.ar">
+        IMotion Consulting
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <icon src="res/icon/icon.png"/>
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashScreenDelay" value="4000" />
+    <preference name="FadeSplashScreenDuration" value="2000"/>
+    <preference name="SplashMaintainAspectRatio" value="true" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <!-- Icon -->
+        <icon src="res/icon/android/icon-ldpi.png" density="ldpi" />
+        <icon src="res/icon/android/icon-mdpi.png" density="mdpi" />
+        <icon src="res/icon/android/icon-hdpi.png" density="hdpi" />
+        <icon src="res/icon/android/icon-xhdpi.png" density="xhdpi" />
+        <icon src="res/icon/android/icon-xxhdpi.png" density="xxhdpi" />
+        <icon src="res/icon/android/icon-xxxhdpi.png" density="xxxhdpi" />
+
+        <!-- Splash screen -->
+        <splash src="res/screen/android/land-320x200.9.png" density="land-ldpi"/>
+        <splash src="res/screen/android/land-480x320.9.png" density="land-mdpi"/>
+        <splash src="res/screen/android/land-800x480.9.png" density="land-hdpi"/>
+        <splash src="res/screen/android/land-1280x720.9.png" density="land-xhdpi"/>
+        <splash src="res/screen/android/land-1920x1080.9.png" density="land-xxhdpi"/>
+        <splash src="res/screen/android/port-200x320.9.png" density="port-ldpi"/>
+        <splash src="res/screen/android/port-320x480.9.png" density="port-mdpi"/>
+        <splash src="res/screen/android/port-480x800.9.png" density="port-hdpi"/>
+        <splash src="res/screen/android/port-720x1280.9.png" density="port-xhdpi"/>
+        <splash src="res/screen/android/port-1080x1920.9.png" density="port-xxhdpi"/>
+    </platform>
+
+</widget>
