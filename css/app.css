@@ -316,8 +316,7 @@ h1, h2, h3, h4, h5, h6 {
 /* line 124, ../scss/home/_home.scss */
 .mainpage-header .planta-nombre {
   font-weight: bold;
-  font-size: 1.2em;
-  text-transform: uppercase;
+  font-size: 1em;
   display: inline-block;
 }
 
@@ -1091,25 +1090,25 @@ td.estado-doc span, th.estado-doc span {
 .login-box .input-box input:focus {
   border: none;
 }
-/* line 61, ../../../../../../home/diegosch/.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
+/* line 61, ../../../../../home/diegosch/.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
 .login-box .input-box input:-moz-placeholder {
   color: #FFFFFF;
   font-size: 0.8em;
   line-height: 2;
 }
-/* line 64, ../../../../../../home/diegosch/.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
+/* line 64, ../../../../../home/diegosch/.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
 .login-box .input-box input::-moz-placeholder {
   color: #FFFFFF;
   font-size: 0.8em;
   line-height: 2;
 }
-/* line 67, ../../../../../../home/diegosch/.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
+/* line 67, ../../../../../home/diegosch/.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
 .login-box .input-box input:-ms-input-placeholder {
   color: #FFFFFF;
   font-size: 0.8em;
   line-height: 2;
 }
-/* line 56, ../../../../../../home/diegosch/.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
+/* line 56, ../../../../../home/diegosch/.rvm/gems/ruby-2.2.1/gems/compass-core-1.0.3/stylesheets/compass/css3/_user-interface.scss */
 .login-box .input-box input::-webkit-input-placeholder {
   color: #FFFFFF;
   font-size: 0.8em;
