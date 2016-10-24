@@ -79,8 +79,13 @@ angular.module('myApp.services').service('AuthSrv', function ($http, $rootScope,
                 initialState = false;
                 $rootScope.loading = false;
                 $rootScope.updateHome = true; // inicialmente debo obtener data de la home
-                RedirectSrv.redirect('/');
-
+                if(currentUser.type === 'contratista'){
+                    RedirectSrv.redirect('/');
+                }
+                if(currentUser.type === 'planta'){
+                    RedirectSrv.redirect('/homePlanta');
+                }
+                
             }else{
                 auth = false;
                 $rootScope.loginfail = true;
@@ -271,12 +276,16 @@ angular.module('myApp.main', [])
 
     // Evento Apache Cordova / Phonegap
     document.addEventListener("deviceready", onDeviceReady, false);
-
+    //lo que carga al actualizar la pagina
     if (AuthSrv.initialState() || !AuthSrv.authorized()) {
         $location.path("/login");
     }else{
         $rootScope.updateHome = true; // inicialmente debo actualizar la home
-        RedirectSrv.redirect('/');
+        if(AuthSrv.currentUser().type === 'contratista'){
+            RedirectSrv.redirect('/');
+        }else{
+            RedirectSrv.redirect('/homePlanta');
+        }
     }
 
     $rootScope.logout = function () {
@@ -295,47 +304,125 @@ angular.module('myApp.main', [])
     }
 
     $scope.goToContratos = function(){
-        RedirectSrv.redirect('/contratos');
+        switch(AuthSrv.currentUser().type) {
+            case 'contratista':
+                RedirectSrv.redirect('/contratos');
+                break;
+            case 'planta':
+                RedirectSrv.redirect('/contratosPlanta');
+                break;
+        }
     }
 
     $scope.goToContratoPage = function(id){
-        RedirectSrv.redirect('/contrato/' + $rootScope.plant.id + '/' + id);
+        switch(AuthSrv.currentUser().type) {
+            case 'contratista':
+                RedirectSrv.redirect('/contrato/' + $rootScope.plant.id + '/' + id);
+            break;
+            case 'planta':
+                RedirectSrv.redirect('/contratoPlanta/' + id);
+                break;
+        }
     }
 
     $scope.goToContratistas = function(){
-        RedirectSrv.redirect('/contratistas');
+        switch(AuthSrv.currentUser().type) {
+            case 'contratista':
+                RedirectSrv.redirect('/contratistas');
+                break;
+            case 'planta':
+                RedirectSrv.redirect('/contratistasPlanta');
+                break;
+        }
     }
 
     $scope.goToContratistaPage = function(id){
-        RedirectSrv.redirect('/contratista/' + $rootScope.plant.id + '/' + id);
+        switch(AuthSrv.currentUser().type) {
+            case 'contratista':
+                RedirectSrv.redirect('/contratista/' + $rootScope.plant.id + '/' + id);
+                break;
+            case 'planta':
+                RedirectSrv.redirect('/contratistaPlanta/' + id);
+                break;
+        }
     }
 
     $scope.goToPersonal = function(){
-        RedirectSrv.redirect('/personal');
+        switch(AuthSrv.currentUser().type) {
+            case 'contratista':
+                RedirectSrv.redirect('/personal');
+                break;
+            case 'planta':
+                RedirectSrv.redirect('/personalPlanta');
+                break;
+        }
+        
     }
 
     $scope.goToEmpleadoPage = function(id){
-        RedirectSrv.redirect('/empleado/' + $rootScope.plant.id + '/' + id);
+        switch(AuthSrv.currentUser().type) {
+            case 'contratista':
+                RedirectSrv.redirect('/empleado/' + $rootScope.plant.id + '/' + id);
+                break;
+            case 'planta':
+                RedirectSrv.redirect('/empleadoPlanta/' + id);
+                break;
+        }
     }
 
     $scope.goToMaquinarias = function(){
-        RedirectSrv.redirect('/maquinarias');
+        switch(AuthSrv.currentUser().type) {
+            case 'contratista':
+                RedirectSrv.redirect('/maquinarias');
+                break;
+            case 'planta':
+                RedirectSrv.redirect('/maquinariasPlanta');
+                break;
+        }
     }
 
     $scope.goToMaquinariaPage = function(id){
-        RedirectSrv.redirect('/maquinaria/' + $rootScope.plant.id + '/' + id);
+        switch(AuthSrv.currentUser().type) {
+            case 'contratista':
+                RedirectSrv.redirect('/maquinaria/' + $rootScope.plant.id + '/' + id);
+                break;
+            case 'planta':
+                RedirectSrv.redirect('/maquinariaPlanta/' + id);
+                break;
+        }
     }
 
     $scope.goToVehiculos = function(){
-        RedirectSrv.redirect('/vehiculos');
+        switch(AuthSrv.currentUser().type) {
+            case 'contratista':
+                RedirectSrv.redirect('/vehiculos');
+                break;
+            case 'planta':
+                RedirectSrv.redirect('/vehiculosPlanta');
+                break;
+        }
     }
 
     $scope.goToVehiculoPage = function(id){
-        RedirectSrv.redirect('/vehiculo/' + $rootScope.plant.id + '/' + id);
+        switch(AuthSrv.currentUser().type) {
+            case 'contratista':
+                RedirectSrv.redirect('/vehiculo/' + $rootScope.plant.id + '/' + id);
+                break;
+            case 'planta':
+                RedirectSrv.redirect('/vehiculoPlanta/' + id);
+                break;
+        }
     }
 
     $scope.goToReportes = function(){
-        RedirectSrv.redirect('/reportes');
+        switch(AuthSrv.currentUser().type) {
+            case 'contratista':
+                RedirectSrv.redirect('/reportes');
+                break;
+            case 'planta':
+                RedirectSrv.redirect('/reportesPlanta');
+                break;
+        }
     }
 
     $rootScope.goBack = function(){
@@ -344,7 +431,14 @@ angular.module('myApp.main', [])
 
     $rootScope.goToHome = function(){
         // $rootScope.updateHome = true;  // si aprieto inicio actualiza la home
-        RedirectSrv.redirect('/');
+        switch(AuthSrv.currentUser().type) {
+            case 'contratista':
+                RedirectSrv.redirect('/');
+                break;
+            case 'planta':
+                RedirectSrv.redirect('/homePlanta');
+                break;
+        }
     }
 
     $rootScope.open = function(link){
@@ -365,7 +459,7 @@ angular.module('myApp.main', [])
 
     function onBackKeyButton(evt) {
         evt.preventDefault();
-        if ($location.path() == '/' || $location.path() == '/login') {
+        if ($location.path() == '/' || $location.path() == '/login' || $location.path()== '/homePlanta') {
             navigator.notification.confirm(
                 '¿Desea cerrar la aplicación?', // message
                  exitApp,            // callback to invoke with index of button pressed
@@ -525,6 +619,148 @@ angular.module('myApp.collections', [])
         };
 
 }]);
+
+
+/**
+ * Controller para listados: contratos, contratistas, personal, vehículos, maquinarias de la planta
+ */
+'use strict';
+
+angular.module('myApp.collectionsPlanta', [])
+    .controller('collectionsPlantaCtrl',
+        ['$scope', '$rootScope','context', '$window', '$filter', 'AuthSrv', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',
+        function($scope, $rootScope, context, $window, $filter, AuthSrv,  RedirectSrv, ApiHttpSrv, ConfigSrv) {
+
+        if (AuthSrv.initialState() || !AuthSrv.authorized()) {
+            RedirectSrv.redirect('/login');
+        };
+        if(!$rootScope.data) {
+            $rootScope.goToHome();
+        }
+
+        // los items son guardados en $rootScope.collections.<type> cuando se obtiene la data
+        $scope.pagedItems = [];
+        $scope.currentPage = 0;
+
+        var itemsPerPage = 10;
+        var filteredItems = [];
+        var sortingOrder = context.sortingOrder;
+        var reverse = false;
+
+        var url_get = ConfigSrv.getApiUrl(context.type); // en context.type se setea el tipo de coleccion (contratos, vehiculos, etc)
+
+        var getData = function() {
+            var data = {
+                token : AuthSrv.currentUser().token
+            }
+            $scope.loading = true;
+            ApiHttpSrv.createApiHttp('get', url_get, data, data)
+            .success(function(d){
+                // console.log(d);
+                $rootScope.collections[context.type] = d;
+                groupToPages();
+                // $scope.search();
+                $scope.loading = false;
+                $rootScope.updateCollection = false // flag de actualizar en false: no se volverá a pedir la data hasta no setearlo en true
+            }).error(function(d){
+                // console.log(d);
+                $scope.loading = false;
+            });
+        }
+
+        var searchMatch = function (haystack, needle) {
+            if (!needle) {
+                return true;
+            }
+            if(haystack){
+                return haystack.toLowerCase().indexOf(needle.toLowerCase()) !== -1;
+            }
+        };
+
+        // calculate page in place
+        var groupToPages = function (filtered) {
+            $scope.pagedItems = [];
+
+            var items = $rootScope.collections[context.type];
+            if (filtered) {
+                items = $scope.filteredItems;
+            }
+
+            for (var i = 0; i < items.length; i++) {
+                if (i % itemsPerPage === 0) {
+                    $scope.pagedItems[Math.floor(i / itemsPerPage)] = [ items[i] ];
+                } else {
+                    $scope.pagedItems[Math.floor(i / itemsPerPage)].push(items[i]);
+                }
+            }
+        };
+
+        // init the filtered items
+        $scope.search = function () {
+            $scope.filteredItems = $filter('filter')($rootScope.collections[context.type], function (item) {
+                for(var attr in item) {
+                    if (searchMatch(item[attr], $scope.query))  // si no hay query retorna true
+                        return true;
+                }
+                return false;
+            });
+            // take care of the sorting order
+            if (sortingOrder && sortingOrder !== '') {
+                $scope.filteredItems = $filter('orderBy')($scope.filteredItems, sortingOrder, $scope.reverse);
+            }
+            $scope.currentPage = 0;
+            // now group by pages
+            groupToPages(true);
+        };
+
+        // Cargo y muestro data:
+        if (!$rootScope.collections[context.type]) {
+            // si no hay items, obtengo la data
+            getData();
+        }
+        else {
+            groupToPages();
+        }
+
+        $scope.range = function (start, end) {
+            var ret = [];
+            if (!end) {
+                end = start;
+                start = 0;
+            }
+            for (var i = start; i < end; i++) {
+                ret.push(i);
+            }
+            return ret;
+        };
+
+        $scope.prevPage = function () {
+            if ($scope.currentPage > 0) {
+                $scope.currentPage--;
+            }
+        };
+
+        $scope.nextPage = function () {
+            if ($scope.currentPage < $scope.pagedItems.length - 1) {
+                $scope.currentPage++;
+            }
+        };
+
+        $scope.setPage = function () {
+            $scope.currentPage = this.n;
+        };
+
+        // change sorting order
+        $scope.sort_by = function(newSortingOrder) {
+            if (sortingOrder == newSortingOrder)
+                reverse = !reverse;
+
+            sortingOrder = newSortingOrder;
+        };
+}]);
+
+
+
 /**
  * Controller para mostrar la data de una entidad: contrato, contratista, empleado, vehículo, maquinaria
  */
@@ -563,6 +799,44 @@ angular.module('myApp.entity', [])
     }
 
 }]);
+
+/**
+ * Controller para mostrar la data de una entidad: contrato, contratista, empleado, vehículo, maquinaria en la planta
+ */
+'use strict';
+
+angular.module('myApp.entityPlanta', [])
+.controller('entityPlantaCtrl',
+    ['$scope', '$rootScope','$routeParams', 'context', '$window', 'AuthSrv', 'RedirectSrv', 'ApiHttpSrv', 'ConfigSrv',
+    function($scope, $rootScope, $routeParams, context, $window, AuthSrv, RedirectSrv, ApiHttpSrv, ConfigSrv) {
+
+    var url_get = ConfigSrv.getApiUrl(context.type); // en context.type se setea el tipo de entidad (contratos, vehiculos, etc)
+    var getData = function () {
+        var data = {
+            'token': AuthSrv.currentUser().token,
+            'id': $routeParams.id
+        };
+        var getDataSuccess = function(d){
+            $scope.entityData = d[0];
+            //console.log(d);
+            $scope.loading = false;
+        };
+        var getDataFail = function(d){
+            // console.log(d);
+            $scope.loading = false;
+        };
+        $scope.loading = true;
+        ApiHttpSrv.createApiHttp('post', url_get, data, data).success(getDataSuccess).error(getDataFail);
+    }
+
+    if (AuthSrv.initialState() || !AuthSrv.authorized()) {
+        RedirectSrv.redirect('/login');
+    }else{
+        getData();
+    }
+
+}]);
+
 'use strict';
 
 angular.module('myApp.home', [])
@@ -584,7 +858,6 @@ angular.module('myApp.home', [])
                 }
                 $rootScope.plant = $rootScope.data.plantas[$rootScope.currentId];
                 $rootScope.collections = {};
-
                 $scope.loading = false;
                 $rootScope.updateHome = false; // flag de actualizar en false: no se volverá a pedir la data hasta no setearlo en true
             };
@@ -593,9 +866,62 @@ angular.module('myApp.home', [])
                 $scope.loading = false;
                 $scope.disconnect = true;
             };
+            console.log
+
             $scope.loading = true;
             $scope.disconnect = false;
-            ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('home'), data, data).success(getDataSuccess).error(getDataFail);
+            if(AuthSrv.currentUser().type === 'contratista'){
+                ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('home'), data, data).success(getDataSuccess).error(getDataFail);
+            }else{
+                ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('homePlanta'), data, data).success(getDataSuccess).error(getDataFail);
+            }
+        }
+        if (AuthSrv.initialState() || !AuthSrv.authorized()) {
+            $location.path('/login');
+        }
+
+        // si ya estaba seteada la planta no la actualizo (salvo que esté seteado el flag de actualizar)
+        if (!$rootScope.plant || $rootScope.updateHome) {
+            getdata();
+        }
+        $scope.update = function(){
+            getdata();
+        }
+
+}]);
+'use strict';
+
+angular.module('myApp.homePlanta', [])
+.controller('homePlantaCtrl',
+    ['$scope', '$rootScope', 'ApiHttpSrv', 'ConfigSrv', '$location', 'AuthSrv', 'RedirectSrv',
+    function($scope, $rootScope, ApiHttpSrv, ConfigSrv, $location, AuthSrv, RedirectSrv) {
+
+        var getdata = function () {
+            var data = {
+                'token': AuthSrv.currentUser().token
+            };
+            var getDataSuccess = function(data){
+                // console.log(data[0]);
+                $rootScope.data = data[0];
+                $rootScope.plantas = $rootScope.data.plantas;
+
+                if(!$rootScope.currentId) { // si ya estaba seteado previamente, agarro esa planta
+                    $rootScope.currentId = 0
+                }
+                $rootScope.collections = {};
+                $scope.loading = false;
+                $rootScope.updateHome = false; // flag de actualizar en false: no se volverá a pedir la data hasta no setearlo en true
+            };
+            var getDataFail = function(data){
+                // console.log(data);
+                $scope.loading = false;
+                $scope.disconnect = true;
+            };
+            console.log
+
+            $scope.loading = true;
+            $scope.disconnect = false;
+            ApiHttpSrv.createApiHttp('post', ConfigSrv.getApiUrl('homePlanta'), data, data).success(getDataSuccess).error(getDataFail);
         }
         if (AuthSrv.initialState() || !AuthSrv.authorized()) {
             $location.path('/login');
