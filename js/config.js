@@ -24,7 +24,20 @@
                 "vehiculo": "http://www.c-laborem.com.ar/certronic/appMovil/contratista/datosVehiculo.php",
                 "maquinarias": "http://www.c-laborem.com.ar/certronic/appMovil/contratista/tablaMaquinarias.php",
                 "maquinaria": "http://www.c-laborem.com.ar/certronic/appMovil/contratista/datosMaquinaria.php",
-                "reportes": "http://www.c-laborem.com.ar/certronic/appMovil/contratista/reportes.php"
+                "reportes": "http://www.c-laborem.com.ar/certronic/appMovil/contratista/reportes.php",
+
+                "homePlanta": "http://www.c-laborem.com.ar/certronic/appMovil/planta/homePlanta.php",
+                "contratosPlanta": "http://www.c-laborem.com.ar/certronic/appMovil/planta/tablaContratos.php",
+                "contratoPlanta" : "http://www.c-laborem.com.ar/certronic/appMovil/planta/datosContrato.php",
+                "contratistasPlanta": "http://www.c-laborem.com.ar/certronic/appMovil/planta/tablaContratistas.php",
+                "contratistaPlanta": "http://www.c-laborem.com.ar/certronic/appMovil/planta/datosContratista.php",
+                "personalPlanta": "http://www.c-laborem.com.ar/certronic/appMovil/planta/tablaEmpleados.php",
+                "empleadoPlanta": "http://www.c-laborem.com.ar/certronic/appMovil/planta/datosEmpleado.php",
+                "vehiculosPlanta": "http://www.c-laborem.com.ar/certronic/appMovil/planta/tablaVehiculos.php",
+                "vehiculoPlanta": "http://www.c-laborem.com.ar/certronic/appMovil/planta/datosVehiculo.php",
+                "maquinariasPlanta": "http://www.c-laborem.com.ar/certronic/appMovil/planta/tablaMaquinarias.php",
+                "maquinariaPlanta": "http://www.c-laborem.com.ar/certronic/appMovil/planta/datosMaquinaria.php"
+                
             }
         }
     }

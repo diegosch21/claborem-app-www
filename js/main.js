@@ -6,8 +6,11 @@ var myApp = angular.module('myApp',
         'myApp.filters',
         'myApp.directives', // custom directives
         'myApp.home',
+        'myApp.homePlanta',
         'myApp.collections',
+        'myApp.collectionsPlanta',
         'myApp.entity',
+        'myApp.entityPlanta',
         'myApp.reportes',
         'myApp.main',
         'myApp.login',
@@ -30,18 +33,20 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
     // TODO use html5 *no hash) where possible
     // $locationProvider.html5Mode(true);
 
-    $routeProvider.when('/', {
-        templateUrl:'views/home/home.html',
-        controller: 'homeCtrl'
-    });
-
     $routeProvider.when('/login', {
         templateUrl:'views/login/login.html',
         controller: 'loginCtrl'
     });
 
+//------------------------ CONTRATISTA --------------------------
+
+    $routeProvider.when('/', {
+        templateUrl:'views/contratista/home/home.html',
+        controller: 'homeCtrl'
+    });
+
     $routeProvider.when('/contratos', {
-        templateUrl:'views/contracts/contratos.html',
+        templateUrl:'views/contratista/contracts/contratos.html',
         controller: 'collectionsCtrl',
         resolve: {
             context: function() { return {
@@ -52,7 +57,7 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
     });
 
     $routeProvider.when('/contrato/:idP/:id', {
-        templateUrl:'views/contracts/contrato.html',
+        templateUrl:'views/contratista/contracts/contrato.html',
         controller: 'entityCtrl',
         resolve: {
             context: function() { return {
@@ -62,7 +67,7 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
     });
 
     $routeProvider.when('/contratistas', {
-        templateUrl:'views/contratistas/contratistas.html',
+        templateUrl:'views/contratista/contratistas/contratistas.html',
         controller: 'collectionsCtrl',
         resolve: {
             context: function() { return {
@@ -73,7 +78,7 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
     });
 
     $routeProvider.when('/contratista/:idP/:id', {
-        templateUrl:'views/contratistas/contratista.html',
+        templateUrl:'views/contratista/contratistas/contratista.html',
         controller: 'entityCtrl',
         resolve: {
             context: function() { return {
@@ -83,7 +88,7 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
     });
 
     $routeProvider.when('/personal', {
-        templateUrl:'views/personal/personal.html',
+        templateUrl:'views/contratista/personal/personal.html',
         controller: 'collectionsCtrl',
         resolve: {
             context: function() { return {
@@ -94,7 +99,7 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
     });
 
     $routeProvider.when('/empleado/:idP/:id', {
-        templateUrl:'views/personal/empleado.html',
+        templateUrl:'views/contratista/personal/empleado.html',
         controller: 'entityCtrl',
         resolve: {
             context: function() { return {
@@ -104,7 +109,7 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
     });
 
     $routeProvider.when('/vehiculos', {
-        templateUrl:'views/vehiculos/vehiculos.html',
+        templateUrl:'views/contratista/vehiculos/vehiculos.html',
         controller: 'collectionsCtrl',
         resolve: {
             context: function() { return {
@@ -115,7 +120,7 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
     });
 
     $routeProvider.when('/vehiculo/:idP/:id', {
-        templateUrl:'views/vehiculos/vehiculo.html',
+        templateUrl:'views/contratista/vehiculos/vehiculo.html',
         controller: 'entityCtrl',
         resolve: {
             context: function() { return {
@@ -125,7 +130,7 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
     });
 
     $routeProvider.when('/maquinarias', {
-        templateUrl:'views/maquinarias/maquinarias.html',
+        templateUrl:'views/contratista/maquinarias/maquinarias.html',
         controller: 'collectionsCtrl',
         resolve: {
             context: function() { return {
@@ -136,7 +141,7 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
     });
 
     $routeProvider.when('/maquinaria/:idP/:id', {
-        templateUrl:'views/maquinarias/maquinaria.html',
+        templateUrl:'views/contratista/maquinarias/maquinaria.html',
         controller: 'entityCtrl',
         resolve: {
             context: function() { return {
@@ -146,9 +151,125 @@ myApp.config(['$routeProvider', '$locationProvider', '$httpProvider', function (
     });
 
     $routeProvider.when('/reportes', {
-        templateUrl:'views/reportes/reportes.html', // controller indicado via ng-controller
+        templateUrl:'views/contratista/reportes/reportes.html', // controller indicado via ng-controller
     });
 
+//------------------------------ PLANTA --------------------------
+    
+    $routeProvider.when('/homePlanta', {
+        templateUrl:'views/planta/homePlanta/homePlanta.html',
+        controller: 'homePlantaCtrl'
+    });
+
+    $routeProvider.when('/contratosPlanta', {
+        templateUrl:'views/planta/contracts/contratosPlanta.html',
+        controller: 'collectionsPlantaCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'contratosPlanta',
+                sortingOrder : 'Numero'
+            }; }
+        }
+    });
+
+    $routeProvider.when('/contratoPlanta/:id', {
+        templateUrl:'views/planta/contracts/contratoPlanta.html',
+        controller: 'entityPlantaCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'contratoPlanta'
+            }; }
+        }
+    });
+
+    $routeProvider.when('/contratistasPlanta', {
+        templateUrl:'views/planta/contratistas/contratistasPlanta.html',
+        controller: 'collectionsPlantaCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'contratistasPlanta',
+                sortingOrder : 'RazonSocial'
+            }; }
+        }
+    });
+
+    $routeProvider.when('/contratistaPlanta/:id', {
+        templateUrl:'views/planta/contratistas/datosContratistaPlanta.html',
+        controller: 'entityPlantaCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'contratistaPlanta'
+            }; }
+        }
+    });
+
+    $routeProvider.when('/personalPlanta', {
+        templateUrl:'views/planta/personal/personalPlanta.html',
+        controller: 'collectionsPlantaCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'personalPlanta',
+                sortingOrder : 'Apellido'
+            }; }
+        }
+    });
+
+    $routeProvider.when('/empleadoPlanta/:id', {
+        templateUrl:'views/planta/personal/datosEmpleadoPlanta.html',
+        controller: 'entityPlantaCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'empleadoPlanta'
+            }; }
+        }
+    });
+
+    $routeProvider.when('/vehiculosPlanta', {
+        templateUrl:'views/planta/vehiculos/vehiculosPlanta.html',
+        controller: 'collectionsPlantaCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'vehiculosPlanta',
+                sortingOrder : 'Marca'
+            }; }
+        }
+    });
+
+    $routeProvider.when('/vehiculoPlanta/:id', {
+        templateUrl:'views/planta/vehiculos/datosVehiculoPlanta.html',
+        controller: 'entityPlantaCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'vehiculoPlanta'
+            }; }
+        }
+    });
+
+    $routeProvider.when('/maquinariasPlanta', {
+        templateUrl:'views/planta/maquinarias/maquinariasPlanta.html',
+        controller: 'collectionsPlantaCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'maquinariasPlanta',
+                sortingOrder : 'Marca'
+            }; }
+        }
+    });
+
+    $routeProvider.when('/maquinariaPlanta/:id', {
+        templateUrl:'views/planta/maquinarias/datosMaquinariaPlanta.html',
+        controller: 'entityPlantaCtrl',
+        resolve: {
+            context: function() { return {
+                type: 'maquinariaPlanta'
+            }; }
+        }
+    });
+
+    $routeProvider.when('/reportesPlanta', {
+        templateUrl:'views/planta/reportes/reportesPlanta.html', // controller indicado via ng-controller
+    });
+    
     // by default, redirect to site root
     $routeProvider.otherwise({
         redirectTo:'/'

@@ -1,0 +1,142 @@
+<div class="container nopad">
+
+    <div ng-include src="'views/partials/navbar-topPlanta.html'"></div>
+    <div ng-include src="'views/partials/page-headerPlanta.html'"></div>
+    
+    <div fade-in ng-show='!loading' >  <!-- ng-controller="collectionsCtrl" (associated via routeProvider in main.js) -->
+    	<div class="section-header">
+            <span class="back" ng-click='goBack()'>
+                <i class="fa fa-chevron-left"></i></span>
+            </span>
+            <span class="title">
+                <i class="fa fa-truck"></i>
+                <span class="entidad">{{entityData.General[0].Marca}} | {{entityData.General[0].Dominio}}</span>
+            </span>
+        </div>
+
+        <ul class="nav nav-tabs" style="margin-top: 15px;">
+            <li class="active"><a data-toggle="tab" href="#documentos">Documentos</a></li>
+            <li><a data-toggle="tab" href="#general">General</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="documentos" class="tab-pane fade in active">
+                <div ng-show="!entityData.Documentos" class="mainpage-compon large-font info" ng-cloak>
+                    <div class="mainpage-compon-title">
+                        <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
+                    </div>
+                </div>
+                <div ng-show="entityData.Documentos" class="mainpage-compon large-font info">
+                    <!-- <div class="mainpage-compon-title">
+                        <i class="fa fa-indent"></i><span class="compon-title">Documentos</span>
+                    </div> -->
+                    <div class="aviso-documentos-pendientes" ng-show="entityData.DocumentosPendientes">
+                        <i class="fa fa-warning text-warning"></i>
+                        Tiene {{entityData.DocumentosPendientes.length}} documentos de períodos anteriores pendientes de entrega
+                    </div>
+                    <div class="mainpage-compon-container medium-font" style="padding-top: 0;">
+                        <ul class="nav nav-tabs subtabs">
+                            <li class="active">
+                                <a data-toggle="tab" href="#documentos-entity">Vehículo</a>
+                            </li>
+                            <li ng-show="entityData.Documentos">
+                                <a data-toggle="tab" href="#documentos-planta">Contratista</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="documentos-entity" class="tab-pane fade in active">
+                                <table class="table users-table table-condensed table-hover" style="margin-bottom: 0;">
+                                    <thead>
+                                        <tr>
+                                            <th>Documento</th>
+                                            <th class="estado-doc">Estado</th>
+                                            <th>Vencimento</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in entityData.Documentos">
+                                            <td>{{item.Nombre}}</td>
+                                            <td class="estado-doc">
+                                                <span class="label label-as-badge accessicon"
+                                                ng-class="{'label-danger':item.Cumple=='No','label-success':item.Cumple=='Si', 'label-warning': item.Cumple=='Si*'}">
+                                                    <i ng-class="{'fa fa-times':item.Cumple=='No','fa fa-check':item.Cumple=='Si', 'fa fa-exclamation-triangle':item.Cumple=='Si*'}"></i>
+                                                </span>
+                                            </td>
+                                            <td>{{item.Vencimiento}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div id="documentos-planta" ng-show="entityData.DocumentosContratista" class="tab-pane fade">
+                                <table class="table users-table table-condensed table-hover" style="margin-bottom: 0;">
+                                    <thead>
+                                        <tr>
+                                            <th>Documento</th>
+                                            <th class="estado-doc">Estado</th>
+                                            <th>Vencimento</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="item in entityData.DocumentosContratista">
+                                            <td>{{item.Nombre}}</td>
+                                            <td class="estado-doc">
+                                                <span class="label label-as-badge accessicon"
+                                                    ng-class="{'label-danger':item.Cumple=='No','label-success':item.Cumple=='Si', 'label-warning': item.Cumple=='Si*'}">
+                                                    <i ng-class="{'fa fa-times':item.Cumple=='No','fa fa-check':item.Cumple=='Si', 'fa fa-exclamation-triangle':item.Cumple=='Si*'}"></i>
+                                                </span>
+                                            </td>
+                                            <td>{{item.Vencimiento}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="general" class="tab-pane fade">
+                <div ng-show="!entityData.General" class="mainpage-compon large-font info" ng-cloak>
+                    <div class="mainpage-compon-title">
+                        <i class="fa fa-info"></i><span class="compon-title">Información no disponible</span>
+                    </div>
+                </div>
+                <div ng-show="entityData.General" class="mainpage-compon large-font info">
+                    <div class="mainpage-compon-title">
+                        <i class="fa fa-info"></i><span class="compon-title">Información General</span>
+                    </div>
+                    <div class="mainpage-compon-container">
+                        <ul class="list-group">
+                            <li class="list-group-item auto-height">
+                                <span>Marca: <span class="bold-primaty-color">{{entityData.General[0].Marca}}</span></span>
+                            </li>
+                            <li class="list-group-item auto-height">
+                                <span>Modelo: <span class="bold-primaty-color">{{entityData.General[0].Modelo}}</span></span>
+                            </li>
+                            <li class="list-group-item auto-height">
+                                <span>Dominio: <span class="bold-primaty-color">{{entityData.General[0].Dominio}}</span></span>
+                            </li>
+                            <li class="list-group-item auto-height">
+                                <span>Nº de Motor: <span class="bold-primaty-color">{{entityData.General[0].NumeroMotor}}</span></span>
+                            </li>
+                            <li class="list-group-item auto-height">
+                                <span>Nº de Chasis: <span class="bold-primaty-color">{{entityData.General[0].NumeroChasis}}</span></span>
+                            </li>
+                            <li class="list-group-item auto-height">
+                                <span>Tipo: <span class="bold-primaty-color">{{entityData.General[0].TipoVehiculo}}</span></span>
+                            </li>
+                            <li class="list-group-item auto-height">
+                                <span>Categoria: <span class="bold-primaty-color">{{entityData.General[0].Categoria}}</span></span>
+                            </li>
+                            <li class="list-group-item auto-height">
+                                <span>Aseguradora: <span class="bold-primaty-color">{{entityData.General[0].CompaniaSeguro}}</span></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer"></div>
+</div>
